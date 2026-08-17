@@ -1,0 +1,58 @@
+# Utility delegation
+
+Good reasons for isolation include:
+
+- context-heavy web research or source reconnaissance;
+- foreign-codebase mapping;
+- long-job launch or monitoring loops;
+- bounded performance or status analysis.
+
+Do not delegate trivial commands, one-line searches, simple reads, short checks, or work whose result requires the implementation worker's continuous judgment. Batch related routine work into one utility task rather than spawning many small sessions.
+
+# Resource check
+
+Before spawning, consider runtime, CPU/process count, RAM, disk I/O, log growth, shared artifacts, and duplicate side effects. Spawn only one resource-heavy utility job unless the parent explicitly approved parallel heavy work.
+
+# Spawn contract
+
+Use the same merged worker skill; never reference the removed utility skill.
+
+Defaults:
+
+- `mode: "fresh"`;
+- `persistent: false`;
+- `reportToSelf: true`;
+- `cwd`: the current relevant repo/worktree or task directory;
+- `thinkingLevel: "low"`;
+- name: `<implementation-worker-name>-sub-<purpose>`.
+
+The sparse plaintext prompt must include:
+
+```text
+First read and follow: /home/korvin/.pi/agent/skills/worker-session/SKILL.md
+Worker name: <same as utility session name>
+Worker type: utility
+Parent name: <implementation worker name>
+Task:
+- <exact bounded routine task>
+
+Expected result:
+- <acceptance/output returned only to the immediate parent>
+```
+
+Add only relevant positive sections: useful context, input files, search hints, constraints, resource limits, or approved artifact paths. Do not add Git lifecycle or task/issue-bank mutation authority.
+
+# Parent ownership
+
+The implementation worker retains implementation, architecture, acceptance, and final-delivery ownership. After the utility report, read the returned relevant files or evidence before implementing. Do not repeat the delegated search unless the result is insufficient, contradictory, or blocked; if needed, send a correction or spawn one corrected bounded investigation.
+
+# Report contribution
+
+When useful, append:
+
+```text
+Delegation:
+- <utility worker>: <result used by this task>
+```
+
+Do not reproduce the child's full report.
