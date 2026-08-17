@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/brainstorm/questionnaire.schema.json",
+  "title": "Vertical HTML brainstorm questionnaire",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["questionnaireId", "title", "sections"],
+  "properties": {
+    "questionnaireId": { "$ref": "#/$defs/id" },
+    "title": { "$ref": "#/$defs/text" },
+    "description": { "$ref": "#/$defs/text" },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/section" }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["optionId", "label"],
+      "properties": {
+        "optionId": { "$ref": "#/$defs/id" },
+        "label": { "$ref": "#/$defs/text" },
+        "description": { "$ref": "#/$defs/text" },
+        "recommended": { "type": "boolean" }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["questionId", "prompt", "selection", "options"],
+      "properties": {
+        "questionId": { "$ref": "#/$defs/id" },
+        "prompt": { "$ref": "#/$defs/text" },
+        "description": { "$ref": "#/$defs/text" },
+        "selection": {
+          "enum": ["single", "multiple"]
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/option" }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "selection": { "const": "single" } },
+            "required": ["selection"]
+          },
+          "then": {
+            "properties": {
+              "options": {
+                "contains": {
+                  "type": "object",
+                  "required": ["recommended"],
+                  "properties": { "recommended": { "const": true } }
+                },
+                "minContains": 1,
+                "maxContains": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "options": {
+                "contains": {
+                  "type": "object",
+                  "required": ["recommended"],
+                  "properties": { "recommended": { "const": true } }
+                },
+                "minContains": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sectionId", "title", "questions"],
+      "properties": {
+        "sectionId": { "$ref": "#/$defs/id" },
+        "title": { "$ref": "#/$defs/text" },
+        "description": { "$ref": "#/$defs/text" },
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/question" }
+        }
+      }
+    }
+  }
+}

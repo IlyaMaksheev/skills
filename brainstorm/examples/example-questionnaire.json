@@ -1,0 +1,81 @@
+{
+  "questionnaireId": "example-round-1",
+  "title": "Example brainstorm questionnaire",
+  "description": "Answer anything that provides useful context. Nothing is required.",
+  "sections": [
+    {
+      "sectionId": "direction",
+      "title": "Direction",
+      "description": "Broad decisions about the intended direction.",
+      "questions": [
+        {
+          "questionId": "primary-approach",
+          "prompt": "Which approach is most appropriate?",
+          "description": "Select an option, write a different answer, use both, or leave this unanswered.",
+          "selection": "single",
+          "options": [
+            {
+              "optionId": "approach-alpha",
+              "label": "Approach Alpha",
+              "description": "A short placeholder approach.",
+              "recommended": true
+            },
+            {
+              "optionId": "approach-beta",
+              "label": "Approach Beta",
+              "description": "A longer placeholder approach."
+            }
+          ]
+        },
+        {
+          "questionId": "useful-capabilities",
+          "prompt": "Which capabilities would be useful?",
+          "selection": "multiple",
+          "options": [
+            {
+              "optionId": "capability-one",
+              "label": "Capability One",
+              "recommended": true
+            },
+            {
+              "optionId": "capability-two",
+              "label": "Capability Two",
+              "recommended": true
+            },
+            {
+              "optionId": "capability-three",
+              "label": "Capability Three"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sectionId": "constraints",
+      "title": "Constraints",
+      "description": "Relevant boundaries that are already known to matter.",
+      "questions": [
+        {
+          "questionId": "preferred-boundary",
+          "prompt": "Which boundary best fits the current intent?",
+          "selection": "single",
+          "options": [
+            {
+              "optionId": "boundary-narrow",
+              "label": "A narrow boundary"
+            },
+            {
+              "optionId": "boundary-balanced",
+              "label": "A balanced boundary",
+              "recommended": true
+            },
+            {
+              "optionId": "boundary-broad",
+              "label": "A broad boundary"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

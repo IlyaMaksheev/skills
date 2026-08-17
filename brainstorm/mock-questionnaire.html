@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mock Brainstorm Questionnaire</title>
+</head>
+<body>
+  <h1>Mock Brainstorm Questionnaire</h1>
+
+  <p>
+    Select any answers that are useful and add text wherever more context is needed.
+    Nothing is required. A question may have selected options, a written answer, both,
+    or no answer.
+  </p>
+
+  <form id="questionnaire" data-questionnaire-id="mock-brainstorm">
+    <section data-section-id="product-direction">
+      <h2>Section 1: Lorem ipsum direction</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <fieldset data-question-id="primary-approach">
+        <legend>1. Lorem ipsum dolor sit amet?</legend>
+        <p>Select one option.</p>
+
+        <label>
+          <input class="option-input" type="radio" name="primary-approach" value="approach-alpha">
+          Lorem ipsum alpha
+        </label>
+        <strong>(Recommended)</strong>
+        <br>
+
+        <label>
+          <input class="option-input" type="radio" name="primary-approach" value="approach-beta">
+          Lorem ipsum beta with a longer description to demonstrate a larger option
+        </label>
+        <br>
+
+        <label>
+          <input class="option-input" type="radio" name="primary-approach" value="approach-gamma">
+          Lorem ipsum gamma
+        </label>
+        <br>
+
+        <label for="primary-approach-text">Additional answer, explanation, or comment</label>
+        <br>
+        <textarea id="primary-approach-text" class="question-text" rows="4" cols="80"></textarea>
+      </fieldset>
+
+      <fieldset data-question-id="useful-capabilities">
+        <legend>2. Consectetur adipiscing elit sed do eiusmod?</legend>
+        <p>Select any number of options.</p>
+
+        <label>
+          <input class="option-input" type="checkbox" value="capability-one">
+          Capability one
+        </label>
+        <strong>(Recommended)</strong>
+        <br>
+
+        <label>
+          <input class="option-input" type="checkbox" value="capability-two">
+          Capability two
+        </label>
+        <br>
+
+        <label>
+          <input class="option-input" type="checkbox" value="capability-three">
+          Capability three
+        </label>
+        <strong>(Recommended)</strong>
+        <br>
+
+        <label>
+          <input class="option-input" type="checkbox" value="capability-four">
+          Capability four with additional placeholder detail
+        </label>
+        <br>
+
+        <label for="useful-capabilities-text">Additional answer, explanation, or comment</label>
+        <br>
+        <textarea id="useful-capabilities-text" class="question-text" rows="4" cols="80"></textarea>
+      </fieldset>
+
+      <label for="product-direction-comment">Comment on this section</label>
+      <br>
+      <textarea id="product-direction-comment" class="section-comment" rows="4" cols="80"></textarea>
+    </section>
+
+    <hr>
+
+    <section data-section-id="constraints">
+      <h2>Section 2: Tempor incididunt constraints</h2>
+      <p>Ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+
+      <fieldset data-question-id="preferred-boundary">
+        <legend>3. Quis nostrud exercitation ullamco laboris?</legend>
+        <p>Select one option.</p>
+
+        <label>
+          <input class="option-input" type="radio" name="preferred-boundary" value="boundary-small">
+          A narrow boundary
+        </label>
+        <br>
+
+        <label>
+          <input class="option-input" type="radio" name="preferred-boundary" value="boundary-balanced">
+          A balanced boundary
+        </label>
+        <strong>(Recommended)</strong>
+        <br>
+
+        <label>
+          <input class="option-input" type="radio" name="preferred-boundary" value="boundary-broad">
+          A broad boundary that intentionally includes substantially more placeholder context
+        </label>
+        <br>
+
+        <label for="preferred-boundary-text">Additional answer, explanation, or comment</label>
+        <br>
+        <textarea id="preferred-boundary-text" class="question-text" rows="4" cols="80"></textarea>
+      </fieldset>
+
+      <fieldset data-question-id="accepted-tradeoffs">
+        <legend>4. Duis aute irure dolor in reprehenderit?</legend>
+        <p>Select any number of options.</p>
+
+        <label>
+          <input class="option-input" type="checkbox" value="tradeoff-speed">
+          Prefer speed
+        </label>
+        <br>
+
+        <label>
+          <input class="option-input" type="checkbox" value="tradeoff-simplicity">
+          Prefer simplicity
+        </label>
+        <strong>(Recommended)</strong>
+        <br>
+
+        <label>
+          <input class="option-input" type="checkbox" value="tradeoff-flexibility">
+          Prefer flexibility
+        </label>
+        <br>
+
+        <label for="accepted-tradeoffs-text">Additional answer, explanation, or comment</label>
+        <br>
+        <textarea id="accepted-tradeoffs-text" class="question-text" rows="4" cols="80"></textarea>
+      </fieldset>
+
+      <label for="constraints-comment">Comment on this section</label>
+      <br>
+      <textarea id="constraints-comment" class="section-comment" rows="4" cols="80"></textarea>
+    </section>
+
+    <hr>
+
+    <section data-section-id="additional-context">
+      <h2>Section 3: Additional lorem context</h2>
+      <p>Excepteur sint occaecat cupidatat non proident.</p>
+
+      <fieldset data-question-id="context-emphasis">
+        <legend>5. Sunt in culpa qui officia deserunt?</legend>
+        <p>Select one option, or leave the options empty and write your own answer.</p>
+
+        <label>
+          <input class="option-input" type="radio" name="context-emphasis" value="emphasis-first">
+          First placeholder emphasis
+        </label>
+        <strong>(Recommended)</strong>
+        <br>
+
+        <label>
+          <input class="option-input" type="radio" name="context-emphasis" value="emphasis-second">
+          Second placeholder emphasis
+        </label>
+        <br>
+
+        <label for="context-emphasis-text">Additional answer, explanation, or comment</label>
+        <br>
+        <textarea id="context-emphasis-text" class="question-text" rows="6" cols="80"></textarea>
+      </fieldset>
+
+      <label for="additional-context-comment">Comment on this section</label>
+      <br>
+      <textarea id="additional-context-comment" class="section-comment" rows="4" cols="80"></textarea>
+    </section>
+
+    <hr>
+
+    <button type="button" id="download-button">Download answers as JSON</button>
+    <button type="button" id="reset-button">Clear all answers</button>
+    <p id="status" aria-live="polite"></p>
+  </form>
+
+  <script>
+    const form = document.getElementById("questionnaire");
+    const questionnaireId = form.dataset.questionnaireId;
+    const storageKey = `brainstorm-questionnaire:${questionnaireId}`;
+    const status = document.getElementById("status");
+
+    function collectAnswers() {
+      return {
+        questionnaireId,
+        sections: Array.from(form.querySelectorAll("section[data-section-id]")).map((section) => ({
+          sectionId: section.dataset.sectionId,
+          comment: section.querySelector(".section-comment").value,
+          answers: Array.from(section.querySelectorAll("fieldset[data-question-id]")).map((question) => ({
+            questionId: question.dataset.questionId,
+            selectedOptionIds: Array.from(question.querySelectorAll(".option-input:checked"))
+              .map((option) => option.value),
+            textAnswer: question.querySelector(".question-text").value
+          }))
+        }))
+      };
+    }
+
+    function restoreAnswers(savedAnswers) {
+      for (const savedSection of savedAnswers.sections || []) {
+        const section = Array.from(form.querySelectorAll("section[data-section-id]"))
+          .find((candidate) => candidate.dataset.sectionId === savedSection.sectionId);
+
+        if (!section) continue;
+
+        section.querySelector(".section-comment").value = savedSection.comment || "";
+
+        for (const savedQuestion of savedSection.answers || []) {
+          const question = Array.from(section.querySelectorAll("fieldset[data-question-id]"))
+            .find((candidate) => candidate.dataset.questionId === savedQuestion.questionId);
+
+          if (!question) continue;
+
+          const selectedOptionIds = savedQuestion.selectedOptionIds || [];
+          for (const option of question.querySelectorAll(".option-input")) {
+            option.checked = selectedOptionIds.includes(option.value);
+          }
+          question.querySelector(".question-text").value = savedQuestion.textAnswer || "";
+        }
+      }
+    }
+
+    function saveLocally() {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(collectAnswers()));
+        status.textContent = "Answers saved locally in this browser.";
+      } catch (error) {
+        status.textContent = "Local saving is unavailable in this browser.";
+      }
+    }
+
+    function loadLocally() {
+      try {
+        const saved = localStorage.getItem(storageKey);
+        if (!saved) return;
+        restoreAnswers(JSON.parse(saved));
+        status.textContent = "Saved answers restored from this browser.";
+      } catch (error) {
+        status.textContent = "Saved answers could not be restored.";
+      }
+    }
+
+    form.addEventListener("input", saveLocally);
+    form.addEventListener("change", saveLocally);
+
+    document.getElementById("download-button").addEventListener("click", () => {
+      const answers = collectAnswers();
+      saveLocally();
+
+      const blob = new Blob([JSON.stringify(answers, null, 2)], {
+        type: "application/json"
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${questionnaireId}-answers.json`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      status.textContent = "JSON answers downloaded.";
+    });
+
+    document.getElementById("reset-button").addEventListener("click", () => {
+      if (!window.confirm("Clear every answer and the locally saved copy?")) return;
+
+      form.reset();
+      try {
+        localStorage.removeItem(storageKey);
+      } catch (error) {
+        // The visible form can still be reset when local storage is unavailable.
+      }
+      status.textContent = "All answers cleared.";
+    });
+
+    loadLocally();
+  </script>
+</body>
+</html>

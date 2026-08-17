@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Brainstorm questionnaire</title>
+  <script>
+    (() => {
+      const storageKey = "brainstorm:theme";
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem(storageKey);
+      } catch (error) {
+        // System preference remains available when local storage is unavailable.
+      }
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+      document.documentElement.dataset.theme =
+        savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #f4f6fb;
+      --surface: #ffffff;
+      --surface-muted: #f8f9fc;
+      --text: #182033;
+      --muted: #657087;
+      --border: #d9deea;
+      --accent: #5367df;
+      --accent-strong: #3f51c7;
+      --accent-soft: #eef0ff;
+      --focus: #7c8cff;
+      --danger: #b42318;
+      --shadow: 0 18px 45px rgba(39, 49, 78, 0.08);
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --background: #10131a;
+      --surface: #181d27;
+      --surface-muted: #202632;
+      --text: #ebeff8;
+      --muted: #a7b0c2;
+      --border: #343d4e;
+      --accent: #91a0ff;
+      --accent-strong: #b2bcff;
+      --accent-soft: #242c48;
+      --focus: #aab5ff;
+      --danger: #ff9b91;
+      --shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    button,
+    textarea,
+    input {
+      font: inherit;
+    }
+
+    .page-shell {
+      width: min(100% - 2rem, 920px);
+      margin: 0 auto;
+      padding: 3rem 0 4rem;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .page-header-copy {
+      max-width: 700px;
+    }
+
+    h1,
+    h2,
+    legend {
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin: 0 0 0.6rem;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.035em;
+    }
+
+    h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.45rem;
+    }
+
+    #questionnaire-description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .theme-toggle {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .guidance {
+      margin: 0 0 2rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      background: var(--surface-muted);
+      color: var(--muted);
+    }
+
+    .tabs-shell {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      margin: 0 -0.4rem 1.5rem;
+      padding: 0.65rem 0.4rem;
+      background: color-mix(in srgb, var(--background) 92%, transparent);
+      backdrop-filter: blur(12px);
+    }
+
+    .section-tabs {
+      display: flex;
+      gap: 0.45rem;
+      overflow-x: auto;
+      padding: 0.15rem;
+      scrollbar-width: thin;
+    }
+
+    .section-tab {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 2.65rem;
+      border-color: transparent;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .section-tab:hover {
+      background: var(--surface-muted);
+    }
+
+    .section-tab[aria-selected="true"] {
+      border-color: var(--border);
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+
+    .tab-response-count {
+      display: inline-grid;
+      min-width: 1.45rem;
+      min-height: 1.45rem;
+      place-items: center;
+      padding: 0 0.35rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .section-panel {
+      margin-top: 1.5rem;
+    }
+
+    .section-navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .section-navigation .next-section {
+      margin-left: auto;
+    }
+
+    fieldset {
+      min-width: 0;
+      margin: 1.15rem 0;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      transition: border-color 160ms ease, background-color 160ms ease;
+    }
+
+    fieldset.has-response {
+      border-color: var(--accent);
+      background: color-mix(in srgb, var(--accent-soft) 42%, var(--surface));
+    }
+
+    legend {
+      max-width: 100%;
+      padding: 0 0.4rem;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    fieldset p,
+    fieldset small {
+      color: var(--muted);
+    }
+
+    .response-badge,
+    .recommended-badge {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      vertical-align: middle;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.015em;
+    }
+
+    .response-badge {
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
+
+    .recommended-badge {
+      background: color-mix(in srgb, #e9a23b 18%, var(--surface));
+      color: color-mix(in srgb, #e9a23b 72%, var(--text));
+    }
+
+    .option-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      width: 100%;
+      margin: 0.55rem 0 0;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      background: var(--surface-muted);
+      cursor: pointer;
+    }
+
+    .option-row:hover {
+      border-color: var(--accent);
+    }
+
+    .option-row:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .option-row input {
+      flex: 0 0 auto;
+      margin-top: 0.22rem;
+    }
+
+    .option-copy {
+      display: grid;
+      flex: 1 1 auto;
+      gap: 0.15rem;
+      min-width: 0;
+    }
+
+    .option-description {
+      display: block;
+    }
+
+    .option-row .recommended-badge {
+      flex: 0 0 auto;
+      margin-left: auto;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      accent-color: var(--accent);
+    }
+
+    .freeform-label,
+    .section-comment-label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 650;
+    }
+
+    textarea {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin-top: 0.45rem;
+      padding: 0.8rem 0.9rem;
+      resize: vertical;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      background: var(--surface-muted);
+      color: var(--text);
+    }
+
+    textarea:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--focus) 60%, transparent);
+      outline-offset: 2px;
+    }
+
+    button {
+      min-height: 2.75rem;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    button:hover {
+      border-color: var(--accent);
+    }
+
+    #download-button {
+      border-color: var(--accent-strong);
+      background: var(--accent-strong);
+      color: var(--background);
+      font-weight: 700;
+    }
+
+    #reset-button {
+      color: var(--danger);
+    }
+
+    .action-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      background: var(--surface);
+    }
+
+    #status {
+      flex-basis: 100%;
+      min-height: 1.5em;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        width: min(100% - 1rem, 920px);
+        padding-top: 1.5rem;
+      }
+
+      .page-header {
+        display: block;
+      }
+
+      .theme-toggle {
+        margin-top: 1rem;
+      }
+
+      .tabs-shell {
+        position: static;
+        margin-right: 0;
+        margin-left: 0;
+        padding-right: 0;
+        padding-left: 0;
+        backdrop-filter: none;
+      }
+
+      fieldset {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <div class="page-header-copy">
+        <h1 id="questionnaire-title"></h1>
+        <p id="questionnaire-description"></p>
+      </div>
+      <button type="button" id="theme-toggle" class="theme-toggle"></button>
+    </header>
+
+    <p class="guidance">
+      Select any useful answers and add text wherever more context is needed.
+      Nothing is required. A question may have selected options, a written answer,
+      both, or no answer. Select an already chosen single-choice option again to clear it.
+    </p>
+
+    <form id="questionnaire">
+      <div id="tabs-shell" class="tabs-shell" hidden>
+        <div
+          id="section-tabs"
+          class="section-tabs"
+          role="tablist"
+          aria-label="Questionnaire sections"
+          aria-orientation="horizontal"
+        ></div>
+      </div>
+      <div id="questionnaire-sections"></div>
+      <div class="action-panel">
+        <button type="button" id="download-button">Download answers as JSON</button>
+        <button type="button" id="copy-filename-button">Copy answer filename</button>
+        <button type="button" id="reset-button">Clear all answers</button>
+        <p id="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </main>
+
+  <script id="questionnaire-data" type="application/json">__QUESTIONNAIRE_DATA__</script>
+  <script>
+    "use strict";
+
+    const questionnaire = JSON.parse(
+      document.getElementById("questionnaire-data").textContent
+    );
+    const form = document.getElementById("questionnaire");
+    const tabsShell = document.getElementById("tabs-shell");
+    const tabsContainer = document.getElementById("section-tabs");
+    const sectionsContainer = document.getElementById("questionnaire-sections");
+    const status = document.getElementById("status");
+    const themeToggle = document.getElementById("theme-toggle");
+    const storageKey = `brainstorm:${questionnaire.questionnaireId}`;
+    const activeSectionStorageKey = `${storageKey}:active-section`;
+    const themeStorageKey = "brainstorm:theme";
+    const answerFilename = `${questionnaire.questionnaireId}-answers.json`;
+
+    function updateThemeToggle() {
+      const currentTheme = document.documentElement.dataset.theme;
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+      themeToggle.textContent = nextTheme === "dark" ? "Dark theme" : "Light theme";
+      themeToggle.setAttribute("aria-label", `Switch to ${nextTheme} theme`);
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = nextTheme;
+      try {
+        localStorage.setItem(themeStorageKey, nextTheme);
+      } catch (error) {
+        // The selected theme still applies for the current page.
+      }
+      updateThemeToggle();
+    });
+
+    function appendTextElement(parent, tagName, text) {
+      const element = document.createElement(tagName);
+      element.textContent = text;
+      parent.appendChild(element);
+      return element;
+    }
+
+    function renderQuestion(sectionElement, question, questionNumber) {
+      const fieldset = document.createElement("fieldset");
+      fieldset.id = `question-${question.questionId}`;
+      fieldset.dataset.questionId = question.questionId;
+
+      const legend = appendTextElement(
+        fieldset,
+        "legend",
+        `${questionNumber}. ${question.prompt}`
+      );
+      const responseBadge = appendTextElement(legend, "span", "Context added");
+      responseBadge.className = "response-badge";
+      responseBadge.hidden = true;
+      if (question.description) {
+        appendTextElement(fieldset, "p", question.description);
+      }
+      appendTextElement(
+        fieldset,
+        "p",
+        question.selection === "single"
+          ? "Select one option, or leave the options empty."
+          : "Select any number of options, or leave the options empty."
+      );
+
+      for (const option of question.options) {
+        const label = document.createElement("label");
+        label.className = "option-row";
+        const input = document.createElement("input");
+        input.className = "option-input";
+        input.type = question.selection === "single" ? "radio" : "checkbox";
+        input.name = `selection-${question.questionId}`;
+        input.value = option.optionId;
+
+        if (question.selection === "single") {
+          let checkedBeforeActivation = false;
+          label.addEventListener("pointerdown", () => {
+            checkedBeforeActivation = input.checked;
+          });
+          input.addEventListener("keydown", (event) => {
+            if (event.key === " " || event.key === "Enter") {
+              checkedBeforeActivation = input.checked;
+            }
+          });
+          input.addEventListener("click", () => {
+            if (checkedBeforeActivation) {
+              input.checked = false;
+              input.dispatchEvent(new Event("input", { bubbles: true }));
+              input.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+            checkedBeforeActivation = false;
+          });
+          input.addEventListener("blur", () => {
+            checkedBeforeActivation = false;
+          });
+        }
+
+        label.appendChild(input);
+        const optionCopy = document.createElement("span");
+        optionCopy.className = "option-copy";
+        appendTextElement(optionCopy, "span", option.label);
+        if (option.description) {
+          const optionDescription = appendTextElement(optionCopy, "small", option.description);
+          optionDescription.className = "option-description";
+        }
+        label.appendChild(optionCopy);
+
+        if (option.recommended === true) {
+          const recommended = appendTextElement(label, "strong", "Recommended");
+          recommended.className = "recommended-badge";
+        }
+        fieldset.appendChild(label);
+      }
+
+      const textId = `text-${question.questionId}`;
+      const textLabel = document.createElement("label");
+      textLabel.className = "freeform-label";
+      textLabel.htmlFor = textId;
+      textLabel.textContent = "Additional answer, explanation, or comment";
+      fieldset.appendChild(textLabel);
+      fieldset.appendChild(document.createElement("br"));
+
+      const textarea = document.createElement("textarea");
+      textarea.id = textId;
+      textarea.className = "question-text";
+      textarea.rows = 4;
+      textarea.cols = 80;
+      fieldset.appendChild(textarea);
+      sectionElement.appendChild(fieldset);
+    }
+
+    function activateSection(sectionId, options = {}) {
+      const { focus = false, persist = true } = options;
+      const tabs = Array.from(tabsContainer.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(sectionsContainer.querySelectorAll('[role="tabpanel"]'));
+      const activeTab = tabs.find((tab) => tab.dataset.sectionId === sectionId);
+      if (!activeTab) return;
+
+      for (const tab of tabs) {
+        const selected = tab === activeTab;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      }
+      for (const panel of panels) {
+        panel.hidden = panel.dataset.sectionId !== sectionId;
+      }
+
+      if (focus) activeTab.focus({ preventScroll: true });
+      if (persist) {
+        try {
+          localStorage.setItem(activeSectionStorageKey, sectionId);
+        } catch (error) {
+          // Navigation remains available when local storage is unavailable.
+        }
+      }
+    }
+
+    function restoreActiveSection() {
+      let savedSectionId = null;
+      try {
+        savedSectionId = localStorage.getItem(activeSectionStorageKey);
+      } catch (error) {
+        // The first section remains active when local storage is unavailable.
+      }
+      if (savedSectionId) activateSection(savedSectionId, { persist: false });
+    }
+
+    function renderQuestionnaire() {
+      document.title = questionnaire.title;
+      document.getElementById("questionnaire-title").textContent = questionnaire.title;
+
+      const description = document.getElementById("questionnaire-description");
+      if (questionnaire.description) {
+        description.textContent = questionnaire.description;
+      } else {
+        description.hidden = true;
+      }
+
+      tabsShell.hidden = questionnaire.sections.length < 2;
+
+      let questionNumber = 1;
+      questionnaire.sections.forEach((section, sectionIndex) => {
+        const tab = document.createElement("button");
+        tab.type = "button";
+        tab.id = `tab-${section.sectionId}`;
+        tab.className = "section-tab";
+        tab.dataset.sectionId = section.sectionId;
+        tab.setAttribute("role", "tab");
+        tab.setAttribute("aria-controls", `section-${section.sectionId}`);
+        tab.setAttribute("aria-selected", String(sectionIndex === 0));
+        tab.tabIndex = sectionIndex === 0 ? 0 : -1;
+        appendTextElement(tab, "span", section.title);
+        const responseCount = appendTextElement(tab, "span", "");
+        responseCount.className = "tab-response-count";
+        responseCount.hidden = true;
+        tab.addEventListener("click", () => activateSection(section.sectionId));
+        tab.addEventListener("keydown", (event) => {
+          const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
+          if (!keys.includes(event.key)) return;
+          event.preventDefault();
+          let targetIndex = sectionIndex;
+          if (event.key === "ArrowLeft") {
+            targetIndex = (sectionIndex - 1 + questionnaire.sections.length)
+              % questionnaire.sections.length;
+          } else if (event.key === "ArrowRight") {
+            targetIndex = (sectionIndex + 1) % questionnaire.sections.length;
+          } else if (event.key === "Home") {
+            targetIndex = 0;
+          } else if (event.key === "End") {
+            targetIndex = questionnaire.sections.length - 1;
+          }
+          activateSection(questionnaire.sections[targetIndex].sectionId, { focus: true });
+        });
+        tabsContainer.appendChild(tab);
+
+        const sectionElement = document.createElement("section");
+        sectionElement.id = `section-${section.sectionId}`;
+        sectionElement.className = "section-panel";
+        sectionElement.dataset.sectionId = section.sectionId;
+        sectionElement.setAttribute("role", "tabpanel");
+        sectionElement.setAttribute("aria-labelledby", tab.id);
+        sectionElement.hidden = sectionIndex !== 0;
+        appendTextElement(sectionElement, "h2", section.title);
+        if (section.description) {
+          appendTextElement(sectionElement, "p", section.description);
+        }
+
+        for (const question of section.questions) {
+          renderQuestion(sectionElement, question, questionNumber);
+          questionNumber += 1;
+        }
+
+        const commentId = `comment-${section.sectionId}`;
+        const commentLabel = document.createElement("label");
+        commentLabel.className = "section-comment-label";
+        commentLabel.htmlFor = commentId;
+        commentLabel.textContent = "Comment on this section";
+        sectionElement.appendChild(commentLabel);
+        sectionElement.appendChild(document.createElement("br"));
+
+        const comment = document.createElement("textarea");
+        comment.id = commentId;
+        comment.className = "section-comment";
+        comment.rows = 4;
+        comment.cols = 80;
+        sectionElement.appendChild(comment);
+
+        if (questionnaire.sections.length > 1) {
+          const navigation = document.createElement("nav");
+          navigation.className = "section-navigation";
+          navigation.setAttribute("aria-label", "Section navigation");
+
+          if (sectionIndex > 0) {
+            const previous = document.createElement("button");
+            previous.type = "button";
+            previous.textContent = `Previous: ${questionnaire.sections[sectionIndex - 1].title}`;
+            previous.addEventListener("click", () => {
+              activateSection(questionnaire.sections[sectionIndex - 1].sectionId, { focus: true });
+              window.scrollTo(0, 0);
+            });
+            navigation.appendChild(previous);
+          }
+
+          if (sectionIndex < questionnaire.sections.length - 1) {
+            const next = document.createElement("button");
+            next.type = "button";
+            next.className = "next-section";
+            next.textContent = `Next: ${questionnaire.sections[sectionIndex + 1].title}`;
+            next.addEventListener("click", () => {
+              activateSection(questionnaire.sections[sectionIndex + 1].sectionId, { focus: true });
+              window.scrollTo(0, 0);
+            });
+            navigation.appendChild(next);
+          }
+          sectionElement.appendChild(navigation);
+        }
+
+        sectionsContainer.appendChild(sectionElement);
+      });
+    }
+
+    function updateResponseStates() {
+      for (const section of questionnaire.sections) {
+        const sectionElement = document.getElementById(`section-${section.sectionId}`);
+        let responseCount = 0;
+
+        for (const question of section.questions) {
+          const questionElement = document.getElementById(`question-${question.questionId}`);
+          const hasSelection = questionElement.querySelector(".option-input:checked") !== null;
+          const hasText = questionElement.querySelector(".question-text").value.trim() !== "";
+          const hasResponse = hasSelection || hasText;
+          questionElement.classList.toggle("has-response", hasResponse);
+          questionElement.querySelector(".response-badge").hidden = !hasResponse;
+          if (hasResponse) responseCount += 1;
+        }
+
+        if (sectionElement.querySelector(".section-comment").value.trim() !== "") {
+          responseCount += 1;
+        }
+
+        const tab = document.getElementById(`tab-${section.sectionId}`);
+        const badge = tab.querySelector(".tab-response-count");
+        tab.classList.toggle("has-response", responseCount > 0);
+        badge.textContent = responseCount > 0 ? String(responseCount) : "";
+        badge.hidden = responseCount === 0;
+        tab.setAttribute(
+          "aria-label",
+          responseCount === 0
+            ? section.title
+            : `${section.title}, ${responseCount} context ${responseCount === 1 ? "item" : "items"}`
+        );
+      }
+    }
+
+    function collectAnswers() {
+      return {
+        questionnaireId: questionnaire.questionnaireId,
+        title: questionnaire.title,
+        sections: questionnaire.sections.map((section) => ({
+          sectionId: section.sectionId,
+          title: section.title,
+          comment: document.getElementById(`comment-${section.sectionId}`).value,
+          answers: section.questions.map((question) => {
+            const questionElement = document.getElementById(`question-${question.questionId}`);
+            const selectedOptionIds = Array.from(
+              questionElement.querySelectorAll(".option-input:checked")
+            ).map((input) => input.value);
+
+            return {
+              questionId: question.questionId,
+              prompt: question.prompt,
+              selectedOptions: selectedOptionIds.map((optionId) => {
+                const option = question.options.find(
+                  (candidate) => candidate.optionId === optionId
+                );
+                return {
+                  optionId: option.optionId,
+                  label: option.label
+                };
+              }),
+              textAnswer: questionElement.querySelector(".question-text").value
+            };
+          })
+        }))
+      };
+    }
+
+    function restoreAnswers(savedAnswers) {
+      for (const savedSection of savedAnswers.sections || []) {
+        const section = questionnaire.sections.find(
+          (candidate) => candidate.sectionId === savedSection.sectionId
+        );
+        if (!section) continue;
+
+        const comment = document.getElementById(`comment-${section.sectionId}`);
+        comment.value = savedSection.comment || "";
+
+        for (const savedAnswer of savedSection.answers || []) {
+          const question = section.questions.find(
+            (candidate) => candidate.questionId === savedAnswer.questionId
+          );
+          if (!question) continue;
+
+          const questionElement = document.getElementById(`question-${question.questionId}`);
+          const selectedOptionIds = (savedAnswer.selectedOptions || [])
+            .map((option) => option.optionId);
+          for (const input of questionElement.querySelectorAll(".option-input")) {
+            input.checked = selectedOptionIds.includes(input.value);
+          }
+          questionElement.querySelector(".question-text").value =
+            savedAnswer.textAnswer || "";
+        }
+      }
+    }
+
+    function saveLocally() {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(collectAnswers()));
+        status.textContent = "Answers saved locally in this browser.";
+      } catch (error) {
+        status.textContent = "Local saving is unavailable in this browser.";
+      }
+    }
+
+    function loadLocally() {
+      try {
+        const saved = localStorage.getItem(storageKey);
+        if (!saved) return;
+        restoreAnswers(JSON.parse(saved));
+        status.textContent = "Saved answers restored from this browser.";
+      } catch (error) {
+        status.textContent = "Saved answers could not be restored.";
+      }
+    }
+
+    function handleAnswerChange() {
+      updateResponseStates();
+      saveLocally();
+    }
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const copySource = document.createElement("textarea");
+      copySource.value = text;
+      copySource.setAttribute("readonly", "");
+      copySource.style.position = "fixed";
+      copySource.style.opacity = "0";
+      document.body.appendChild(copySource);
+      copySource.select();
+      const copied = document.execCommand("copy");
+      copySource.remove();
+      if (!copied) throw new Error("Copy command was rejected");
+    }
+
+    form.addEventListener("input", handleAnswerChange);
+    form.addEventListener("change", handleAnswerChange);
+
+    document.getElementById("download-button").addEventListener("click", () => {
+      const answers = collectAnswers();
+      saveLocally();
+
+      const blob = new Blob([JSON.stringify(answers, null, 2)], {
+        type: "application/json"
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = answerFilename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 0);
+      status.textContent = "JSON answers downloaded.";
+    });
+
+    document.getElementById("copy-filename-button").addEventListener("click", async () => {
+      try {
+        await copyText(answerFilename);
+        status.textContent = `Answer filename copied: "${answerFilename}".`;
+      } catch (error) {
+        status.textContent = "The answer filename could not be copied.";
+      }
+    });
+
+    document.getElementById("reset-button").addEventListener("click", () => {
+      if (!window.confirm("Clear every answer and the locally saved copy?")) return;
+
+      form.reset();
+      updateResponseStates();
+      try {
+        localStorage.removeItem(storageKey);
+      } catch (error) {
+        // The visible form can still be reset when local storage is unavailable.
+      }
+      status.textContent = "All answers cleared.";
+    });
+
+    updateThemeToggle();
+    renderQuestionnaire();
+    restoreActiveSection();
+    loadLocally();
+    updateResponseStates();
+  </script>
+</body>
+</html>

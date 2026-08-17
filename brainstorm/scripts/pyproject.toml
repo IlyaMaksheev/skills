@@ -1,0 +1,8 @@
+[project]
+name = "brainstorm-questionnaire-compiler"
+version = "0.1.0"
+description = "Deterministic questionnaire compiler for vertical HTML brainstorm mode"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "jsonschema>=4.26.0,<5",
+]
