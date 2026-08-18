@@ -2,11 +2,11 @@
 
 Delegate when isolation materially protects implementation context, such as context-heavy research, foreign-codebase mapping, monitoring loops, or bounded performance analysis.
 
-Keep work local when it requires the implementation worker's continuous judgment or is cheaper than the handoff. Batch related routine work into one utility assignment.
+Keep work local when it requires the controlling session's continuous judgment or is cheaper than the handoff. Batch related routine work into one utility assignment.
 
 # Resource check
 
-Before spawning, consider runtime, CPU/process count, RAM, disk I/O, log growth, shared artifacts, and duplicate side effects. Spawn only one resource-heavy utility job unless the parent explicitly approved parallel heavy work.
+Before spawning, consider runtime, CPU/process count, RAM, disk I/O, log growth, shared artifacts, and duplicate side effects. Spawn only one resource-heavy utility job unless the controlling instruction explicitly approves parallel heavy work.
 
 # Spawn contract
 
@@ -19,7 +19,7 @@ Defaults:
 - `reportToSelf: true`;
 - `cwd`: the current relevant repo/worktree or task directory;
 - `thinkingLevel: "low"`;
-- name: `<implementation-worker-name>-sub-<purpose>`.
+- name: `<controlling-session-name>-sub-<purpose>`.
 
 The sparse plaintext prompt must include:
 
@@ -27,7 +27,7 @@ The sparse plaintext prompt must include:
 First read and follow: /home/korvin/.pi/agent/skills/worker-session/SKILL.md
 Worker name: <same as utility session name>
 Worker type: utility
-Parent name: <implementation worker name>
+Parent name: <controlling session name>
 Task:
 - <exact bounded routine task>
 
@@ -35,11 +35,11 @@ Expected result:
 - <acceptance/output returned only to the immediate parent>
 ```
 
-Add only relevant positive sections: useful context, input files, search hints, constraints, resource limits, or approved artifact paths. Do not add Git lifecycle or task/issue-bank mutation authority.
+Add only relevant positive sections: useful context, input files, search hints, constraints, resource limits, or approved artifact paths. Do not add Git lifecycle or task-bank mutation authority.
 
-# Parent ownership
+# Controlling-session ownership
 
-The implementation worker retains implementation, architecture, acceptance, and final-delivery ownership. After the utility report, read the returned relevant files or evidence before implementing. Do not repeat the delegated search unless the result is insufficient, contradictory, or blocked; if needed, send a correction or spawn one corrected bounded investigation.
+The controlling implementation worker or direct session retains implementation, architecture, acceptance, and final-delivery ownership. After the utility report, read the returned relevant files or evidence before implementing. Do not repeat the delegated search unless the result is insufficient, contradictory, or blocked; if needed, send a correction or spawn one corrected bounded investigation.
 
 # Report contribution
 

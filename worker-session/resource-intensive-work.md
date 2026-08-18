@@ -18,7 +18,7 @@ Use the loaded performance skills for detailed design and refinement; this modul
 
 # Concurrency
 
-Permit only one resource-heavy utility job at a time unless the immediate-parent prompt explicitly approves parallel resource use. If safe bounds cannot be established, report a blocker rather than consuming uncontrolled resources.
+Permit only one resource-heavy utility job at a time unless the controlling instruction explicitly approves parallel resource use. If safe bounds cannot be established, report a blocker rather than consuming uncontrolled resources.
 
 # Report contribution
 

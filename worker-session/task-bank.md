@@ -6,7 +6,7 @@ Read the supplied bank, the selected task, its recorded blockers and dependents,
 
 ## Authority
 
-An implementation worker may update only its selected task state under the bank's existing convention:
+A delegated implementation worker or direct session may update only its selected task state under the bank's existing convention:
 
 - verify the task is assigned to this worker when ownership is recorded;
 - do not mark it complete until the expected result, acceptance criteria, checks, and requested artifacts succeed;
@@ -15,7 +15,7 @@ An implementation worker may update only its selected task state under the bank'
 - include the state update with feature history when Git lifecycle is active;
 - without Git lifecycle, still perform the explicitly authorized task-state update.
 
-A utility worker may inspect supplied task context but must not mutate status, ownership, blockers, or dependencies. If conventions, assignment, or dependency state are ambiguous, report the exact blocker rather than inventing a transition.
+A delegated utility worker may inspect supplied task context but must not mutate status, ownership, blockers, or dependencies. If conventions, assignment, or dependency state are ambiguous, report the exact blocker rather than inventing a transition.
 
 ## Report contribution
 

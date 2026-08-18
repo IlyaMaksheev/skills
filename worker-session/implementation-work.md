@@ -4,15 +4,15 @@
 
 Read the task-provided files and the smallest relevant project context before writing the plan. Respect file-read limits and forbidden paths. Do not duplicate context already supplied by files.
 
-After context is loaded, write a visible plan in this child session and execute it immediately. The plan should cover only applicable items:
+After context is loaded, write a visible plan in the current session and execute it immediately. The plan should cover only applicable items:
 
 - scope and ordered approach;
 - likely touched files;
 - expected checks or acceptance evidence;
-- activated optional workflows such as Git or task/issue-bank handling;
+- activated optional workflows such as Git or task-bank handling;
 - reporting target and requested artifacts.
 
-Do not add Git, task/issue-bank, or other absent workflows merely to fill out the plan.
+Do not add Git, task-bank, or other absent workflows merely to fill out the plan.
 
 # Implementation
 

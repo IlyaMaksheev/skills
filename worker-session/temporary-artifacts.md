@@ -2,15 +2,15 @@
 
 # Writable locations
 
-A utility worker may implicitly create operational artifacts only under:
+A delegated utility worker may implicitly create operational artifacts only under:
 
 ```text
 /tmp/pi-workers/<worker-name>/
 ```
 
-Create that worker-specific directory before use. Any other utility write location must be explicitly supplied by the immediate parent as an approved artifact path. Such approval does not permit source/product edits, dependency changes, Git mutation, or issue-status updates.
+Create that worker-specific directory before use. Any other utility write location must be explicitly supplied by the controlling session as an approved artifact path. Such approval does not permit source/product edits, dependency changes, Git mutation, or task-status updates.
 
-Implementation workers may write task-authorized project artifacts within their implementation scope. Prefer the worker-specific `/tmp` directory for disposable operational files unless the project or parent requires another location.
+Delegated implementation workers and direct sessions may write project artifacts within their authority envelope. Prefer the worker-specific `/tmp` directory for disposable operational files unless the project or controlling instruction requires another location.
 
 # Safety
 

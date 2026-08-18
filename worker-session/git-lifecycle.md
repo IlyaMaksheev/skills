@@ -6,7 +6,7 @@ Own the complete feature lifecycle: isolated worktree/branch, implementation his
 
 Use the worker name as the branch name unless the prompt supplies another exact branch. Create a dedicated worktree from the latest target branch. Never overwrite, stash, reset, or clean another session's changes.
 
-Follow the repository's commit convention; default to Conventional Commits when none exists. Include the worker name on its own line in the commit message. Keep task changes cohesive. When task/issue-bank handling is active, include its required update with the feature history.
+Follow the repository's commit convention; default to Conventional Commits when none exists. Include the worker name on its own line in the commit message. Keep task changes cohesive. When task-bank handling is active, include its required update with the feature history.
 
 # Linear integration
 

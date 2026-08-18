@@ -16,7 +16,7 @@ Map useful relationships rather than dumping search output:
 
 # Delegated recon
 
-A utility worker returns a bounded file/anchor map that the implementation worker can consume without repeating the broad search. The implementation worker reads the selected relevant files before acting on the map.
+A delegated utility worker returns a bounded file/anchor map that its controlling implementation worker or direct session can consume without repeating the broad search. The controlling session reads the selected relevant files before acting on the map.
 
 # Report contribution
 

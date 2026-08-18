@@ -16,7 +16,7 @@ This file grants no Git mutation authority. Use read-only operations such as:
 
 Do not stage, commit, checkout, switch, merge, rebase, reset, clean, create/delete branches or worktrees, or otherwise change repository state.
 
-Keep inspection within the requested evidence. If the expected result requires mutation outside the authority envelope, report an assignment mismatch or blocker.
+Keep inspection within the requested evidence. If the expected result requires mutation outside the authority envelope, report an assignment mismatch in delegated mode or ask for authorization in direct mode.
 
 # Report contribution
 

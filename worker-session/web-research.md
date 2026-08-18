@@ -4,7 +4,7 @@ Follow the loaded `web-research` skill for discovery, source selection, and evid
 
 # Authority
 
-Research stays within the assignment's authority envelope. A utility worker returns findings and writes only approved temporary or research artifacts. An implementation worker may apply findings within its authorized implementation scope.
+Research stays within the session's authority envelope. A delegated utility worker returns findings and writes only approved temporary or research artifacts. A delegated implementation worker or direct session may apply findings within its authorized implementation scope.
 
 # Report contribution
 
