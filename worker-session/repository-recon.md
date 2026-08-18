@@ -14,13 +14,9 @@ Map useful relationships rather than dumping search output:
 - likely files for later implementation;
 - uncertainties or conflicting implementations.
 
-Repository presence does not activate Git inspection. Load `git-inspection.md` only when the task explicitly requests history, diff, provenance, or status information.
-
 # Delegated recon
 
-When this file is loaded by a utility worker, return a concise file/anchor map to the immediate parent. The parent should consume that map and read the selected relevant files rather than repeating the broad search.
-
-When loaded by an implementation worker and the recon would materially pollute context, load `utility-delegation.md` and delegate the bounded mapping task.
+A utility worker returns a bounded file/anchor map that the implementation worker can consume without repeating the broad search. The implementation worker reads the selected relevant files before acting on the map.
 
 # Report contribution
 

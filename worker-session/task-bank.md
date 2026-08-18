@@ -1,8 +1,8 @@
 # Task-bank handling
 
-## Activation and read scope
+## Read scope
 
-Load only when the parent supplies both `Task bank` and `Task artifact`. Read the supplied bank, the selected task, its recorded blockers/dependents, and only the surrounding convention needed for the authorized update. Do not discover a bank or scan sibling tasks automatically.
+Read the supplied bank, the selected task, its recorded blockers and dependents, and only the surrounding convention needed for the authorized operation. Keep sibling tasks outside the read scope.
 
 ## Authority
 

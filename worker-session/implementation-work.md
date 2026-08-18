@@ -1,7 +1,5 @@
 # Implementation work
 
-This file contains both baseline implementation flow and the detailed decomposition rules needed for complex work; do not split it into another implementation file.
-
 # Context before plan
 
 Read the task-provided files and the smallest relevant project context before writing the plan. Respect file-read limits and forbidden paths. Do not duplicate context already supplied by files.
@@ -22,19 +20,7 @@ Follow project conventions and existing contracts. Keep changes limited to the a
 
 For complex code or script work, make the implementation decomposition visible before coding. Include target files, ordered chunks, verification after major chunks, and final checks or execution. Build in reviewable phases such as contracts/skeleton, configuration or CLI, schema/input audit, bounded feasibility, core logic, aggregation/reporting, and orchestration when those phases apply.
 
-Do not generate a non-trivial script or large feature in one unreviewed shot. Implement one cohesive phase or function group at a time. Prefer appropriately split modules over a monolith, and verify after major chunks when practical.
-
-When the task or codebase requires test-first work, load and follow the `test-driven-development` skill. When substantial computation is possible, load `resource-intensive-work.md` as soon as that becomes apparent.
-
-# Dynamic workflow changes
-
-During execution, return to the manifest in `SKILL.md` whenever new evidence changes the workflow. Examples:
-
-- a command proves long-running: load `long-running-jobs.md`;
-- execution may be resource-heavy: load `resource-intensive-work.md`;
-- broad external or repository research becomes necessary: load the matching research/recon file;
-- worthwhile context isolation becomes necessary: load `utility-delegation.md`;
-- Git or task/issue-bank handling was not explicitly activated: do not load it, even if related files are discovered.
+Build non-trivial scripts and large features in reviewable phases. Implement one cohesive phase or function group at a time, prefer appropriately split modules over a monolith, and check each major phase before continuing.
 
 # Checks and completion
 

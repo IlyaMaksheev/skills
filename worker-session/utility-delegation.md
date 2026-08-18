@@ -1,13 +1,8 @@
 # Utility delegation
 
-Good reasons for isolation include:
+Delegate when isolation materially protects implementation context, such as context-heavy research, foreign-codebase mapping, monitoring loops, or bounded performance analysis.
 
-- context-heavy web research or source reconnaissance;
-- foreign-codebase mapping;
-- long-job launch or monitoring loops;
-- bounded performance or status analysis.
-
-Do not delegate trivial commands, one-line searches, simple reads, short checks, or work whose result requires the implementation worker's continuous judgment. Batch related routine work into one utility task rather than spawning many small sessions.
+Keep work local when it requires the implementation worker's continuous judgment or is cheaper than the handoff. Batch related routine work into one utility assignment.
 
 # Resource check
 

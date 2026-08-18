@@ -2,9 +2,7 @@
 
 # Transition from normal execution
 
-Pause before beginning another blocking call. If a process is already running unexpectedly, determine whether it can safely continue, be interrupted, or be relaunched without duplicating side effects. Do not blindly launch a second copy.
-
-Load `temporary-artifacts.md` when logs, PID files, or helper scripts are needed. Load `resource-intensive-work.md` separately when CPU, memory, I/O, or concurrency may be substantial. An implementation worker may load `utility-delegation.md` when monitoring would occupy its context unnecessarily.
+Pause before beginning another blocking call. If a process is already running unexpectedly, determine whether it can safely continue, be interrupted, or be relaunched without duplicating side effects. Continue with one controlled process.
 
 # Launch
 

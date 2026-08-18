@@ -16,9 +16,7 @@ This file grants no Git mutation authority. Use read-only operations such as:
 
 Do not stage, commit, checkout, switch, merge, rebase, reset, clean, create/delete branches or worktrees, or otherwise change repository state.
 
-Finding a Git repository does not justify broader inspection than the task requires and never activates `git-lifecycle.md`.
-
-If an implementation worker later needs Git delivery, the parent must have supplied the structured Git lifecycle fields. If a utility worker discovers that mutation is required, report a worker-type mismatch or blocker.
+Keep inspection within the requested evidence. If the expected result requires mutation outside the authority envelope, report an assignment mismatch or blocker.
 
 # Report contribution
 
