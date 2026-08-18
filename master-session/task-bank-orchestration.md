@@ -10,7 +10,7 @@ Read the supplied bank in full and only the task files needed to select or dispa
 
 The frontier is every unfinished, unclaimed task whose recorded blockers are complete. Spawn independent AFK frontier tasks when their writes and resources can safely overlap. Present HITL frontier tasks to the parent/user; never assign the human side of a decision to an autonomous worker. Load `multi-worker-coordination.md` when coordinating multiple children.
 
-Before spawning, reserve the task using the bank's claim/owner convention when one exists; otherwise track assignment in compact master state and never dispatch it twice from this session. Do not bypass blockers or another owner.
+Before spawning, reserve the task using the bank's claim/owner convention when one exists; otherwise track assignment in compact master state. Dispatch each task once from this session and respect every recorded blocker and existing owner.
 
 Every applicable implementation-worker prompt must include:
 
@@ -31,8 +31,8 @@ An implementation worker owns its authorized task-state completion under the ban
 - preserve newer concurrent state;
 - include the state update with feature history when Git lifecycle is active.
 
-The master owns selection, reservation, scheduling, and compact orchestration state. It updates task state only for reservation, spawn failure recovery, or a hard exception the worker cannot safely resolve. Do not routinely duplicate worker updates.
+Under the delegation boundary, the master owns selection, reservation, scheduling, and compact orchestration state. It updates persisted task state for reservation, spawn-failure recovery, or a hard exception the worker cannot safely resolve; the implementation worker owns routine completion updates.
 
 ## Completion
 
-Schedule from terminal worker reports. Report completed tasks, remaining frontier work, HITL items, blockers, and failures without reproducing task bodies or worker context.
+A reservation is settled when its task is completed, terminally failed or blocked, or safely released after spawn failure. Schedule from terminal worker reports. Report completed tasks, remaining frontier work, HITL items, blockers, and failures without reproducing task bodies or worker context.

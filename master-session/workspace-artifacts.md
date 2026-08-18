@@ -10,7 +10,7 @@ Load only when the parent supplies `Artifact workspace: <path>` or explicitly re
 2. List direct children; do not recursively read the tree.
 3. Classify recognized names before opening files.
 4. Select artifacts by assignment relevance, not presence.
-5. Ignore unknown files unless explicitly supplied or linked by a selected artifact.
+5. Open unknown files only when explicitly supplied or linked by a selected artifact.
 
 | Pattern | Role | Read policy |
 |---|---|---|

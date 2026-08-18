@@ -11,12 +11,12 @@ Define useful bounds in the child prompt when known:
 - timeout or stopping condition;
 - whether parallel heavy jobs are allowed.
 
-Prefer one resource-heavy job at a time unless the parent explicitly approves parallel resource use. Do not spend master context implementing or monitoring the workload directly.
+Run one resource-heavy job at a time unless the parent explicitly approves parallel resource use. Keep implementation and monitoring behind the delegation boundary with the responsible worker.
 
 Ask the responsible worker to load its `resource-intensive-work.md` module. When the task matches their descriptions, direct it to use `script-performance-design` before implementation and `script-performance-refinement` after implementation and before full-scale execution.
 
 If the workload is also long-running, the worker decides whether to load long-job guidance and isolate execution in a utility child.
 
-# Blockers
+# Dispatch criterion
 
-If safe resource bounds cannot be established, obtain a smaller feasibility run or report a hard blocker rather than launching an unbounded workload.
+Before dispatch, produce one of three outcomes: applicable resource bounds with a stopping condition, a bounded feasibility run, or a hard blocker explaining why safe bounds cannot yet be established.
