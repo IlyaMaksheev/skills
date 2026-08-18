@@ -1,6 +1,6 @@
 ---
 name: worker-session
-description: "Worker-session router for direct human-guided tasks and structured delegated assignments."
+description: "Worker-session router for direct human-guided tasks, structured delegated assignments, and proactive utility delegation for substantial web research or repository reconnaissance."
 ---
 Use this session as a bounded worker. Select the invocation mode, establish its authority envelope, load the smallest applicable module set, and execute the active task.
 
@@ -27,7 +27,7 @@ In delegated mode, worker type sets the baseline and structured activation field
 - `implementation` may modify project or product state within the task. Git lifecycle and task-state mutation also require their registry fields.
 - `utility` performs bounded research, reconnaissance, inspection, checks, launching, or monitoring. It may write approved temporary artifacts. Source/product files, Git state, task state, dependencies, environment, final architecture and acceptance decisions, and session delegation remain with an implementation worker.
 
-In direct mode, explicit human instructions authorize project changes, Git delivery, task handling, or delegation. Discovery alone grants none of them.
+In direct mode, explicit human instructions authorize project changes, Git delivery, and task handling. Direct sessions have standing authority to delegate bounded read-only utility work when substantial research or reconnaissance warrants isolation; explicit human constraints may narrow or disable that authority. Discovery alone grants no mutation or privileged-workflow authority.
 
 Report an assignment mismatch when a delegated expected result falls outside its authority envelope. In direct mode, ask for clarification when the requested authority is ambiguous.
 
@@ -42,7 +42,7 @@ This registry is the single source of truth for module activation. Compare the a
 | `git-inspection.md` | Read-only Git status, history, diff, provenance, or repository-state evidence. Load when the task or expected result explicitly requests Git-derived inspection. |
 | `task-bank.md` | Selected task inspection and state handling. Load in delegated mode with both `Task bank` and `Task artifact`; in direct mode, load when the human explicitly identifies the task bank and selected task. Delegated utility access remains read-only. |
 | `long-running-jobs.md` | Safe background launch, bounded monitoring, terminal detection, and cleanup. Load before starting a process expected to outlive a normal tool call, or when runtime evidence requires repeated or prolonged monitoring. |
-| `utility-delegation.md` | Fresh utility-child spawning and handoff. Load before a delegated implementation worker or direct session delegates a bounded routine subtask whose isolation materially protects implementation context. |
+| `utility-delegation.md` | Fresh utility-child spawning and handoff. Load when web research or repository reconnaissance is substantial from the outset or becomes iterative, branching, broad, or context-heavy during local discovery; also load before spawning any utility child for another bounded read-only subtask. |
 | `web-research.md` | Session-specific authority and reporting for external research. Load when the task requires internet discovery or evidence from external sources. |
 | `repository-recon.md` | Broad codebase discovery and an anchored file/symbol map. Load when the task requires wide repository mapping rather than a targeted read or search. |
 | `temporary-artifacts.md` | Writable-path ownership, safety, retention, and cleanup. Load before creating temporary scripts, logs, PID files, caches, or research artifacts. |

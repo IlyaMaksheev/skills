@@ -13,7 +13,7 @@ Every worker prompt must declare exactly one type:
 
 For mixed work, required deliverable authority selects the primary type. Split independent/context-heavy research or monitoring into a utility worker when useful.
 
-A master may spawn either worker type or another bounded master. An implementation worker may spawn utility workers. Utility workers may not spawn sessions.
+A master may spawn either worker type or another bounded master. An implementation worker or direct worker session may spawn multiple utility workers; utility count alone does not require master orchestration. Utility workers may not spawn sessions.
 
 # Sparse worker prompt
 

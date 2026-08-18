@@ -1,12 +1,14 @@
 # Utility delegation
 
-Delegate when isolation materially protects implementation context, such as context-heavy research, foreign-codebase mapping, monitoring loops, or bounded performance analysis.
+Use **research escalation**: keep one or two targeted fetches, searches, or known-file reads local; delegate when the task is already substantial or the investigation grows iterative, branching, broad, or context-heavy. Substantial work includes multi-source web research, open-ended discovery, foreign-codebase mapping, and broad repository or folder reconnaissance. Treat call count as guidance: scope and context growth decide the handoff.
 
-Keep work local when it requires the controlling session's continuous judgment or is cheaper than the handoff. Batch related routine work into one utility assignment.
+Delegate other bounded read-only work when isolation materially protects the controlling context, such as monitoring loops or bounded performance analysis. Keep work local when it requires the controlling session's continuous judgment or is cheaper than the handoff.
+
+A direct session or delegated implementation worker may spawn multiple utility children without activating master orchestration merely because of their count. Give each child a distinct bounded question, batch related routine work, avoid overlapping investigations, and stop when more research is unlikely to change the result. When escalating work already begun locally, pass the useful findings and open questions so the child does not repeat discovery.
 
 # Resource check
 
-Before spawning, consider runtime, CPU/process count, RAM, disk I/O, log growth, shared artifacts, and duplicate side effects. Spawn only one resource-heavy utility job unless the controlling instruction explicitly approves parallel heavy work.
+Before spawning, consider runtime, CPU/process count, RAM, disk I/O, log growth, shared artifacts, and duplicate side effects. Match concurrent fan-out to genuine parallelism and available resources. Spawn only one resource-heavy utility job unless the controlling instruction explicitly approves parallel heavy work.
 
 # Spawn contract
 
@@ -41,7 +43,7 @@ Add only relevant positive sections: useful context, input files, search hints, 
 
 # Controlling-session ownership
 
-The controlling implementation worker or direct session retains implementation, architecture, acceptance, and final-delivery ownership. After the utility report, read the returned relevant files or evidence before implementing. Do not repeat the delegated search unless the result is insufficient, contradictory, or blocked; if needed, send a correction or spawn one corrected bounded investigation.
+The controlling implementation worker or direct session retains implementation, architecture, acceptance, and final-delivery ownership. Briefly disclose substantial delegation to the human in direct mode. After utility reports arrive, synthesize their results and read the returned relevant files or evidence before implementing. Do not repeat delegated searches unless a result is insufficient, contradictory, or blocked; if needed, send a correction or spawn one corrected bounded investigation.
 
 # Report contribution
 
