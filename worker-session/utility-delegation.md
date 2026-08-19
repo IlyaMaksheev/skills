@@ -21,6 +21,8 @@ Defaults:
 - `thinkingLevel: "low"`;
 - name: `<controlling-session-name>-sub-<purpose>`.
 
+Explicit placement instructions override this default. With non-empty inherited `$NVIM`, use `placement: "neovim-tab"`; with missing or empty `$NVIM`, use `niri-ghostty`. If the tab launch reports an invalid or unreachable inherited server, preserve every other spawn option and fall back to `niri-ghostty`. Use the tool error directly; do not probe for or discover another Neovim server.
+
 The sparse plaintext prompt must include:
 
 ```text

@@ -41,6 +41,13 @@ All sessions use `mode: "fresh"`, `reportToSelf: true`, the task-relevant `cwd`,
 - implementation: `persistent: true`;
 - utility: `persistent: false`, `thinkingLevel: "low"`.
 
+Explicit placement instructions override these placement defaults:
+
+- spawn a master with `placement: "niri-ghostty-neovim"`; correct actionable request errors and keep that placement, but use `niri-ghostty` when the Neovim placement mechanism fails;
+- spawn implementation and utility workers with `neovim-tab` when inherited `$NVIM` is non-empty;
+- use `niri-ghostty` directly when `$NVIM` is missing or empty, and fall back to it when `neovim-tab` reports an invalid or unreachable inherited server;
+- preserve every non-placement spawn option across a fallback. Use the tool error directly; do not probe for or discover another Neovim server.
+
 Leave model and implementation/master thinking level unspecified unless requested.
 
 # Delegation boundary
