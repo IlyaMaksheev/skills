@@ -13,6 +13,7 @@ A delegated implementation worker or direct session may update only its selected
 - preserve newer concurrent state and unrelated entries;
 - unblock a dependent only when every recorded blocker is complete;
 - include the state update with feature history when Git lifecycle is active;
+- under `Agent-docs lifecycle`, commit a stable task-state update separately as a path-pure `agent-docs:` commit;
 - without Git lifecycle, still perform the explicitly authorized task-state update.
 
 A delegated utility worker may inspect supplied task context but must not mutate status, ownership, blockers, or dependencies. If conventions, assignment, or dependency state are ambiguous, report the exact blocker rather than inventing a transition.

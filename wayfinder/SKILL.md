@@ -10,7 +10,7 @@ Wayfinder turns a loose effort into an audited route of decisions. Use it to dis
 
 A route starts from a named **destination** and its testable invariants. Its **frontier** contains precise questions available now; less precise in-scope uncertainty remains **fog** until it can become a decision. The map is the route index and workflow authority. Decision files hold detailed answers.
 
-All artifacts live flat in `./.plans/<feature-name>/`:
+All artifacts live flat in `./.agent-docs/<feature-name>/`. Before creating or modifying them in Git, load and follow `/skill:agent-docs-lifecycle`; read-only map inspection does not activate that lifecycle.
 
 - `WAYFINDER.md` — destination, route index, and canonical workflow state
 - `decision-NNN-<slug>.md` — one precise question and its resolution
@@ -24,8 +24,8 @@ Use Pi skill-command syntax in instructions and handoffs:
 
 ```text
 /skill:wayfinder <loose idea>
-/skill:wayfinder ./.plans/<feature-name>/WAYFINDER.md
-/skill:wayfinder ./.plans/<feature-name>/decision-NNN-<slug>.md
+/skill:wayfinder ./.agent-docs/<feature-name>/WAYFINDER.md
+/skill:wayfinder ./.agent-docs/<feature-name>/decision-NNN-<slug>.md
 ```
 
 - A loose idea charts a new map.
@@ -41,5 +41,5 @@ A map is complete only when a fresh closure audit finds one coherent current rou
 Wayfinder ends at the cleared destination. Invoke downstream skills only when the user requests them. When the destination calls for a spec, offer:
 
 ```text
-/skill:to-spec ./.plans/<feature-name>/WAYFINDER.md
+/skill:to-spec ./.agent-docs/<feature-name>/WAYFINDER.md
 ```

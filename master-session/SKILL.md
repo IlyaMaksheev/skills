@@ -31,7 +31,7 @@ Expected result:
 - <acceptance/output>
 ```
 
-Include an optional section only when it carries an active instruction or authorization. Git and task-bank fields require positive authorization. Provide only task-related file paths; rely on the files and harness for their contents and existing context.
+Include an optional section only when it carries an active instruction or authorization. Git, agent-docs, and task-bank fields require positive authorization. When a worker targets a mixed feature branch, supply `Git lifecycle`, `Target branch`, and `Agent-docs lifecycle` together as required by `/skill:agent-docs-lifecycle`. Provide only task-related file paths; rely on the files and harness for their contents and existing context.
 
 # Spawn defaults
 
@@ -52,7 +52,9 @@ Leave model and implementation/master thinking level unspecified unless requeste
 
 # Delegation boundary
 
-The master owns selection, reservation, dispatch, and hard orchestration exceptions. Workers own delegated execution, checks, authorized task-state completion, and cleanup. With explicit Git lifecycle activation, the implementation worker also owns its worktree and integration. Supervise from compact reports without loading or repeating worker execution guidance.
+The master owns selection, reservation, dispatch, and hard orchestration exceptions. Workers own delegated execution, checks, authorized task-state completion, and cleanup. With explicit Git lifecycle activation, the implementation worker also owns its worktree and integration. With `Agent-docs lifecycle`, it keeps product and `.agent-docs` changes in separate commits while integrating into the mixed feature branch. Supervise from compact reports without loading or repeating worker execution guidance.
+
+When the master itself creates or modifies `.agent-docs/**`, load and follow `/skill:agent-docs-lifecycle` before the write. Read-only artifact orchestration does not activate it.
 
 # Module registry
 

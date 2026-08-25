@@ -2,7 +2,7 @@
 
 ## Planning directory
 
-For a new map, derive a concise lowercase kebab-case feature name, state `./.plans/<feature-name>/`, and inspect it before writing. Reuse an existing directory only when it clearly represents the same effort.
+For a new map, derive a concise lowercase kebab-case feature name, state `./.agent-docs/<feature-name>/`, and inspect it before writing. Reuse an existing directory only when it clearly represents the same effort.
 
 Place every artifact directly in that directory.
 
@@ -163,14 +163,14 @@ A map requires explicit migration before work when it lacks a decision bank or a
 
 ## Git persistence
 
-When Git is configured:
+When Git is configured, follow `/skill:agent-docs-lifecycle`: establish the mixed feature branch before the first artifact write, keep stable artifact updates in path-pure `agent-docs:` commits, and preserve unrelated changes.
 
 - commit the initial map and decisions after charting;
 - commit each completed resolution together with its coherent map, fog, dependency, propagation, and successor updates;
 - commit an approved migration;
 - commit a failed audit together with the decisions or fog it surfaced;
 - commit a passed audit together with the readiness transition;
-- follow the project's commit-message convention;
+- follow the project's proven commit-message convention, using Conventional Commits as fallback and the reserved `agent-docs:` type for these artifacts;
 - stage only the Wayfinder planning files changed by this operation.
 
 Leave unrelated changes unstaged. When repository state makes a safe scoped commit uncertain, stop and ask. Stable commits exclude decision claims and the transient `auditing` state.

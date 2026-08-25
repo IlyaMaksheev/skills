@@ -32,11 +32,13 @@ Do not duplicate product requirements, user stories, task decomposition, accepta
 
 ## Output location
 
+Before creating or modifying an artifact in Git, load and follow `/skill:agent-docs-lifecycle`. Read-only source inspection does not activate that lifecycle.
+
 Before selecting a path, verify that the session contains at least one concrete codebase integration point, implementation pattern, command, or technical hazard distinct from requirements and tasks. If none is available, create neither a file nor an empty planning directory; state that the request needs a different handoff format.
 
-When useful context exists, use the active `./.plans/<feature-name>/` directory if one has already been established. Otherwise, derive a concise lowercase kebab-case feature name from the current session, state the selected path, and create the directory.
+When useful context exists, use the active `./.agent-docs/<feature-name>/` directory if one has already been established. Otherwise, derive a concise lowercase kebab-case feature name from the current session, state the selected path, and create the directory.
 
-Write the result to `./.plans/<feature-name>/IMPLEMENTATION-CONTEXT.md`. If that file already exists, inspect it and do not overwrite it without user confirmation.
+Write the result to `./.agent-docs/<feature-name>/IMPLEMENTATION-CONTEXT.md`. If that file already exists, inspect it and do not overwrite it without user confirmation.
 
 ## Content rules
 

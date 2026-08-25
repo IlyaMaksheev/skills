@@ -6,7 +6,9 @@ Own the complete feature lifecycle: isolated worktree/branch, implementation his
 
 Use the worker name as the branch name unless the prompt supplies another exact branch. Create a dedicated worktree from the latest target branch. Never overwrite, stash, reset, or clean another session's changes.
 
-Follow the repository's commit convention; default to Conventional Commits when none exists. Include the worker name on its own line in the commit message. Keep task changes cohesive. When task-bank handling is active, include its required update with the feature history.
+Follow explicit repository instructions, then a clearly consistent convention in relevant recent history; default to Conventional Commits when neither establishes one. Include the worker name on its own line in the commit message. Keep task changes cohesive. When task-bank handling is active, include its required update with the feature history.
+
+When `Agent-docs lifecycle` is active, the supplied target is the mixed feature branch. Follow `/skill:agent-docs-lifecycle`: product commits contain persistent project paths, stable `.agent-docs/**` updates use separate path-pure `agent-docs:` commits, and a worker with no agent-doc change creates no such commit. Clean delivery to the mainline target remains outside an individual worker's routine integration.
 
 # Linear integration
 

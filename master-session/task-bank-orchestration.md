@@ -19,6 +19,8 @@ Task bank: <path>
 Task artifact: <path-or-identifier>
 ```
 
+When the bank is under `.agent-docs/**` and the worker targets its mixed feature branch, also pass the positive `Agent-docs lifecycle` field together with `Git lifecycle` and `Target branch`. The worker commits stable task-state changes separately from product changes.
+
 Add relevant selected artifacts under `Input files`; do not pass the workspace directory as worker context. Utility workers may inspect explicitly supplied task context when required but remain read-only.
 
 ## Ownership
@@ -29,7 +31,7 @@ An implementation worker owns its authorized task-state completion under the ban
 - keep unrelated rows and tasks unchanged;
 - unblock a dependent only when every recorded blocker is complete;
 - preserve newer concurrent state;
-- include the state update with feature history when Git lifecycle is active.
+- include the state update with feature history when Git lifecycle is active; under `Agent-docs lifecycle`, use a separate path-pure `agent-docs:` commit.
 
 Under the delegation boundary, the master owns selection, reservation, scheduling, and compact orchestration state. It updates persisted task state for reservation, spawn-failure recovery, or a hard exception the worker cannot safely resolve; the implementation worker owns routine completion updates.
 

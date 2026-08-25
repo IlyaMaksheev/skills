@@ -10,7 +10,7 @@ Select exactly one mode before loading modules.
 
 ## Delegated mode
 
-The presence of any structured assignment field selects delegated mode. Recognized fields are `Worker name`, `Worker type`, `Parent name`, `Task`, `Expected result`, `Git lifecycle`, `Target branch`, `Task bank`, `Task artifact`.
+The presence of any structured assignment field selects delegated mode. Recognized fields are `Worker name`, `Worker type`, `Parent name`, `Task`, `Expected result`, `Git lifecycle`, `Target branch`, `Agent-docs lifecycle`, `Task bank`, `Task artifact`.
 
 Require `Worker name`, `Worker type`, `Parent name`, `Task`, and `Expected result`. Valid worker types are exactly `implementation` and `utility`. If a required value is missing or unknown, report `blocked` to the immediate parent before starting work.
 
@@ -24,7 +24,7 @@ The invocation establishes the session's **authority envelope**. Modules and run
 
 In delegated mode, worker type sets the baseline and structured activation fields grant privileged workflows. Structured fields take precedence over incidental task prose.
 
-- `implementation` may modify project or product state within the task. Git lifecycle and task-state mutation also require their registry fields.
+- `implementation` may modify project or product state within the task. Git lifecycle, agent-docs lifecycle, and task-state mutation also require their registry fields.
 - `utility` performs bounded research, reconnaissance, inspection, checks, launching, or monitoring. It may write approved temporary artifacts. Source/product files, Git state, task state, dependencies, environment, final architecture and acceptance decisions, and session delegation remain with an implementation worker.
 
 In direct mode, explicit human instructions authorize project changes, Git delivery, and task handling. Direct sessions have standing authority to delegate bounded read-only utility work when substantial research or reconnaissance warrants isolation; explicit human constraints may narrow or disable that authority. Discovery alone grants no mutation or privileged-workflow authority.
@@ -38,7 +38,7 @@ This registry is the single source of truth for module activation. Compare the a
 | File | Capability and activation hook |
 |---|---|
 | `implementation-work.md` | Planning, implementation, checks, and detailed decomposition. Load for delegated `implementation` work and direct tasks that modify project or product state. |
-| `git-lifecycle.md` | Git worktree creation, commits, linear integration, verification, and cleanup. Load in delegated mode with both `Git lifecycle` and `Target branch`; in direct mode, load when the human explicitly requests worker-owned Git delivery and identifies the target branch. |
+| `git-lifecycle.md` | Git worktree creation, commits, linear integration, verification, and cleanup. Load in delegated mode with both `Git lifecycle` and `Target branch`; in direct mode, load when the human explicitly requests worker-owned Git delivery and identifies the target branch. When delegated `Agent-docs lifecycle` is also present, compose it with `/skill:agent-docs-lifecycle`. |
 | `git-inspection.md` | Read-only Git status, history, diff, provenance, or repository-state evidence. Load when the task or expected result explicitly requests Git-derived inspection. |
 | `task-bank.md` | Selected task inspection and state handling. Load in delegated mode with both `Task bank` and `Task artifact`; in direct mode, load when the human explicitly identifies the task bank and selected task. Delegated utility access remains read-only. |
 | `long-running-jobs.md` | Safe background launch, bounded monitoring, terminal detection, and cleanup. Load before starting a process expected to outlive a normal tool call, or when runtime evidence requires repeated or prolonged monitoring. |
@@ -49,12 +49,13 @@ This registry is the single source of truth for module activation. Compare the a
 | `resource-intensive-work.md` | Resource bounds, feasibility, and performance-work composition. Load when substantial CPU, RAM, I/O, concurrency, or runtime is expected or observed. |
 | `reporting-recovery.md` | Immediate-parent lookup and fallback delivery. Load in delegated mode only after `message_session({ parent: true })` fails. |
 
-Operational evidence may activate modules during execution. In delegated mode, privileged workflows remain field-gated. In direct mode, they require explicit human authorization and identified targets. Repository presence, discovered artifact banks, and incidental prose do not activate them. Read only selected task artifacts, and never read backup files.
+Operational evidence may activate modules during execution. In delegated mode, privileged workflows remain field-gated; incidental `.agent-docs` presence grants no mutation authority. In direct mode, they require explicit human authorization and identified targets. Repository presence, discovered artifact banks, and incidental prose do not activate them. Read only selected task artifacts, and never read backup files.
 
 # Specialized skill hooks
 
 Compose specialized skills with the worker modules rather than reproducing their procedures here:
 
+- load `/skill:agent-docs-lifecycle` with `git-lifecycle.md` when the delegated `Agent-docs lifecycle` field is present;
 - load `web-research` with `web-research.md` for internet discovery;
 - load `test-driven-development` when the implementation task or repository requires test-first work;
 - load `script-performance-design` before designing or implementing a resource-intensive script or workflow;

@@ -23,9 +23,11 @@ This is an explicit input adapter only. Do not invoke Wayfinder or any downstrea
 
 ## Output location
 
-Use the active `./.plans/<feature-name>/` directory when one has already been established. Otherwise, derive a concise lowercase kebab-case feature name from the current context, state the selected path, and create the directory.
+Before creating or modifying an artifact in Git, load and follow `/skill:agent-docs-lifecycle`. Read-only source inspection does not activate that lifecycle.
 
-Write the result to `./.plans/<feature-name>/SPEC.md`. If `SPEC.md` already exists, inspect it and do not overwrite it without user confirmation.
+Use the active `./.agent-docs/<feature-name>/` directory when one has already been established. Otherwise, derive a concise lowercase kebab-case feature name from the current context, state the selected path, and create the directory.
+
+Write the result to `./.agent-docs/<feature-name>/SPEC.md`. If `SPEC.md` already exists, inspect it and do not overwrite it without user confirmation.
 
 ## Process
 

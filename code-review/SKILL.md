@@ -46,6 +46,8 @@ Establish one explicit, bounded review target before dispatch:
 
 For a branch-style comparison, capture `git diff <fixed-point>...HEAD` and `git log <fixed-point>..HEAD --oneline`. Confirm each selected revision resolves and the diff is non-empty before spawning reviewers.
 
+When `/skill:agent-docs-lifecycle` governs a mixed feature branch, select the product projection: review the ordered non-`agent-docs:` commits and persistent-path diff. `.agent-docs` artifacts may remain governing Spec inputs, but their textual changes are outside the delivered product diff. Inspect their workflow consistency separately only when requested.
+
 Check whether staged or working-tree changes fall outside the selected boundary. State that mismatch before review. Include uncommitted changes only when the caller explicitly selects a command or snapshot that contains them. Give every axis reviewer the same diff command or immutable review input.
 
 ## 2. Select governing inputs

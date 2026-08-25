@@ -7,7 +7,7 @@ Migration is mechanical and lossless. Do not reinterpret requirements, improve t
 ## Spec-only migration
 
 1. Identify the legacy `PRD.md` and its feature name.
-2. Select `./.plans/<feature-name>/SPEC.md` as the target.
+2. Select `./.agent-docs/<feature-name>/SPEC.md` as the target.
 3. Preflight the complete target set before writing.
 4. If `SPEC.md` already exists, stop without writing anything. Report the collision and ask whether the user wants to replace it, merge manually, or choose another destination.
 5. Create `SPEC.md` while preserving the legacy document's section order and content.

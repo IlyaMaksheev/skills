@@ -6,7 +6,7 @@ Migration is mechanical and lossless. Do not reinterpret acceptance criteria, im
 
 ## Tasks-only migration
 
-1. Identify the legacy feature directory and select `./.plans/<feature-name>/` as the target.
+1. Identify the legacy feature directory and select `./.agent-docs/<feature-name>/` as the target.
 2. Build the complete target manifest before writing:
    - `ISSUE-BANK.md` → `TASK-BANK.md`
    - `issue-NNN-<description>.md` → `task-NNN-<description>.md`

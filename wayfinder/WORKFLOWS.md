@@ -8,9 +8,9 @@ Use the branch selected by the invocation. `FORMAT.md` remains authoritative for
 2. **Name the destination and visible invariants.** Use `/skill:brainstorm` to settle the destination and its entailed testable conditions rather than route decisions.
 3. **Map breadth-first.** Surface precise decisions visible now and coarse in-scope fog beyond them. Keep implementation choices out of invariants. The test is precision: create a decision when its question can be stated now, even if it cannot be answered; keep the rest as fog.
 4. **Take the no-map exit.** When the route is clear and fits one session, create nothing. Ask whether the user wants ordinary brainstorming, an appropriate downstream workflow, or to stop.
-5. **Choose and preflight the directory.** Follow `FORMAT.md` and preserve any existing map.
+5. **Establish the artifact branch and preflight the directory.** In Git, follow `/skill:agent-docs-lifecycle` before the first write; use the active feature branch or create the derived feature branch from the inferred mainline target. Follow `FORMAT.md` and preserve any existing map.
 6. **Create the route.** Write the active map with closure `pending`, then the currently precise decision files. Add complete permanent dependencies and set each row to `open` or `blocked`. Keep imprecise in-scope uncertainty under `Not yet specified`.
-7. **Commit the chart** when Git can do so safely.
+7. **Commit the chart** as a path-pure `agent-docs:` commit when Git can do so safely.
 8. **Delegate open research** through **Delegate research**. Leave blocked research in the bank.
 9. **Stop after charting.** A later invocation works the frontier.
 
@@ -60,7 +60,7 @@ Independent research decisions may run in parallel. When evidence exposes a huma
 9. Move work beyond the destination to `out-of-scope`, clear its claim, remove its accepted gist, add a linked reason under `Out of scope`, and propagate the lost dependency.
 10. Open a `blocked` row only when every retained dependency is exactly `resolved`.
 11. Set the map to `active` and closure to `pending` for every substantive route change.
-12. Apply existing-map changes through targeted edits, verify the coherent result, and commit when safe.
+12. Apply existing-map changes through targeted edits, verify the coherent result, and commit the stable artifact update under `/skill:agent-docs-lifecycle` when safe.
 
 ## Revalidate and propagate
 
@@ -97,7 +97,7 @@ Use this optimistic transaction for propagation, successors, migrations, and fai
 4. Apply one targeted map edit containing rows, state transitions, dependency rewiring, gist changes, fog or scope changes, and audit invalidation.
 5. Reread and verify the complete resulting state.
 6. On conflict, remove only files created by this operation that remain unreferenced and are certainly safe to remove; otherwise report them and stop. Reread before retrying.
-7. Commit the verified stable result. Claims and transient `auditing` states remain uncommitted.
+7. Commit the verified stable result as a path-pure `agent-docs:` commit. Claims and transient `auditing` states remain uncommitted.
 
 ## Completion report
 
@@ -105,7 +105,7 @@ Only an invocation that resolved a decision or completed closure ends with the a
 
 ```text
 Decision: `decision-NNN-<slug>`
-Next command: `/skill:wayfinder ./.plans/<feature-name>/WAYFINDER.md`
+Next command: `/skill:wayfinder ./.agent-docs/<feature-name>/WAYFINDER.md`
 ```
 
 List each resolved decision by exact filename stem, in completion order and separated by `, `. Omit `Decision` when closure resolved no decision. A failed audit resumes through the map. A passed audit may offer `/skill:to-spec <map-path>` when the destination calls for a spec. Omit inapplicable lines and placeholders.

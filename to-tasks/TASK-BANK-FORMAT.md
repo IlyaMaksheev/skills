@@ -33,7 +33,7 @@ Each task has its own file in the same directory as `TASK-BANK.md`.
 Structure:
 
 ```text
-./.plans/<feature-name>/
+./.agent-docs/<feature-name>/
 ├── SPEC.md
 ├── TASK-BANK.md
 ├── IMPLEMENTATION-CONTEXT.md
@@ -44,4 +44,4 @@ Structure:
 
 `IMPLEMENTATION-CONTEXT.md` is optional and is owned by `/to-implementation-context`, not `/to-tasks`.
 
-The default root directory is `./.plans/`. Use one lowercase kebab-case subdirectory per feature.
+The default root directory is `./.agent-docs/`. Use one lowercase kebab-case subdirectory per feature.

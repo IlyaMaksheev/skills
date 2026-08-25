@@ -14,7 +14,9 @@ Legacy issue artifacts are not normal inputs to this skill. If the user explicit
 
 ## Output location
 
-When the user provides a spec path, use that spec's feature directory. Otherwise, use the active `./.plans/<feature-name>/` directory when one has already been established. If neither exists, derive a concise lowercase kebab-case feature name from the current context, state the selected path, and create the directory.
+Before creating or modifying artifacts in Git, load and follow `/skill:agent-docs-lifecycle`. Read-only source inspection does not activate that lifecycle.
+
+When the user provides a spec path, use that spec's feature directory. Otherwise, use the active `./.agent-docs/<feature-name>/` directory when one has already been established. If neither exists, derive a concise lowercase kebab-case feature name from the current context, state the selected path, and create the directory.
 
 Write `TASK-BANK.md` and each `task-NNN-<short-description>.md` in that feature directory. Inspect existing artifacts and do not overwrite them without user confirmation.
 
