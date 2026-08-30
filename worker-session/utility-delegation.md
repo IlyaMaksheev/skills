@@ -23,7 +23,7 @@ Defaults:
 - `thinkingLevel: "low"`;
 - name: `<controlling-session-name>-sub-<purpose>`.
 
-Explicit placement instructions override this default. With non-empty inherited `$NVIM`, use `placement: "neovim-tab"`; with missing or empty `$NVIM`, use `niri-ghostty`. If the tab launch reports an invalid or unreachable inherited server, preserve every other spawn option and fall back to `niri-ghostty`. Use the tool error directly; do not probe for or discover another Neovim server.
+Explicit placement instructions override this default. Use `placement: "neovim-tab"`. If that placement reports an invalid or unreachable server, preserve every other spawn option and fall back to `niri-ghostty`. Use the tool error directly; do not inspect the environment or probe for another Neovim server.
 
 The sparse plaintext prompt must include:
 
@@ -43,7 +43,7 @@ Add only relevant positive sections: useful context, input files, search hints, 
 
 # Controlling-session ownership
 
-The controlling implementation worker or direct session retains implementation, architecture, acceptance, and final-delivery ownership. Briefly disclose substantial delegation to the human in direct mode. After utility reports arrive, synthesize their results and read the returned relevant files or evidence before implementing. Do not repeat delegated searches unless a result is insufficient, contradictory, or blocked; if needed, send a correction or spawn one corrected bounded investigation.
+The controlling implementation worker or direct session retains implementation, architecture, acceptance, and final-delivery ownership. Briefly disclose substantial delegation to the human in direct mode. After dispatch, wait for the utility child's authored report without elapsed-time or silence-driven pings; act only on its report, an actionable runtime event, or a human request. Then synthesize the result and read the returned relevant files or evidence before implementing. Repeat delegated searches only when a result is insufficient, contradictory, or blocked; if needed, send a correction or spawn one corrected bounded investigation.
 
 # Report contribution
 

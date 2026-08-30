@@ -4,11 +4,15 @@
 
 Own the complete feature lifecycle: isolated worktree/branch, implementation history, synchronization, fast-forward integration, verification, and cleanup. The immediate parent should not need to perform routine Git cleanup.
 
-Use the worker name as the branch name unless the prompt supplies another exact branch. Create a dedicated worktree from the latest target branch. Never overwrite, stash, reset, or clean another session's changes.
+Use the worker name as the branch name unless the prompt supplies another exact branch. Create a dedicated worktree from the latest target branch, and treat the canonical target worktree as integration-only. Preserve every other session's state: stage and commit only attributable task paths or hunks, and never ask another session to stash, discard, commit, clean, or move its changes to make integration possible.
 
 Follow explicit repository instructions, then a clearly consistent convention in relevant recent history; default to Conventional Commits when neither establishes one. Include the worker name on its own line in the commit message. Keep task changes cohesive. When task-bank handling is active, include its required update with the feature history.
 
 When `Agent-docs lifecycle` is active, the supplied target is the mixed feature branch. Follow `/skill:agent-docs-lifecycle`: product commits contain persistent project paths, stable `.agent-docs/**` updates use separate path-pure `agent-docs:` commits, and a worker with no agent-doc change creates no such commit. Clean delivery to the mainline target remains outside an individual worker's routine integration.
+
+# Environment reuse
+
+A new worktree does not carry untracked environments such as installed dependencies. Reuse a compatible existing project environment through the repository's supported mechanism before downloading or rebuilding it. Confirm compatibility from the relevant manifests and lockfiles; when the task changes them, the project requires isolation, or reuse is unavailable, use the project's lockfile-safe installation procedure. Keep another session's environment unchanged and report a blocker when neither reuse nor an authorized safe installation is available.
 
 # Linear integration
 
@@ -56,9 +60,10 @@ After successful integration:
 - inspect `git log --oneline --graph` for accidental merge commits;
 - verify no intended tracked changes remain;
 - remove the worker worktree when safe;
-- delete the merged local worker branch with `git branch -d`;
-- never force-delete an unmerged branch;
-- report any cleanup item that could not safely be completed.
+- decide branch cleanup separately from worktree removal;
+- delete a temporary merged worker branch with `git branch -d`;
+- retain any branch whose requested role continues after worktree removal;
+- keep unmerged branches and report any cleanup item that could not safely be completed.
 
 Run cleanup from outside the worktree being removed.
 

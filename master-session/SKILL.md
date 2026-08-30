@@ -44,15 +44,14 @@ All sessions use `mode: "fresh"`, `reportToSelf: true`, the task-relevant `cwd`,
 Explicit placement instructions override these placement defaults:
 
 - spawn a master with `placement: "niri-ghostty-neovim"`; correct actionable request errors and keep that placement, but use `niri-ghostty` when the Neovim placement mechanism fails;
-- spawn implementation and utility workers with `neovim-tab` when inherited `$NVIM` is non-empty;
-- use `niri-ghostty` directly when `$NVIM` is missing or empty, and fall back to it when `neovim-tab` reports an invalid or unreachable inherited server;
-- preserve every non-placement spawn option across a fallback. Use the tool error directly; do not probe for or discover another Neovim server.
+- spawn implementation and utility workers with `placement: "neovim-tab"`; if that placement reports an invalid or unreachable server, preserve every other spawn option and fall back to `niri-ghostty`;
+- use the tool error directly; do not inspect the environment or probe for another Neovim server.
 
 Leave model and implementation/master thinking level unspecified unless requested.
 
 # Delegation boundary
 
-The master owns selection, reservation, dispatch, and hard orchestration exceptions. Workers own delegated execution, checks, authorized task-state completion, and cleanup. With explicit Git lifecycle activation, the implementation worker also owns its worktree and integration. With `Agent-docs lifecycle`, it keeps product and `.agent-docs` changes in separate commits while integrating into the mixed feature branch. Supervise from compact reports without loading or repeating worker execution guidance.
+The master owns selection, reservation, dispatch, and hard orchestration exceptions. Workers own delegated execution, checks, authorized task-state completion, and cleanup. With explicit Git lifecycle activation, each implementation worker owns an isolated worktree and integration; keep the canonical target worktree clean and reserved for serialized integration. With `Agent-docs lifecycle`, the worker keeps product and `.agent-docs` changes in separate commits while integrating into the mixed feature branch. Supervise from authored child reports: after dispatch, wait without elapsed-time or silence-driven pings, and intervene only on a child report, actionable runtime event, or human request.
 
 When the master itself creates or modifies `.agent-docs/**`, load and follow `/skill:agent-docs-lifecycle` before the write. Read-only artifact orchestration does not activate it.
 

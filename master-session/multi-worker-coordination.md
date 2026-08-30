@@ -2,7 +2,7 @@
 
 # Partitioning
 
-Split work into bounded, independently verifiable deliverables. Maintain **write isolation** with clear ownership and non-overlapping write scopes where practical; prefer vertical tasks over layers that all modify the same files.
+Split work into bounded, independently verifiable deliverables. Maintain **write isolation** with clear ownership and non-overlapping write scopes where practical; prefer vertical tasks over layers that all modify the same files. Give every Git-lifecycle implementation worker its own worktree, and reserve the canonical target worktree for the brief serialized integration step.
 
 Identify dependencies before spawning:
 
@@ -15,7 +15,7 @@ Each child prompt must use the sparse prompt contract in `SKILL.md`. Give every 
 
 # Supervision
 
-Use terminal child reports rather than routine polling or progress messages. Track only compact orchestration state: assigned, blocked, done, or failed.
+Use authored terminal child reports as the completion signal. After dispatch, wait without elapsed-time or silence-driven pings; act only on a child report, actionable runtime event, or human request. Track only compact orchestration state: assigned, blocked, done, or failed.
 
 Maintain the delegation boundary from `SKILL.md`: workers retain execution ownership, including their checks and any explicitly authorized Git integration and cleanup. If one worker's result changes another worker's assumptions, send the smallest necessary correction to the affected worker.
 
