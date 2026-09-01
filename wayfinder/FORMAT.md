@@ -38,6 +38,12 @@ Closure audit: pending
 
 - [<resolved decision title>](decision-NNN-<slug>.md) — <one-line bounded gist>
 
+## Route context
+
+| Source | Reusable conclusion | Applies to |
+|---|---|---|
+| [<resolved decision title>](decision-NNN-<slug>.md) | <one bounded conclusion another decision can reuse> | <semantic scope, or `Route-wide`> |
+
 ## Not yet specified
 
 <In-scope fog that cannot yet be expressed as a precise question, or `None`.>
@@ -58,11 +64,13 @@ Closure-audit states:
 - `auditing — <owner>, <ISO-8601 UTC timestamp>` — the named session owns the audit
 - `passed` — the current route passed closure
 
-Only `Status: ready` with `Closure audit: passed` represents completion. Every substantive change to the destination, invariants, route-constraining notes, bank, accepted decisions, fog, or scope sets the map to `active` and closure to `pending`. When an invocation discovers or receives changed evidence used by a current decision, invalidate closure before other work and open revalidation where needed. Evidence invalidation is discovery-driven; external evidence between invocations remains outside Wayfinder's observation. Formatting and link repairs preserve closure.
+Only `Status: ready` with `Closure audit: passed` represents completion. Every substantive change to the destination, invariants, route-constraining notes, bank, accepted decisions, route context, fog, or scope sets the map to `active` and closure to `pending`. When an invocation discovers or receives changed evidence used by a current decision, invalidate closure before other work and open revalidation where needed. Evidence invalidation is discovery-driven; external evidence between invocations remains outside Wayfinder's observation. Formatting and link repairs preserve closure.
 
 Write each destination invariant as one testable destination-level condition. Add an invariant directly only when the destination, accepted scope, or standing constraints already entail it. A change that broadens, narrows, or reinterprets the destination requires a brainstorm decision. Keep implementation choices in the bank and conditions not yet expressible in `Not yet specified`.
 
 The decision bank owns all workflow metadata. `Decisions so far` is the narrative index of current accepted results, not workflow state.
+
+`Route context` is the compact index of current conclusions another decision can reuse. Use `None.` until the first conclusion is promoted; then use the table. Add one row per bounded conclusion that constrains another decision, avoids reopening a settled topic, or defines shared meaning. Keep local reasoning, ordinary implementation detail, bare evidence, duplicate gists, and speculative implications out. `Applies to` names the semantic decision area or `Route-wide`; route-wide means applicable to every selected question, not that every preflight loads the source file. Each source must be a current `resolved` decision, and each conclusion must fit its claim boundary. Remove or replace its rows when propagation quarantines, supersedes, or excludes the source.
 
 ## Decision bank
 
@@ -89,7 +97,7 @@ A `needs-review` link names the single active review controlling whether the qua
 
 The frontier is every `open` row. Automatic selection takes the lowest ID.
 
-The bank is the sole authority for selection, accepted state, dependency traversal, and readiness. Scan sibling decision files only during explicit migration or consistency repair.
+The bank is the sole authority for selection, accepted state, dependency traversal, and readiness. Discover work and reusable context from the map indexes; load sibling decision files only through the explicit preflight, revalidation, migration, repair, or audit branches.
 
 ## Decision ticket
 
@@ -104,9 +112,13 @@ The bank is the sole authority for selection, accepted state, dependency travers
 When resolved, append:
 
 ```markdown
+## Context analysis
+
+<Linked bullets naming previous decisions that materially shaped the question and what each contributed, or `No prior decision materially shaped this question.`>
+
 ## Resolution
 
-<Answer and important reasoning.>
+<Answer and important reasoning. When prior context already established the answer, derive it by reference instead of reopening the settled choice.>
 
 ## Claim boundary
 
@@ -119,7 +131,9 @@ When resolved, append:
 <Relevant source, report, or research links; omit the section when empty.>
 ```
 
-The claim boundary states how far the answer may safely be used. Express it in structured plain language rather than one validity label. Use `Assumes` for external or domain conditions and to explain the semantic meaning of dependency assumptions. When another decision establishes or controls an assumption, also add that decision to permanent `Depends on`; the edge carries propagation. Route every material item under `Leaves open` into a new decision or `Not yet specified` in the same coherent update; move excluded limitations to `Out of scope`. A `Decisions so far` gist must fit entirely inside this boundary.
+`Context analysis` records only previous decisions materially applied during preflight; it is not a transcript or a copy of `Route context`. Contextual discovery alone creates no dependency. Add the source to permanent `Depends on` when changing its conclusion could invalidate or materially alter the current answer; the edge carries continuing validity and propagation.
+
+The claim boundary states how far the answer may safely be used. Express it in structured plain language rather than one validity label. Use `Assumes` for external or domain conditions and to explain the semantic meaning of dependency assumptions. Route every material item under `Leaves open` into a new decision or `Not yet specified` in the same coherent update; move excluded limitations to `Out of scope`. A `Decisions so far` gist and each promoted `Route context` conclusion must fit entirely inside this boundary.
 
 Evidence remains optional when the reasoning is self-contained. Put the answer's important factual basis in the resolution; research decisions normally cite the sources or artifacts they inspected.
 
@@ -159,7 +173,7 @@ After initial creation, mutate `WAYFINDER.md` with targeted exact-text edits. Ke
 - A substantive revalidation decision links the prior decision and changed evidence in its question and receives a higher ID.
 - Explicit work-mode invocation authorizes state updates to that map and its decisions, not replacement of unrelated artifacts.
 
-A map requires explicit migration before work when it lacks a decision bank or any current required structure: `Destination invariants`, `Closure audit`, `Depends on`, current status forms, or claim boundaries on accepted decisions. Follow [MIGRATION.md](./MIGRATION.md); it owns the normalization procedure and the sole exception to substantive resolved-file immutability.
+A map requires explicit migration before work when the user identifies it as old logic or built-in legacy detection finds a missing decision bank or any of these structures: `Destination invariants`, `Closure audit`, `Depends on`, current status forms, or claim boundaries on accepted decisions. Follow [MIGRATION.md](./MIGRATION.md); it owns the normalization procedure and the sole exception to substantive resolved-file immutability.
 
 ## Git persistence
 

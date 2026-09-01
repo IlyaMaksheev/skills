@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Wayfinder turns a loose effort into an audited route of decisions. Use it to discover what must be settled before downstream work begins, not to implement that work. `Notes` may explicitly authorize execution inside a particular effort.
 
-A route starts from a named **destination** and its testable invariants. Its **frontier** contains precise questions available now; less precise in-scope uncertainty remains **fog** until it can become a decision. The map is the route index and workflow authority. Decision files hold detailed answers.
+A route starts from a named **destination** and its testable invariants. Its **frontier** contains precise questions available now; less precise in-scope uncertainty remains **fog** until it can become a decision. The map is the route index and workflow authority: its compact **route context** exposes reusable conclusions from previous decisions so each selected question can preflight against them without loading the whole history. Decision files hold detailed answers.
 
 All artifacts live flat in `./.agent-docs/<feature-name>/`. Before creating or modifying them in Git, load and follow `/skill:agent-docs-lifecycle`; read-only map inspection does not activate that lifecycle.
 

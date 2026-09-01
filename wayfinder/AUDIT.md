@@ -12,6 +12,8 @@ After a fresh map reread, begin only when:
 - every superseded chain reaches a current resolved successor;
 - all dependency and successor references exist, increase where required, and form acyclic graphs;
 - `Decisions so far` contains exactly the current resolved decisions, with every gist inside its claim boundary;
+- every current resolved decision has the required context analysis;
+- every `Route context` row points to a current resolved source, stays inside its claim boundary, and contains a reusable conclusion with a bounded applicability scope;
 - `Not yet specified` is empty (`None.` is acceptable);
 - every material prototype or manual prerequisite has been handled;
 - the destination and its invariants remain valid.
@@ -21,7 +23,7 @@ Report every failing condition and return to the applicable workflow. A passing 
 ## Claim and investigate
 
 1. Exact-edit closure from `pending` to `auditing — <owner>, <timestamp>`, then reread. Continue when the claim is yours.
-2. Build an audit manifest containing every current `resolved` row and the decision file, claim boundary, evidence, and relevant lineage it requires. Map gists provide navigation rather than audit evidence. Complete the audit only after every manifest row has been inspected in full and included in global synthesis.
+2. Build an audit manifest containing every current `resolved` row and the decision file, context analysis, claim boundary, evidence, promoted route context, and relevant lineage it requires. Map gists and route-context rows provide navigation rather than audit evidence. Complete the audit only after every manifest row has been inspected in full and included in global synthesis.
 3. Inspect the manifest directly when it fits one reliable context. Otherwise read `/skill:master-session` and delegate bounded inspection passes to fresh utility workers. Give each worker explicit decision IDs, files, lenses, and factual checks. Require a compact report of claims, assumptions, dependencies, evidence currency, and material findings. Workers inspect; the parent owns Wayfinder mutations, product judgment, and closure.
 4. Verify that bounded passes cover every manifest row. Resolve overlap or conflicting reports and inspect source material where verification requires it. The parent traces invariants and performs the final cross-route compatibility and composition judgment. Local agreement is not global closure.
 5. When full coverage and one global synthesis cannot be completed in the claimed invocation, return closure to `pending`, report the limitation, and stop. Partial passes cannot establish readiness.
@@ -31,6 +33,7 @@ Report every failing condition and return to the applicable workflow. A passing 
    - **Compatibility:** Compare definitions, populations, time boundaries, contracts, artifact and representation identities, versions, and execution models.
    - **Claims and evidence:** Keep each decision and gist inside its claim boundary. Distinguish mechanical, bounded, population, and semantic validity where applicable; verify that support is current and permitted. Artifact presence is not execution evidence. Missing evidence is unproven and becomes a finding when the destination requires that proof.
    - **Propagation:** Trace transitive effects through permanent dependencies and successor chains. Check semantic reliance as well as declared edges.
+   - **Context continuity:** Find reusable conclusions omitted from `Route context`, local detail promoted without need, stale or duplicate entries, materially applicable context absent from downstream context analysis, and downstream answers that silently contradict promoted context.
    - **Composition:** Assemble one end-to-end route, including material prerequisites, handoffs, resources, execution limits, stopping behavior, manual ownership, recovery or resume behavior, and intermediate artifact identities.
    - **Boundary integrity:** Verify that excluded work is not an implicit prerequisite and prohibited evidence or artifacts do not enter accepted conclusions.
 8. Treat a finding as material when leaving it unresolved could change invariant satisfaction, invalidate or materially narrow an accepted decision or gist, break end-to-end feasibility, or introduce an implicit prerequisite, prohibited dependency, or scope violation. Improvements and post-destination optimizations remain outside closure.
