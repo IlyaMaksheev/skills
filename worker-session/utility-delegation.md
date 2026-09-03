@@ -43,7 +43,7 @@ Add only relevant positive sections: useful context, input files, search hints, 
 
 # Controlling-session ownership
 
-The controlling implementation worker or direct session retains implementation, architecture, acceptance, and final-delivery ownership. Briefly disclose substantial delegation to the human in direct mode. After dispatch, wait for the utility child's authored report without elapsed-time or silence-driven pings; act only on its report, an actionable runtime event, or a human request. Then synthesize the result and read the returned relevant files or evidence before implementing. Repeat delegated searches only when a result is insufficient, contradictory, or blocked; if needed, send a correction or spawn one corrected bounded investigation.
+The controlling implementation worker or direct session retains implementation, architecture, acceptance, and final-delivery ownership. Briefly disclose substantial delegation to the human in direct mode. After dispatch, immediately stop all overlapping investigation and wait for the utility child's authored report without elapsed-time or silence-driven pings. Until that report arrives, perform only unrelated work that was explicitly separated before delegation; act otherwise only on an actionable runtime event or human request. Then read only the returned relevant files or evidence needed to verify and synthesize the result before implementing. Repeat delegated searches only when a result is insufficient, contradictory, or blocked; if needed, send a correction or spawn one corrected bounded investigation.
 
 # Report contribution
 
