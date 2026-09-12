@@ -57,16 +57,16 @@ If the worker was created under an older or different contract, explicitly boots
 
 ## Spawn defaults
 
-Load Pi session tools before dispatch. Use:
+Before creating a new session, load and follow [model-routing](../model-routing/SKILL.md) to select its model and thinking level. That skill owns these choices for every parent model; keep existing workers' configurations unchanged. Load Pi session tools before dispatch. Use:
 
 - `mode: "fresh"`; use `fork` only when inherited history was explicitly requested;
 - `reportToSelf: true` for stable immediate-parent routing;
 - `autoReport: "both"` to preserve startup notification and establish the terminal-report promise;
 - `cwd`: the task-relevant repository, worktree, or directory;
 - `sessionName`: a distinct, meaningful task name;
-- research/checking without product changes: `persistent: false`, `thinkingLevel: "low"`;
-- state-changing execution: `persistent: true`, thinking level unspecified;
-- model unspecified unless requested.
+- research/checking without product changes: `persistent: false`;
+- state-changing execution: `persistent: true`;
+- explicit `model` and `thinkingLevel` selected through model-routing.
 
 The terminal-report promise makes settlement without an authored parent report observable as `report-missing`. Omitting `autoReport` defaults to readiness-only reporting and does not establish that promise. It does not replace the child's required `message_session` report.
 
