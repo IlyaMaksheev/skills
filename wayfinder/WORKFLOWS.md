@@ -50,12 +50,12 @@ Preflight is complete only when the remaining question can be handled without si
 
 ## Delegate research
 
-Read and follow `/skill:master-session`, including its worker-prompt and spawn rules.
+Read and follow `/skill:delegating-work`, including its assignment and dispatch rules.
 
 For each independent open research decision:
 
 1. Ensure the parent owns the bank claim and has completed **Decision preflight** for that claim.
-2. Spawn a fresh `utility` worker with the current project as `cwd` and reporting to the parent.
+2. Assign a bounded read-only investigation through `delegating-work`, preferring a reachable worker with related context. For a new session, use the current project as `cwd` and immediate-parent reporting.
 3. Supply the map path, decision path, bounded factual question, applicable prior conclusions, constraints, and expected evidence. Keep decision-bank, context-classification, product-judgment, and Git mutation authority in the parent.
 4. Let the worker select applicable research or repository-inspection modules.
 5. Verify the returned evidence, then write the context analysis, resolution, and all Wayfinder mutations in the parent.

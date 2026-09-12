@@ -1,6 +1,6 @@
 # Spec review
 
-Review the selected change only against the caller-supplied governing task or specification. Execute directly as a utility worker and return evidence to the immediate parent.
+Review the selected change only against the caller-supplied governing task or specification. Own this bounded read-only review and return evidence to the immediate parent. Use `delegating-work` only when a narrower subtask warrants delegation.
 
 # Method
 

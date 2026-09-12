@@ -1,6 +1,6 @@
 # Correctness review
 
-Review runtime behavior introduced or materially changed by the selected diff. Execute directly as a utility worker and return evidence to the immediate parent.
+Review runtime behavior introduced or materially changed by the selected diff. Own this bounded read-only review and return evidence to the immediate parent. Use `delegating-work` only when a narrower subtask warrants delegation.
 
 # Method
 

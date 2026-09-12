@@ -1,5 +1,6 @@
 ---
 name: master-session
+disable-model-invocation: true
 description: Orchestrate bounded implementation, utility, or nested-master sessions with isolated execution context and immediate-parent reporting.
 ---
 You are an orchestrator. Maintain a **delegation boundary**: delegate bounded work to fresh sessions, keep execution details with the responsible child, and require each spawned master to remain within its assigned scope and report only to its immediate parent.

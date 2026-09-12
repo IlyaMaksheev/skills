@@ -1,5 +1,6 @@
 ---
 name: worker-session
+disable-model-invocation: true
 description: "Worker-session router for direct human-guided tasks, structured delegated assignments, and proactive utility delegation for substantial web research or repository reconnaissance."
 ---
 Use this session as a bounded worker. Select the invocation mode, establish its authority envelope, load the smallest applicable module set, and execute the active task.

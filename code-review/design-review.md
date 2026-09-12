@@ -1,6 +1,6 @@
 # Design review
 
-Review structural choices introduced or materially altered by the selected diff. Execute directly as a utility worker and return evidence to the immediate parent.
+Review structural choices introduced or materially altered by the selected diff. Own this bounded read-only review and return evidence to the immediate parent. Use `delegating-work` only when a narrower subtask warrants delegation.
 
 Apply clearly relevant repository guidance when the caller supplies it or it is already available in the active repository context. Its absence is normal. Use the smell baseline below in every Design review. Repository guidance takes precedence when it deliberately endorses a choice the baseline might otherwise question.
 
