@@ -12,7 +12,7 @@ Use the branch selected by the invocation. `FORMAT.md` remains authoritative for
 6. **Create the route.** Write the active map with closure `pending`, then the currently precise decision files. Add complete permanent dependencies and set each row to `open` or `blocked`. Keep imprecise in-scope uncertainty under `Not yet specified`.
 7. **Commit the chart** as a path-pure `agent-docs:` commit when Git can do so safely.
 8. **Delegate open research** through **Delegate research**. Leave blocked research in the bank.
-9. **Stop after charting.** A later invocation works the frontier.
+9. **Stop after charting.** A later invocation works the frontier; charting classifies prototype decisions but does not build their artifacts.
 
 ## Work a map or named decision
 
@@ -31,9 +31,10 @@ Use the branch selected by the invocation. `FORMAT.md` remains authoritative for
    - When preflight shows that current accepted decisions already establish the answer, derive the resolution by reference rather than reopening the settled choice.
    - `brainstorm`: use `/skill:brainstorm` for the choice that remains.
    - `research`: use **Delegate research** for the fact that remains. Factual research supplies evidence rather than agent-made product judgment.
+   - `prototype`: use **Work a prototype** for the choice that needs a concrete artifact.
 9. Perform **Refresh before acceptance**.
 10. Apply **Resolve and advance the frontier**, including propagation.
-11. Stop after one brainstorm decision. Independent research may run in parallel. A fresh invocation audits after the final ordinary resolution.
+11. Stop after one HITL decision (`brainstorm` or `prototype`). Independent research may run in parallel. A fresh invocation audits after the final ordinary resolution.
 
 ## Decision preflight
 
@@ -60,7 +61,16 @@ For each independent open research decision:
 4. Let the worker select applicable research or repository-inspection modules.
 5. Verify the returned evidence, then write the context analysis, resolution, and all Wayfinder mutations in the parent.
 
-Independent research decisions may run in parallel. When evidence exposes a human choice, resolve the factual question and create a blocked or open `brainstorm` decision for that choice.
+Independent research decisions may run in parallel. When evidence exposes a human choice, resolve the factual question and create a blocked or open HITL decision: `brainstorm` when conversation can settle it, `prototype` when it needs a concrete artifact.
+
+## Work a prototype
+
+The claimed decision's session is the prototype session, not a dispatcher. Keep artifact construction and human evaluation in this session.
+
+1. Carry the preflight's effective question, applicable prior conclusions, constraints, and decision-owned artifact directory into `/skill:prototype`. Follow its approval gate before building; charting a `prototype` row alone is not approval to build it.
+2. Build, verify, and present the artifact through that skill. Keep the claim while the human evaluates it. Revisions to the same question reuse the directory and claim; a materially different question becomes a new decision or fog.
+3. Use `/skill:brainstorm` when discussion of the artifact is needed. Continue only when the human has settled the effective question and `RESULT.md` records their verdict. A request for revisions or an undecided response keeps the decision unresolved.
+4. Return to **Refresh before acceptance**, then the normal resolution workflow under `FORMAT.md`'s prototype evidence requirements. If refreshed context invalidates the evaluated answer, resume evaluation and obtain a verdict on the revised question or artifact before acceptance.
 
 ## Refresh before acceptance
 

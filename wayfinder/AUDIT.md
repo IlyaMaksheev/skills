@@ -15,7 +15,8 @@ After a fresh map reread, begin only when:
 - every current resolved decision has the required context analysis;
 - every `Route context` row points to a current resolved source, stays inside its claim boundary, and contains a reusable conclusion with a bounded applicability scope;
 - `Not yet specified` is empty (`None.` is acceptable);
-- every material prototype or manual prerequisite has been handled;
+- every current resolved prototype decision meets `FORMAT.md`'s evaluated-evidence or preflight-exemption requirement;
+- every material manual prerequisite has been handled;
 - the destination and its invariants remain valid.
 
 Report every failing condition and return to the applicable workflow. A passing gate authorizes investigation, not readiness.

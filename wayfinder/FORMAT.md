@@ -4,7 +4,7 @@
 
 For a new map, derive a concise lowercase kebab-case feature name, state `./.agent-docs/<feature-name>/`, and inspect it before writing. Reuse an existing directory only when it clearly represents the same effort.
 
-Place every artifact directly in that directory.
+Keep map and decision files directly in that directory. Prototype evidence is the nested exception: `prototypes/decision-NNN-<slug>/` holds the runnable files and `RESULT.md` for the matching decision. Follow `/skill:prototype` for construction, environment reuse, and artifact preservation.
 
 ## Map
 
@@ -76,8 +76,9 @@ The decision bank owns all workflow metadata. `Decisions so far` is the narrativ
 
 Allowed types:
 
-- `brainstorm`
-- `research`
+- `brainstorm` (HITL): a human choice that conversation can settle.
+- `research` (AFK): a factual question resolved through investigation.
+- `prototype` (HITL): a human choice that needs a runnable or visual artifact before it can be settled.
 
 Allowed status forms:
 
@@ -137,6 +138,10 @@ The claim boundary states how far the answer may safely be used. Express it in s
 
 Evidence remains optional when the reasoning is self-contained. Put the answer's important factual basis in the resolution; research decisions normally cite the sources or artifacts they inspected.
 
+A resolved `prototype` decision links its evaluated `RESULT.md` under `## Evidence`. The result records the human verdict, runtime checks, and fidelity limitations; the decision owns the route-facing resolution and claim boundary, linking rather than copying artifact details. Material limitations must fit that boundary or enter `Leaves open`. A pending verdict cannot support resolution. Exception: when preflight derives the answer entirely from accepted prior decisions, link those decisions and state why a prototype became unnecessary.
+
+Preserve evaluated prototype evidence after resolution alongside the immutable decision. Later revisions belong to the successor decision's directory so historical verdicts remain tied to the artifact evaluated.
+
 Decision files contain no type, status, dependency, claim, or successor metadata. After resolution, preserve their substantive contents. Later facts revalidate them through new decisions rather than rewriting accepted history.
 
 ## Links and identity
@@ -185,6 +190,7 @@ When Git is configured, follow `/skill:agent-docs-lifecycle`: establish the mixe
 - commit a failed audit together with the decisions or fog it surfaced;
 - commit a passed audit together with the readiness transition;
 - follow the project's proven commit-message convention, using Conventional Commits as fallback and the reserved `agent-docs:` type for these artifacts;
-- stage only the Wayfinder planning files changed by this operation.
+- commit stable prototype artifacts independently when ready, then commit the human verdict with the coherent decision and map update;
+- stage only the Wayfinder planning files and decision-owned prototype evidence changed by this operation.
 
 Leave unrelated changes unstaged. When repository state makes a safe scoped commit uncertain, stop and ask. Stable commits exclude decision claims and the transient `auditing` state.
