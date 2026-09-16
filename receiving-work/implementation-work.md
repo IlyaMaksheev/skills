@@ -18,7 +18,7 @@ Do not add Git, task-bank, or other absent workflows merely to fill out the plan
 
 Follow project conventions and existing contracts. Keep changes limited to the assigned scope. Prefer cohesive, reviewable changes over unrelated cleanup.
 
-When other agents share the working directory, preserve their changes and commit only attributable task changes. Stage explicit paths or hunks, inspect the staged diff, and leave unrelated tracked and untracked files in place. If changes overlap so attribution cannot be established safely, report the overlap instead of rearranging another agent's work.
+Before editing, identify pre-existing changes in the assigned paths and preserve them separately from task changes. Unrelated staged, unstaged, or untracked state does not block implementation. Leave it in place, including unrelated changes appearing during execution; report only overlaps whose ownership cannot be established safely. When commits are authorized, load `git-commits.md` before editing for baseline and task-only commit handling.
 
 For complex code or script work, make the implementation decomposition visible before coding. Include target files, ordered chunks, verification after major chunks, and final checks or execution. Build in reviewable phases such as contracts/skeleton, configuration or CLI, schema/input audit, bounded feasibility, core logic, aggregation/reporting, and orchestration when those phases apply.
 

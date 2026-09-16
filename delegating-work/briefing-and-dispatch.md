@@ -42,7 +42,8 @@ Omit the temporary-write allowance when writes are unnecessary or forbidden. For
 Include optional fields only when they carry active instructions or authorization:
 
 - `Input files`, useful context, output limits, resource bounds, approved artifact paths;
-- `Git lifecycle` and `Target branch` together for worker-owned Git delivery;
+- explicit commit permission and destination branch for scoped commits in the supplied worktree; unrelated dirty state is allowed under `../receiving-work/git-commits.md`;
+- `Git lifecycle` and `Target branch` together for isolated-worktree delivery and target integration; state whether integration is required for completion;
 - `Agent-docs lifecycle` with those Git fields for delivery into a mixed feature branch, following `agent-docs-lifecycle`;
 - `Task bank` and `Task artifact` for selected task context, with explicit permission for any task-state mutation;
 - `Parent name` or stable identity when harness routing is insufficient.
@@ -74,6 +75,6 @@ These execution defaults do not define authority. Explicit user instructions ove
 
 Use `placement: "neovim-tab"` unless explicitly directed otherwise. If that placement reports an invalid or unreachable server, preserve every other option and fall back to `niri-ghostty`. Use the tool error directly; do not probe for another Neovim server.
 
-Give concurrent assignments distinct write scopes. With Git lifecycle, each assigned delivery owns an isolated worktree and integration. Reserve the canonical target worktree for serialized integration.
+Give concurrent assignments distinct write scopes. For parallel Git-delivery assignments, authorize isolated delivery through `Git lifecycle` and `Target branch`; either assign an existing worker-specific worktree or instruct the child to create one. Use `multi-worker-coordination.md` for ownership and integration coordination. A scoped commit request alone does not activate isolated delivery.
 
 Before dispatch, read `supervision.md`. Briefly disclose substantial delegation to the human in direct mode. Dispatch is complete when the child or follow-up is accepted, its scope is recorded, and responsibility for the assigned execution has passed to that child.

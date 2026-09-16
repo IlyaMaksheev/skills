@@ -2,7 +2,9 @@
 
 ## Partitioning
 
-Split work into bounded, independently deliverable assignments. Give each mutable scope a single owner. Prefer vertical tasks with non-overlapping writes; give every Git-delivery assignment its own isolated worktree and reserve the canonical target worktree for serialized integration.
+Split work into bounded, independently deliverable assignments. Give each mutable scope a single owner. Prefer vertical tasks with non-overlapping writes. Give parallel Git-delivery assignments distinct branches and isolated worktrees, created by the parent or the assigned worker, and reserve target-branch updates for serialized integration. Existing unrelated changes in the target worktree are protected state, not a dispatch blocker; `../receiving-work/git-lifecycle.md` owns integration safety.
+
+If assignments explicitly share a working directory, partition edits and serialize index mutation and commits. Disjoint files alone do not isolate a shared Git index. Pass these constraints in the briefs rather than relying on workers to discover each other.
 
 Identify dependencies before dispatch:
 

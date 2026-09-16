@@ -25,7 +25,7 @@ Keep unrelated findings as possible follow-ups rather than performing broader wo
 
 Use explicit workflow authorization:
 
-- Git delivery requires authorization and an identified target branch.
+- Git commits require authorization and an identified branch; the current branch may be the requested destination. Isolated delivery and target integration require their own authorization.
 - Task-state mutation requires authorization and a selected task.
 - Agent-docs lifecycle requires its applicable authorization and skill.
 - Artifact writes must remain within authorized locations.
@@ -52,7 +52,8 @@ Paths are relative to this skill directory.
 |---|---|
 | `delegated-assignment.md` | For every parent-assigned task, including follow-up assignments. |
 | `implementation-work.md` | When authorized work modifies project or product state. |
-| `git-lifecycle.md` | When Git delivery is authorized and the target branch is identified. |
+| `git-commits.md` | Before an authorized commit, including scoped commits in an existing dirty worktree. |
+| `git-lifecycle.md` | When isolated-worktree delivery or target-branch integration is authorized and the target branch is identified. |
 | `git-inspection.md` | When the expected result requires read-only Git-derived evidence. |
 | `task-bank.md` | When a task bank and selected task are explicitly identified; mutations require separate authorization. |
 | `workspace-artifacts.md` | When an artifact workspace is explicitly supplied or artifact discovery is requested. |
