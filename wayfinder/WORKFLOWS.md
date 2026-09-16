@@ -11,8 +11,7 @@ Use the branch selected by the invocation. `FORMAT.md` remains authoritative for
 5. **Establish the artifact branch and preflight the directory.** In Git, follow `/skill:agent-docs-lifecycle` before the first write; use the active feature branch or create the derived feature branch from the inferred mainline target. Follow `FORMAT.md` and preserve any existing map.
 6. **Create the route.** Write the active map with closure `pending`, then the currently precise decision files. Add complete permanent dependencies and set each row to `open` or `blocked`. Keep imprecise in-scope uncertainty under `Not yet specified`.
 7. **Commit the chart** as a path-pure `agent-docs:` commit when Git can do so safely.
-8. **Delegate open research** through **Delegate research**. Leave blocked research in the bank.
-9. **Stop after charting.** A later invocation works the frontier; charting classifies prototype decisions but does not build their artifacts.
+8. **Complete the chart.** Report the created map, its open frontier, and the applicable Wayfinder commands for subsequent work. The charting invocation ends with the committed route.
 
 ## Work a map or named decision
 
