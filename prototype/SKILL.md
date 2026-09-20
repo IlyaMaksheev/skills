@@ -29,7 +29,7 @@ Before the first artifact write, load and follow `/skill:agent-docs-lifecycle`. 
 - **Standalone:** `.agent-docs/<prototype-name>/prototype/` holds the runnable files; `.agent-docs/<prototype-name>/RESULT.md` holds the result. No Wayfinder map is required or created.
 - **Wayfinder:** use the assigned `.agent-docs/<feature>/prototypes/decision-NNN-<slug>/` directory, with `RESULT.md` beside its runnable files. The existing decision file remains the route-facing authority.
 
-These are paths in the target project, not in this installed skill directory. Keep every authored file, prototype dependency manifest, generated output, and prototype configuration inside the designated `.agent-docs` directory. Production paths, project dependency manifests, and shared environments remain unchanged.
+These are paths in the target project, not in this installed skill directory. Keep every authored file, prototype dependency manifest, generated output, and prototype configuration inside the designated `.agent-docs` directory. Production paths, project dependency manifests, and shared environments remain unchanged. Caller-owned inputs may be read from approved external locations without relocation.
 
 A **worktree isolates source, not the environment**. Inspect project instructions, established run commands, the primary checkout, and existing compatible environments, installed dependencies, toolchains, and caches before provisioning anything. Reuse them through supported paths or commands instead of duplicating large downloads. Check that commands run the intended worktree source rather than a package bound to the primary checkout. Shared environments are reused read-only; tools that would install, sync, or rebuild them need an isolated alternative. If compatible reuse fails, explain the missing dependency and obtain approval before new installation or environment creation, keeping prototype-specific provisioning within its artifact directory.
 
@@ -54,4 +54,6 @@ A **human verdict** is required even when the result seems obvious. The human ma
 
 After an explicit verdict, record the answer and what it does and does not establish in `RESULT.md`, then preserve the stable update through `/skill:agent-docs-lifecycle`. Under Wayfinder, the parent records the route-facing resolution and claim boundary in the decision file, links `RESULT.md` as evidence instead of copying it, and routes remaining uncertainty into decisions or fog through Wayfinder's normal workflow. The worker never marks the decision resolved.
 
-The validated idea is input to later implementation. Prototyping stops at the answer and its evidence; production changes require a separate authorized implementation task.
+Prototyping stops at the answer and its evidence; production changes require a separate authorized implementation task.
+
+Prototype workspaces are disposable, including temporary runtime inputs. Prototype verification demonstrates behavior with those inputs; it does not establish their availability after delivery. When an integration graduates into supported product behavior, apply runtime-asset graduation in `/skill:agent-docs-lifecycle` before final acceptance or product projection.

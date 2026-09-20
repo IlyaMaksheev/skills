@@ -1,13 +1,13 @@
 ---
 name: agent-docs-lifecycle
-description: Establish separated Git history for `.agent-docs` artifacts when creating or modifying them, integrating worker changes, or delivering their associated feature.
+description: Establish separated Git history for `.agent-docs` artifacts when creating or modifying them, integrating worker changes, or delivering their associated feature. Check runtime-asset durability before accepting supported integrations developed in disposable agent workspaces.
 ---
 
 # Agent-docs lifecycle
 
 Keep one **mixed feature branch** for active work and construct a **product projection** for delivery. The mixed branch may interleave persistent project commits with ephemeral `agent-docs:` commits; the target receives the persistent commits only.
 
-This skill governs Git state associated with `.agent-docs/**`. Merely reading, searching, or reviewing those artifacts does not activate it. Remote operations and retrospective cleanup of `.plans` or earlier history are outside this lifecycle.
+This skill governs Git separation for `.agent-docs/**` and runtime-asset durability when delivering work developed in disposable agent workspaces. Reading or reviewing artifacts alone requires no lifecycle mutation. Remote operations and retrospective cleanup of `.plans` or earlier history are outside this lifecycle.
 
 ## Establish the mixed branch
 
@@ -48,9 +48,21 @@ Add `Task bank` and `Task artifact` only when task-state mutation is authorized.
 
 The mixed feature branch is the workers' integration target. The mainline target is reserved for explicit clean delivery.
 
+## Runtime-asset graduation
+
+Runtime-asset durability is separate from product-path independence. An explicit external-path interface can still depend operationally on the only asset copy remaining in a disposable workspace.
+
+Before final acceptance or product projection, account for every external runtime prerequisite used as evidence for a supported integration. Establish whether those prerequisites survive workspace deletion or can be recovered through an approved process. Consider ownership, redistribution constraints, tracked/ignored/external status, storage lifecycle, integrity/version identity, and the exact configuration needed to use the retained or recovered copy.
+
+Existing caller-owned storage and established asset-management conventions may already provide a durable home. When relocation is needed, choose an approach consistent with those conventions and the authority granted for the task. Unclear ownership, transfer permissions, or retention expectations require clarification; a path outside `.agent-docs` alone does not establish durability. The cleanup boundary includes disposable worker worktrees and prototype environments.
+
+Preserve asset contents during relocation and verify integrity against the accepted evidence. Use bounded validation to establish that the product accepts the durable copy. Maintained operational guidance should explain prerequisites, approved recovery sources, and configuration independently of agent history, using abstract caller-owned paths in examples. Record the actual durable location in an appropriate caller-owned record. Git restoration recovers committed artifacts, not ignored or untracked assets.
+
+Each prerequisite needs a checkable disposition: packaged with distribution rights, reproducibly obtainable through an approved process, retained in durable caller-owned storage, or unavailable. If durability or recovery remains unresolved, name the blocker and report the affected integration as non-operational. This blocks its readiness claim, not necessarily delivery of the remaining product.
+
 ## Deliver the product projection
 
-Begin delivery only on explicit human request and after concurrent feature work has settled. Reuse the primary checkout and its established development environment; worker isolation does not imply a delivery worktree.
+Begin delivery only on explicit human request and after concurrent feature work has settled. Reuse the primary checkout and its established development environment; worker isolation does not imply a delivery worktree. Apply runtime-asset graduation before reconstructing the product projection.
 
 1. Inspect status and preserve unrelated work. Proceed when branch switching and reconstruction are safe.
 2. Infer the likely mainline target from ancestry, conventional target names, and history. Ask for confirmation when several candidates remain plausible.
@@ -69,4 +81,4 @@ The lifecycle operation is complete when its current phase is checkable:
 
 - artifact mutation: the stable `.agent-docs` change is in a path-pure `agent-docs:` commit on the mixed branch;
 - worker integration: product and agent-doc commits are separate, fast-forwarded into the mixed branch, and the worker worktree and integrated branch are cleaned up;
-- delivery: the target contains the validated product projection in linear history, while the retained mixed branch remains the home of `.agent-docs` history.
+- delivery: the target contains the validated product projection in linear history, while the retained mixed branch remains the home of `.agent-docs` history. External runtime prerequisites have checkable dispositions, and delivery reporting distinguishes operational integrations from blocked ones.
