@@ -19,3 +19,7 @@ Choose page-extraction tools according to the task and page rather than treating
 Research may include refining queries around evidence gaps, preferring primary sources, corroborating material claims with independent sources, and investigating disagreements. Continue only as far as the task and available evidence require.
 
 Follow the loaded Firecrawl tool definitions for detailed options, costs, privacy, and safety guidance.
+
+# Proxy
+
+Proxy available at `192.168.31.1:18080`. Try to use in case of network related issues.
