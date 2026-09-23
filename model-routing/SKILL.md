@@ -15,16 +15,16 @@ Routing is separate from deciding whether to delegate. Use [delegating-work](../
 
 ## Choose the model
 
-**Sol Low is the established default for general execution, not a mandatory first attempt.** Select another model directly when its strengths better fit the assignment. A prior failure is not required.
+**Sol Low is the default for general execution.** Choose another model and effort directly when they better fit the assignment; no prior failure is required.
 
 | Model | Best fit | Boundaries and tradeoffs |
 | --- | --- | --- |
-| **Sol** (`gpt-5.6-sol`) | Dependable execution: implementation, multi-file investigation, debugging, review, planning, and orchestration. Strong follow-through on long tasks and settled designs. | Usually start at Low. Select deeper thinking for interacting constraints or difficult analysis. Task length and file count alone do not establish that need. |
-| **Luna** (`gpt-5.6-luna`) | Bounded discovery and mechanical work: file/symbol maps, fact extraction, known-file summaries, deterministic transformations, and known check execution. Useful for independent parallel searches. | Usually Low. Give it a clear search boundary, output contract, and independent verification. Hidden invariants, ambiguous requirements, and cross-system synthesis favor a stronger model. |
+| **Sol** (`gpt-6-sol`) | General execution: implementation, multi-file investigation, debugging, review, planning, and orchestration. | Usually Low. Increase effort for competing hypotheses or interacting constraints; task length and file count alone do not establish that need. |
+| **Luna** (`gpt-6-luna`) | Focused, verifiable work: bounded discovery, extraction, deterministic transformations, known checks, and localized implementation or debugging with explicit requirements. | Usually Low. Consider Medium or High when the task is well specified but reasoning-intensive. Favor Sol or Astra when success depends on discovering hidden constraints, resolving ambiguity, or making cross-system design decisions. |
 | **Astra** (`gpt-6-astra`) | Stronger judgment: architecture, ambiguity, difficult diagnosis, conflicting evidence, complex synthesis, and work requiring continuing design decisions. | Low or Medium according to the reasoning demands below. Identify the concrete benefit over Sol; novelty, prestige, or automatic final approval is not a reason. |
 | **Terra** (`gpt-5.6-terra`) | Optional alternative for a recurring bounded workload with demonstrated reliability, latency, or efficiency advantages. | No prescribed role in this workflow. Use when requested or supported by observed results. |
 
-Read-only work can require substantial judgment; broad research and architectural investigation are not automatically Luna tasks. A Sol-authored plan also does not remove hidden integration constraints from a Luna implementation assignment. When judgment is the bottleneck, select a stronger model rather than merely increasing Luna's thinking.
+Route by the decisions the worker must make, not by whether the task is read-only or involves code. For Luna assignments, specify the scope, acceptance criteria, and independent verification. A settled plan supports a Luna handoff when the remaining decisions are local and its integration assumptions can be checked.
 
 ## Choose thinking
 
@@ -33,7 +33,7 @@ Choose effort prospectively from the assignment, independently of model tier. Us
 - **Low:** clear objectives, bounded decisions, ordinary implementation, investigation, review, and tool use. The normal Sol and Luna setting; also useful for focused Astra judgments.
 - **Medium:** significant comparison, competing hypotheses, interacting constraints, or substantial synthesis. Suitable for difficult Sol analysis and complex Astra planning or investigation.
 - **High:** deeply coupled reasoning or difficult failure-mode analysis where further deliberation is likely to improve the result. Use a task-specific reason rather than task size or importance alone.
-- **Higher supported settings:** use when explicitly requested or when task-specific evidence supports a benefit over High; check the selected model and session tool's supported values.
+- **Higher supported settings:** choose them when explicitly requested or when task-specific evidence supports a benefit over High. Verify what the selected model, provider, and session tool expose before dispatch.
 
 Higher effort can add latency, unnecessary checking, and complexity. Consequential work may need stronger verification rather than more thinking. Select model capability and effort together; there is no required ladder through Sol Medium before Astra.
 
@@ -71,4 +71,8 @@ Workers report capability limits to their parent rather than spawning a replacem
 
 ## Calibration
 
-These routes are workflow guidance, not universal capability rankings. Sol Low has worked well for this user; early practitioner reports favor Sol's follow-through, Luna's bounded-task efficiency, and Astra's judgment. Prefer observed task outcomes over blanket claims about model superiority. API token prices and subscription allowance consumption are different; infer neither remaining allowance nor exact usage multipliers from token prices.
+These routes are workflow guidance, not universal capability rankings. Sol Low was established with GPT‑5.6 Sol; carrying that default to GPT‑6 Sol and expanding Luna to bounded coding work are provisional choices.
+
+Calibrate using representative assignments: acceptance checks passed, missed constraints, rework, completion time, and usage where observable. Compare model and effort together. Published high-effort results motivate trials; they do not establish Low-effort reliability.
+
+Prefer observed task outcomes over blanket capability claims. Use provider-specific billing information for cost comparisons; distinguish API prices, subscription consumption, and remaining allowance.
