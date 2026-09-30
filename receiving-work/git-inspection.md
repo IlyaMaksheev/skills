@@ -2,17 +2,7 @@
 
 # Boundary
 
-This file grants no Git mutation authority. Use read-only operations such as:
-
-- `git status`;
-- `git log`;
-- `git show`;
-- `git diff`;
-- `git grep`;
-- `git blame`;
-- `git ls-files`;
-- `git branch --show-current`;
-- `git worktree list`.
+This file grants no Git mutation authority. Read-only examples: `git status`, `log`, `show`, `diff`, `grep`, `blame`, `ls-files`, `branch --show-current`, and `worktree list`.
 
 Do not stage, commit, checkout, switch, merge, rebase, reset, clean, create/delete branches or worktrees, or otherwise change repository state.
 
@@ -20,11 +10,4 @@ Keep inspection within the requested evidence. If the expected result requires m
 
 # Report contribution
 
-When relevant, append:
-
-```text
-Git inspection:
-- <finding with commit, path, or ref anchor>
-```
-
-Include only findings needed by the expected result.
+Report `Git inspection` findings needed by the expected result, with commit, path, or ref anchors.

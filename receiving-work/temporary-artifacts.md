@@ -4,13 +4,7 @@
 
 Write artifacts only within locations authorized by the assignment or direct human request. This module grants no implicit write permission. If operational files are necessary but no writable location is authorized, obtain permission before creating them.
 
-For disposable files, prefer an explicitly approved session-specific directory:
-
-```text
-/tmp/pi-workers/<session-name>/
-```
-
-Resolve the session name from the harness or assignment metadata and create its directory before use. Artifact permission does not authorize source/product edits, dependency changes, Git mutation, or task-status updates. Project artifacts require permission covering their location and purpose.
+For disposable files, prefer an explicitly approved `/tmp/pi-workers/<session-name>/`; resolve the name from the harness or assignment and create the directory before use. Artifact permission does not authorize source/product edits, dependency changes, Git mutation, or task-status updates. Project artifacts require permission covering their location and purpose.
 
 # Safety
 
@@ -27,11 +21,4 @@ Delete disposable helpers, stale PID files, and unneeded intermediate data when 
 
 # Report contribution
 
-Append only retained or requested artifacts:
-
-```text
-Artifacts:
-- <path>: <purpose>
-```
-
-Do not list deleted temporary files or emit `Artifacts: n/a`.
+Report `Artifacts` with retained or requested paths and their purpose; omit deleted temporary files and `Artifacts: n/a`.

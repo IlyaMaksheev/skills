@@ -2,7 +2,7 @@
 
 ## Reuse before spawn
 
-Prefer a reachable existing worker for related clarification, missing deliverables, or an extension of the same investigation. Use its retained context rather than asking a new worker to rediscover it. A completed assignment does not make the session unavailable.
+Reuse a reachable worker's retained context for clarification, missing deliverables, or related investigation. A completed assignment does not make the session unavailable.
 
 Use known live identity or `list_sessions` when reachability is unknown or names are ambiguous. This is a dispatch lookup, not permission to poll an active reporting worker. Spawn a new session for independent work, materially different scope, unavailable prior workers, or explicitly requested independent assessment.
 
@@ -25,19 +25,11 @@ Permissions and constraints:
 - <applicable inherited restrictions>
 ```
 
-Use a compact but sufficient brief. Include purpose, useful prior findings, ruled-out approaches, and unresolved questions when the child needs them for judgment. Pass selected file paths rather than entire workspaces or repeated file contents. Investigations need a bounded question, not a speculative sequence of searches. State output bounds when useful.
+Brief with the purpose, selected file paths, useful findings, ruled-out approaches, unresolved questions, and output bounds needed for judgment. Investigations need a bounded question, not a speculative search sequence or whole workspace.
 
-Read-only example:
+For read-only work, explicitly prohibit project, dependency, Git, task-state, and environment mutation. Allow temporary writes only when needed and permitted: supply an approved path, such as `/tmp/pi-workers/<session-name>/`, and require `../receiving-work/temporary-artifacts.md` (resolve the path before prompting). Otherwise omit the allowance.
 
-```text
-Permissions and constraints:
-- Read-only investigation. Do not modify project files, dependencies,
-  Git state, task state, or the environment.
-- Temporary operational artifacts may be written only under
-  /tmp/pi-workers/<session-name>/ and must follow temporary-artifacts.md.
-```
-
-Omit the temporary-write allowance when writes are unnecessary or forbidden. For code changes, identify allowed files or modules and the expected checks. Distinguish permission to edit from authorization to commit, integrate, install dependencies, or update task state.
+For code changes, specify allowed files/modules and checks. Editing permission does not authorize commits, integration, dependency installation, or task-state updates.
 
 Include optional fields only when they carry active instructions or authorization:
 
@@ -58,7 +50,7 @@ If the worker was created under an older or different contract, explicitly boots
 
 ## Spawn defaults
 
-Before creating a new session, load and follow [model-routing](../model-routing/SKILL.md) to select its model and thinking level. That skill owns these choices for every parent model; keep existing workers' configurations unchanged. Load Pi session tools before dispatch. Use:
+Before creating a new session, read [model-routing](../model-routing/SKILL.md) for its model and thinking level; keep existing workers' configurations unchanged. Load Pi session tools before dispatch. Use:
 
 - `mode: "fresh"`; use `fork` only when inherited history was explicitly requested;
 - `reportToSelf: true` for stable immediate-parent routing;
@@ -75,6 +67,6 @@ These execution defaults do not define authority. Explicit user instructions ove
 
 Use `placement: "neovim-tab"` unless explicitly directed otherwise. If that placement reports an invalid or unreachable server, preserve every other option and fall back to `niri-ghostty`. Use the tool error directly; do not probe for another Neovim server.
 
-Give concurrent assignments distinct write scopes. For parallel Git-delivery assignments, authorize isolated delivery through `Git lifecycle` and `Target branch`; either assign an existing worker-specific worktree or instruct the child to create one. Use `multi-worker-coordination.md` for ownership and integration coordination. A scoped commit request alone does not activate isolated delivery.
+For concurrent assignments, read `multi-worker-coordination.md` and give distinct write scopes. Parallel Git delivery requires `Git lifecycle` and `Target branch`, plus an assigned isolated worktree or instructions to create one. Scoped commits alone do not activate isolated delivery.
 
 Before dispatch, read `supervision.md`. Briefly disclose substantial delegation to the human in direct mode. Dispatch is complete when the child or follow-up is accepted, its scope is recorded, and responsibility for the assigned execution has passed to that child.

@@ -8,17 +8,4 @@ Research stays within the assignment's permissions and constraints. Return findi
 
 # Report contribution
 
-When web findings form part of the expected result, append:
-
-```text
-Research:
-- <concise finding>
-
-Sources:
-- <title or authority>: <URL>
-
-Gaps:
-- <only unresolved or weakly supported points>
-```
-
-Omit `Gaps` when the evidence has no material gap. Summarize evidence rather than reproducing source content.
+When web findings are part of the expected result, report concise `Research` findings and `Sources` with title/authority and URL. Include `Gaps` only for material unresolved or weakly supported evidence. Summarize rather than reproduce sources.

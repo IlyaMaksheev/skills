@@ -2,7 +2,7 @@
 
 # Context before plan
 
-Read the task-provided files and the smallest relevant project context before writing the plan. Respect file-read limits and forbidden paths. Do not duplicate context already supplied by files.
+Read task-provided files and the smallest relevant project context before planning, respecting read limits and forbidden paths. Reference supplied context rather than repeating it.
 
 After context is loaded, write a visible plan in the current session and execute it immediately. The plan should cover only applicable items:
 
@@ -18,11 +18,9 @@ Do not add Git, task-bank, or other absent workflows merely to fill out the plan
 
 Follow project conventions and existing contracts. Keep changes limited to the assigned scope. Prefer cohesive, reviewable changes over unrelated cleanup.
 
-Before editing, identify pre-existing changes in the assigned paths and preserve them separately from task changes. Unrelated staged, unstaged, or untracked state does not block implementation. Leave it in place, including unrelated changes appearing during execution; report only overlaps whose ownership cannot be established safely. When commits are authorized, load `git-commits.md` before editing for baseline and task-only commit handling.
+Before editing, distinguish existing changes from task changes. Preserve pre-existing and newly appearing unrelated state; it does not block implementation. Report only overlaps whose ownership cannot be established safely. When commits are authorized, read `git-commits.md` before editing for baseline and task-only commit handling.
 
-For complex code or script work, make the implementation decomposition visible before coding. Include target files, ordered chunks, verification after major chunks, and final checks or execution. Build in reviewable phases such as contracts/skeleton, configuration or CLI, schema/input audit, bounded feasibility, core logic, aggregation/reporting, and orchestration when those phases apply.
-
-Build non-trivial scripts and large features in reviewable phases. Implement one cohesive phase or function group at a time, prefer appropriately split modules over a monolith, and check each major phase before continuing.
+For complex code/scripts, show target files, ordered reviewable phases, per-phase verification, and final checks before coding. Applicable phases include contracts/skeleton, configuration/CLI, schema/input audit, bounded feasibility, core logic, aggregation/reporting, and orchestration. Implement one cohesive phase or function group at a time, split modules appropriately, and check each major phase before continuing.
 
 # Checks and completion
 
@@ -32,14 +30,4 @@ If a fix is feasible within scope, make it and rerun the relevant check. If no s
 
 # Report contribution
 
-When relevant, append a plaintext section such as:
-
-```text
-Checks:
-- <command or check>: passed | failed, with concise evidence
-
-Changes:
-- <important changed path or behavior>
-```
-
-Include only performed checks and material changes. Do not add empty sections or `n/a` values.
+Report `Checks` with performed commands/checks, pass/fail outcomes, and concise evidence; report `Changes` with material paths or behavior. Omit empty sections and `n/a` values.

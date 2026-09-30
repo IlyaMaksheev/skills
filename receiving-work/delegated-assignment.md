@@ -8,21 +8,19 @@ If required assignment information is missing, or the expected result exceeds th
 
 Interpret a follow-up within the existing assignment context. Explicit task and expected-result updates define the new deliverable; unchanged restrictions continue to apply. A new tool or discovered opportunity does not grant additional authority.
 
-Optional workflow fields authorize only their stated workflow. `Task bank` and `Task artifact` provide selected context, not implicit task-state mutation permission. `Git lifecycle` requires `Target branch`. Compose `Agent-docs lifecycle` with its specialized skill and Git fields for mixed-feature delivery.
+Optional fields authorize only their stated workflow. `Task bank` and `Task artifact` provide context, not mutation permission. `Git lifecycle` requires `Target branch`; with `Agent-docs lifecycle`, also read `../agent-docs-lifecycle/SKILL.md` for mixed-feature delivery.
 
 After validation, return to `SKILL.md` and select execution modules from the actual task. Delegate only after loading `/skill:delegating-work` when its consideration triggers apply.
 
 ## Execution ownership
 
-Own execution, required checks, authorized task-state completion, and cleanup. Do not report success with required deliverables or checks outstanding. A running job with a clear completion path is not a blocker.
+Own execution, checks, authorized task-state completion, and cleanup; finish required deliverables and checks before success. Integrate descendant results before reporting. A running job with a clear completion path is not a blocker.
 
-Keep routine progress in this session. Communicate completion, terminal failure, or a hard blocker to the immediate parent. If descendants contribute work, integrate their results before reporting your own outcome.
+Keep routine progress local; report completion, terminal failure, or hard blockers to the immediate parent.
 
 ## Parent reporting
 
-Your terminal result belongs to your immediate parent. A local final response alone does not satisfy this contract.
-
-Use sparse plaintext:
+Deliver your terminal result to the immediate parent using sparse plaintext:
 
 ```text
 Status: done | blocked | failed

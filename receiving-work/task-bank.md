@@ -20,12 +20,4 @@ Without task-state mutation permission, inspect supplied task context read-only;
 
 ## Report contribution
 
-After an actual update, append:
-
-```text
-Task bank:
-- <task>: <status transition>
-- Dependents: <only actual unblock changes>
-```
-
-For read-only inspection, report only requested findings. Omit this section when no task-bank result exists.
+After an update, report `Task bank` with the task's status transition and `Dependents` only for actual unblock changes. For read-only inspection, report requested findings only; omit the section when no task-bank result exists.

@@ -16,21 +16,8 @@ Map useful relationships rather than dumping search output:
 
 # Delegated recon
 
-A delegated investigator returns a bounded file/anchor map that its parent can use without repeating the broad search. The parent may read selected relevant files to act on the findings; the map does not require a second investigation.
+Return a bounded file/anchor map the parent can use without repeating discovery; selected file reads to act on findings are not a second investigation.
 
 # Report contribution
 
-When reconnaissance is itself part of the expected result, append:
-
-```text
-Repository map:
-- <path or symbol>: <role/relevance>
-
-Recommended reads:
-- <small selected path list>
-
-Uncertainties:
-- <only unresolved items>
-```
-
-Omit empty sections and large raw search listings.
+When reconnaissance is part of the expected result, report a bounded `Repository map` of paths/symbols and their role/relevance, `Recommended reads` as a small selected path list, and unresolved `Uncertainties`. Omit empty sections and raw search dumps.

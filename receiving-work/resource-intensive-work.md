@@ -22,12 +22,4 @@ Permit only one resource-heavy job across your local and delegated assignment at
 
 # Report contribution
 
-When relevant, append:
-
-```text
-Resources:
-- Bounds: <input/process/memory/runtime limits actually used>
-- Feasibility: <concise result>
-```
-
-Report only measured or intentionally enforced bounds; distinguish estimates from observations.
+Report relevant `Resources`: `Bounds` actually measured or intentionally enforced (input/process/memory/runtime) and the `Feasibility` result. Distinguish estimates from observations.

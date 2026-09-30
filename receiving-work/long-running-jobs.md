@@ -36,13 +36,4 @@ Confirm the terminal exit state and requested artifacts. Remove stale PID files 
 
 # Report contribution
 
-Append only relevant terminal information:
-
-```text
-Long job:
-- Result: <completed or failed outcome>
-- Runtime: <concise duration>
-- Artifacts: <only retained paths>
-```
-
-Do not report a nonterminal `running` status as the final result unless the task explicitly requested launch-only handoff.
+Report relevant `Long job` fields: terminal `Result`, concise `Runtime`, and retained `Artifacts`. A nonterminal `running` result is valid only for an explicitly requested launch-only handoff.

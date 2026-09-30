@@ -1,8 +1,6 @@
 # Task-bank orchestration
 
-## Activation
-
-Load only for requested graph-backed scheduling when the user or parent explicitly supplies a task-bank path, or `../receiving-work/workspace-artifacts.md` selects a relevant `TASK-BANK.md` for requested graph-backed implementation. A discovered bank does not activate this module for unrelated work. Prompt-derived work without a persisted bank uses `multi-worker-coordination.md` when coordination is needed.
+An incidental bank does not activate graph-backed work. Coordinate prompt-derived work without a persisted bank through `multi-worker-coordination.md` when needed.
 
 ## Scheduling
 
@@ -25,15 +23,9 @@ Add relevant selected artifacts under `Input files`; do not pass the workspace d
 
 ## Ownership
 
-The assigned session owns its authorized task-state completion under the bank's existing convention:
+Require the assigned session to follow `../receiving-work/task-bank.md` for authorized routine completion: acceptance requirements, checks, and requested artifacts must succeed, with unrelated and newer concurrent state preserved.
 
-- mark completion only after acceptance requirements, checks, and requested artifacts succeed;
-- keep unrelated rows and tasks unchanged;
-- unblock a dependent only when every recorded blocker is complete;
-- preserve newer concurrent state;
-- include the state update with feature history when Git lifecycle is active; under `Agent-docs lifecycle`, use a separate path-pure `agent-docs:` commit.
-
-The assigning session owns selection, scheduling, and compact orchestration state. It performs authorized persisted reservation, spawn-failure recovery, and hard-exception updates; the assigned session owns authorized routine completion updates. With nested scheduling, allocate distinct task scopes and state ownership so a parent and child do not both reserve or complete the same task.
+The assigning session owns selection, scheduling, compact orchestration state, and authorized reservation, spawn-failure recovery, and hard-exception updates. For nested scheduling, allocate distinct task scopes and state ownership so parent and child do not both reserve or complete the same task.
 
 ## Completion
 

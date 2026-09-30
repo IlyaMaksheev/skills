@@ -8,7 +8,7 @@ Resolve the worker's session name from the harness or explicit assignment metada
 
 Load `git-commits.md` before implementation; it owns protected-state handling and task-only commits. Keep task changes cohesive. When task-bank handling is active, include its required update with the feature history.
 
-When `Agent-docs lifecycle` is active, the supplied target is the mixed feature branch. Follow `/skill:agent-docs-lifecycle`: product commits contain persistent project paths, stable `.agent-docs/**` updates use separate path-pure `agent-docs:` commits, and a worker with no agent-doc change creates no such commit. Clean delivery to the mainline target remains outside an individual worker's routine integration.
+When `Agent-docs lifecycle` is active, read `/skill:agent-docs-lifecycle` for commit partitioning; the supplied target is the mixed feature branch. Clean mainline delivery remains outside an individual worker's routine integration.
 
 # Environment reuse
 
@@ -69,14 +69,4 @@ Run cleanup from outside the worktree being removed.
 
 # Report contribution
 
-Append only applicable plaintext details:
-
-```text
-Git:
-- Commit: <hash>
-- Target: <branch>
-- Integration: fast-forward complete | pending, with specific obstacle
-- Cleanup: <worktree/branch result>
-```
-
-Add conflict or retry details only when they occurred. Never emit Git fields when this file was not loaded.
+Report applicable `Git` fields: `Commit` hash, `Target` branch, `Integration` (fast-forward complete or pending with the specific obstacle), and worktree/branch `Cleanup`. Include conflict/retry details only when they occurred; never emit these fields when this module was not loaded.

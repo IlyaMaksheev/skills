@@ -1,8 +1,8 @@
 # Workspace artifacts
 
-## Activation
+## Input boundary
 
-Load only when the parent supplies `Artifact workspace: <path>` or explicitly requests bounded planning-artifact discovery. Spawn `cwd`, repository presence, and incidental files do not activate this module. A readable empty workspace or one without recognized artifacts is valid: use the assignment and other explicit inputs, and do not activate artifact-backed workflows.
+Spawn `cwd`, repository presence, and incidental files do not substitute for an explicit artifact workspace or requested bounded discovery. A readable empty workspace or one without recognized artifacts is valid: use other assignment inputs without activating artifact-backed workflows.
 
 ## Discovery
 
@@ -43,4 +43,4 @@ Validate only relationships needed by the assignment: selected paths exist, sele
 
 ## Worker projection
 
-Pass the smallest sufficient set. For a bank-backed implementation assignment, normally provide the selected task, relevant `SPEC.md`, optional `IMPLEMENTATION-CONTEXT.md`, matching task plan when present, and structured task-bank fields. Add a specific resolved decision only when its detail is necessary. Never pass the whole workspace, every task, every plan, or every decision by default.
+Pass only task-relevant inputs. For bank-backed implementation, normally include the selected task, relevant `SPEC.md`, optional `IMPLEMENTATION-CONTEXT.md`, matching task plan when present, and structured task-bank fields. Add a specific resolved decision only when its detail is necessary; never pass the whole workspace or all tasks, plans, or decisions by default.

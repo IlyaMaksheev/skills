@@ -2,7 +2,7 @@
 
 ## Partitioning
 
-Split work into bounded, independently deliverable assignments. Give each mutable scope a single owner. Prefer vertical tasks with non-overlapping writes. Give parallel Git-delivery assignments distinct branches and isolated worktrees, created by the parent or the assigned worker, and reserve target-branch updates for serialized integration. Existing unrelated changes in the target worktree are protected state, not a dispatch blocker; `../receiving-work/git-lifecycle.md` owns integration safety.
+Split into bounded, independently deliverable assignments with one owner per mutable scope; prefer vertical tasks with non-overlapping writes. Parallel Git delivery needs distinct branches and isolated worktrees, created by parent or worker, with serialized target updates. Unrelated target-worktree changes are protected state, not a dispatch blocker; `../receiving-work/git-lifecycle.md` owns integration safety.
 
 If assignments explicitly share a working directory, partition edits and serialize index mutation and commits. Disjoint files alone do not isolate a shared Git index. Pass these constraints in the briefs rather than relying on workers to discover each other.
 
@@ -17,9 +17,7 @@ Use `briefing-and-dispatch.md` for every assignment. Keep names, scopes, and exp
 
 ## Supervision
 
-Follow `supervision.md` for reports, non-overlapping local work, waiting, reuse, and result handling. Keep only compact assignment and dependency state here.
-
-When one result changes another worker's assumptions, send that worker the smallest necessary update. Load `worker-blockers.md` for hard blockers. Use `task-bank-orchestration.md` only when requested work has a relevant persisted scheduling graph.
+Follow `supervision.md` for report handling, waiting, reuse, and assumption updates; keep compact assignment/dependency state. Read `worker-blockers.md` for hard blockers. For requested graph-backed scheduling with an explicitly supplied bank or one selected through `../receiving-work/workspace-artifacts.md`, read `task-bank-orchestration.md`.
 
 ## Completion
 

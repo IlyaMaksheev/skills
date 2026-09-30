@@ -16,15 +16,11 @@ Treat a child's completed report as finished delegated work. Compare it with the
 - Missing answer, artifact, or requested evidence: send a focused follow-up to the responsible child.
 - Concrete contradiction, hard blocker, or failure: load `worker-blockers.md` and resolve within your authority.
 
-Do not automatically repeat searches, re-derive findings, or rerun checks. Verification happens when explicitly requested, required by an applicable workflow, or needed to resolve a concrete problem. Required checks and reviews belong in the responsible session's assignment and may themselves be delegated.
-
-Reading a selected file to use a finding is not an instruction to repeat repository exploration. Preserve the useful conclusion and evidence references rather than importing the child's transcript.
+Verify only when explicitly requested, required by an applicable workflow, or needed to resolve a concrete problem; otherwise use the result without repeating searches, derivations, or checks. Required checks/reviews belong to the responsible session and may be delegated. Read selected evidence to act on findings; retain conclusions and anchors, not the child's transcript.
 
 ## Related follow-ups
 
-Prefer the original reachable worker for clarification, omissions, and related investigation. Load `briefing-and-dispatch.md` before assigning follow-up work. A `done` report ends an assignment, not the possibility of using that worker again.
-
-Send the smallest necessary correction when one child's result changes another child's assumptions. Do not use a new worker merely to ask what an existing worker found.
+Read `briefing-and-dispatch.md` before follow-ups; reuse the original reachable worker for clarification, omissions, or related investigation. A `done` report ends the assignment, not worker availability. Send affected workers the smallest necessary assumption update.
 
 ## Completion
 

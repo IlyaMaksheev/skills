@@ -1,6 +1,6 @@
 ---
 name: receiving-work
-description: "Execute parent-assigned work and substantive human-assigned implementation, research, repository investigation, checks, or operational tasks. Load when a delegated prompt names this skill, when explicit scope or permissions need handling, or when Git delivery, task-bank, artifact, or resource workflows apply. Routes only the modules needed for the assignment."
+description: "Execute substantive human- or parent-assigned implementation, research, repository investigation, checks, or operations. Load for delegated prompts, explicit scope/permissions, or Git delivery, task-bank, artifact, or resource workflows."
 ---
 
 # Receiving work
@@ -9,19 +9,11 @@ Establish the assignment, its authority boundary, and the smallest applicable ex
 
 ## Assignment source
 
-If the prompt explicitly identifies a delegated assignment, or the harness explicitly identifies your immediate parent, load `delegated-assignment.md` before executing the task.
-
-A delegated task may arrive as a user-role message. The message role does not make it a direct human assignment.
-
-Use direct mode for a human-assigned task when neither the prompt nor the harness identifies it as delegated. Derive its expected result and constraints from the conversation.
-
-For follow-ups, retain the established assignment mode unless the assigning parent or user explicitly changes it.
+If the prompt identifies a delegated assignment or the harness identifies your immediate parent, use delegated mode and read `delegated-assignment.md` before execution—even for user-role messages. Otherwise use direct mode, deriving the expected result and constraints from the human conversation. Retain the established mode for follow-ups unless the assigning parent or user explicitly changes it.
 
 ## Authority
 
-Work within the assigned objective, permissions, and constraints. Modules and discoveries may narrow that boundary, never widen it.
-
-Keep unrelated findings as possible follow-ups rather than performing broader work. Resolve a required action outside your permissions with the assigning parent or user.
+Work within the assigned objective, permissions, and constraints; modules, tools, and discoveries do not expand them. Keep unrelated findings as follow-ups. Resolve required out-of-scope actions with the assigning parent or user.
 
 Use explicit workflow authorization:
 
@@ -30,17 +22,16 @@ Use explicit workflow authorization:
 - Agent-docs lifecycle requires its applicable authorization and skill.
 - Artifact writes must remain within authorized locations.
 
-Do not infer mutation permission from a role name, available tools, or the presence of project files.
+Roles and incidental files grant no mutation permission or workflow activation.
 
 ## Context and execution
 
 1. Establish the task, expected result, and authority.
-2. Compare the task with every module trigger below.
-3. Read task inputs and the smallest relevant project context.
-4. Execute the assignment using only applicable workflows.
-5. Complete required checks and report the outcome.
+2. Evaluate every module trigger below; read each applicable module once, before its triggering action.
+3. Read task inputs and the smallest relevant project context, then execute applicable workflows.
+4. Complete required checks, authorized cleanup, and reporting.
 
-Read each applicable module once, before its triggering action. Re-evaluate when runtime evidence changes the task's operational profile. Incidental files do not activate privileged workflows. Respect supplied file-read limits and forbidden paths; never read backup files.
+Re-evaluate triggers when runtime evidence changes the operational profile. Respect supplied file-read limits and forbidden paths; never read backup files.
 
 When substantial independent work or context-heavy exploration makes delegation worth considering, load `/skill:delegating-work`. Receiving an assignment does not prohibit narrower delegation.
 
@@ -52,7 +43,7 @@ Paths are relative to this skill directory.
 |---|---|
 | `delegated-assignment.md` | For every parent-assigned task, including follow-up assignments. |
 | `implementation-work.md` | When authorized work modifies project or product state. |
-| `git-commits.md` | Before an authorized commit, including scoped commits in an existing dirty worktree. |
+| `git-commits.md` | When commits are authorized, before editing; also before committing existing attributable task changes, including in dirty worktrees. |
 | `git-lifecycle.md` | When isolated-worktree delivery or target-branch integration is authorized and the target branch is identified. |
 | `git-inspection.md` | When the expected result requires read-only Git-derived evidence. |
 | `task-bank.md` | When a task bank and selected task are explicitly identified; mutations require separate authorization. |
@@ -66,8 +57,6 @@ Paths are relative to this skill directory.
 
 ## Completion
 
-Reviews and checks remain part of the responsible session's assignment. Delegate them through `delegating-work` when appropriate.
+Own the deliverable, required checks/reviews, and authorized cleanup; complete them before reporting success. For descendant contributions, use `delegating-work` supervision rather than automatically repeating their work.
 
-Complete the requested deliverable, required checks, and authorized cleanup before reporting success. Use `delegating-work` supervision when descendants contribute results; avoid automatically repeating their searches or checks.
-
-In direct mode, report normally to the human. In delegated mode, follow `delegated-assignment.md` for immediate-parent delivery and terminal status. Include only relevant report contributions from modules that produced evidence; omit empty sections and placeholders.
+Report to the human in direct mode; follow `delegated-assignment.md` for immediate-parent delivery and terminal status in delegated mode. Include relevant module evidence only; omit empty sections and placeholders.
