@@ -64,20 +64,9 @@ Paths are relative to this skill directory.
 | `resource-intensive-work.md` | When substantial CPU, RAM, I/O, concurrency, or runtime is expected or observed. |
 | `reporting-recovery.md` | Only after immediate-parent report delivery fails. |
 
-## Specialized skills
-
-Compose applicable skills with these modules:
-
-- `web-research` with external discovery;
-- `test-driven-development` when the task or project requires test-first work;
-- `script-performance-design` before resource-intensive script design;
-- `script-performance-refinement` after implementation and before full-scale execution;
-- `agent-docs-lifecycle` before creating or modifying `.agent-docs/**`, and with Git lifecycle when its field is supplied;
-- `code-review` when requested or required by the applicable workflow.
+## Completion
 
 Reviews and checks remain part of the responsible session's assignment. Delegate them through `delegating-work` when appropriate.
-
-## Completion
 
 Complete the requested deliverable, required checks, and authorized cleanup before reporting success. Use `delegating-work` supervision when descendants contribute results; avoid automatically repeating their searches or checks.
 

@@ -13,7 +13,7 @@ Define useful bounds in the child prompt when known:
 
 Run one resource-heavy job across your local and delegated assignment at a time unless the controlling instruction explicitly approves parallel resource use. Pass shared budgets and concurrency restrictions down the assignment tree; nesting does not multiply resources. Keep implementation and monitoring with the responsible worker.
 
-Ask the responsible worker to load `../receiving-work/resource-intensive-work.md` (resolve the path against this module's directory before putting it in a prompt). When the task matches their descriptions, direct it to use `script-performance-design` before implementation and `script-performance-refinement` after implementation and before full-scale execution.
+Ask the responsible worker to load `../receiving-work/resource-intensive-work.md` (resolve the path against this module's directory before putting it in a prompt).
 
 If the workload is also long-running, the worker loads the receiving skill's long-job guidance. It may consider narrower delegated monitoring through `delegating-work` while retaining responsibility for the job's result.
 
