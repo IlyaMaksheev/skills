@@ -22,8 +22,20 @@ Verify only when explicitly requested, required by an applicable workflow, or ne
 
 Read `briefing-and-dispatch.md` before follow-ups; reuse the original reachable worker for clarification, omissions, or related investigation. A `done` report ends the assignment, not worker availability. Send affected workers the smallest necessary assumption update.
 
+## Session cleanup
+
+Track every child created for the assignment by exact session ID. After accepting a child's terminal report and completing required integration and checks, call `remove_session` unless a concrete pending follow-up requires its context. The parent owns child-session removal; Git worktree cleanup is a separate obligation.
+
+Before final delivery or acknowledging task closure, account for every child:
+
+- **Removed:** `remove_session` confirmed `status: "complete"`.
+- **Retained:** name the pending follow-up requiring its context.
+- **Blocked:** report why cleanup could not complete, including partial or rejected tool results.
+
+Use authored reports to establish task outcomes; settlement alone does not establish acceptance or readiness for removal.
+
 ## Completion
 
-Your task may finish when required child assignments are terminal, their results have been integrated or their unresolved outcomes reported, and your own expected result is accounted for. Children own their authorized checks, task completion, and cleanup; retain parent-side synthesis and any explicitly assigned scheduling duties.
+Your task may finish when required child assignments are terminal, their results have been integrated or their unresolved outcomes reported, every child session is accounted for under Session cleanup, and your own expected result is accounted for. Children own their authorized checks and task artifacts; retain parent-side synthesis, session cleanup, and any explicitly assigned scheduling duties.
 
 Report through your existing direct or delegated contract. When useful, include a compact `Delegation` section naming the result used from each child; do not reproduce full child reports.
