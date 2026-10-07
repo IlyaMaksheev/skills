@@ -15,7 +15,7 @@ After a fresh map reread, begin only when:
 - every current resolved decision has the required context analysis;
 - every `Route context` row points to a current resolved source, stays inside its claim boundary, and contains a reusable conclusion with a bounded applicability scope;
 - `Not yet specified` is empty (`None.` is acceptable);
-- every current resolved prototype decision meets `FORMAT.md`'s evaluated-evidence or preflight-exemption requirement;
+- every current resolved decision relying on prototype evaluation meets `FORMAT.md`'s evaluated-evidence or preflight-exemption requirement, regardless of bank type;
 - every material manual prerequisite has been handled;
 - the destination and its invariants remain valid.
 
@@ -32,7 +32,7 @@ Report every failing condition and return to the applicable workflow. A passing 
 7. Attempt falsification through every lens:
    - **Coverage:** Find material destination concerns absent from the invariants, decisions, and fog.
    - **Compatibility:** Compare definitions, populations, time boundaries, contracts, artifact and representation identities, versions, and execution models.
-   - **Claims and evidence:** Keep each decision and gist inside its claim boundary. Distinguish mechanical, bounded, population, and semantic validity where applicable; verify that support is current and permitted. Artifact presence is not execution evidence. Missing evidence is unproven and becomes a finding when the destination requires that proof.
+   - **Claims and evidence:** Verify that every resolution meets `FORMAT.md`'s completion criterion, rather than merely ending an investigative phase. Keep each decision and gist inside its claim boundary. Distinguish mechanical, bounded, population, and semantic validity where applicable; verify that support is current and permitted. Artifact presence is not execution evidence. Missing evidence is unproven and becomes a finding when the destination requires that proof.
    - **Propagation:** Trace transitive effects through permanent dependencies and successor chains. Check semantic reliance as well as declared edges.
    - **Context continuity:** Find reusable conclusions omitted from `Route context`, local detail promoted without need, stale or duplicate entries, materially applicable context absent from downstream context analysis, and downstream answers that silently contradict promoted context.
    - **Composition:** Assemble one end-to-end route, including material prerequisites, handoffs, resources, execution limits, stopping behavior, manual ownership, recovery or resume behavior, and intermediate artifact identities.
@@ -45,11 +45,11 @@ Report every failing condition and return to the applicable workflow. A passing 
 
 A material finding fails the current audit.
 
-1. Route a precise finding into an ordinary decision or review path.
-2. For a material problem whose resolution question is still imprecise, add actionable fog stating the contradiction or omission, its destination impact, and what must become clearer.
+1. Attach further work to an existing unresolved decision when it serves the same question. A challenged accepted answer follows **Revalidate and propagate**; genuinely distinct questions follow `FORMAT.md`'s creation approval gate before any new file or bank row.
+2. Retain unapproved precise proposals under `Not yet specified`, labelled as awaiting creation approval. For imprecise problems, add actionable fog stating the contradiction or omission, its destination impact, and what must become clearer.
 3. Add an omitted invariant directly only when the current destination already entails it; route a changed destination meaning into brainstorming.
 4. Return closure to `pending`, keep the map `active`, and apply the complete finding set through **Coherent mutations** in `WORKFLOWS.md`.
-5. Commit when safe and stop. A later fresh invocation resolves the new work and audits the repaired route.
+5. Commit the findings and pending or approved route update when safe and stop. A later invocation continues the investigation or requests outstanding creation approval; a fresh audit evaluates the repaired route.
 
 ### No material finding
 

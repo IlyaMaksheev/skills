@@ -52,7 +52,7 @@ Present the artifact for the human to drive. A delegated builder returns a runna
 
 A **human verdict** is required even when the result seems obvious. The human may accept, combine, reject, request revisions, change the investigation method, or leave the question unresolved. Use `/skill:brainstorm` when discussion of the concrete artifact is needed. Iterate on revisions and verify affected walkthroughs or variants before presenting again. Until the human settles the question, keep the result pending; rejection resolves it only when that rejection itself answers the question.
 
-After an explicit verdict, record the answer and what it does and does not establish in `RESULT.md`, then preserve the stable update through `/skill:agent-docs-lifecycle`. Under Wayfinder, the parent records the route-facing resolution and claim boundary in the decision file, links `RESULT.md` as evidence instead of copying it, and routes remaining uncertainty into decisions or fog through Wayfinder's normal workflow. The worker never marks the decision resolved.
+After an explicit verdict, record the answer and what it does and does not establish in `RESULT.md`, then preserve the stable update through `/skill:agent-docs-lifecycle`. Under Wayfinder, return to **Pursue the answer** in [Wayfinder's workflow](../wayfinder/WORKFLOWS.md): the parent records progress or a supported route-facing resolution in the existing decision, linking `RESULT.md` instead of copying it. Apply [Wayfinder's format](../wayfinder/FORMAT.md) completion and creation-approval rules to remaining uncertainty. The worker never marks the decision resolved.
 
 Prototyping stops at the answer and its evidence; production changes require a separate authorized implementation task.
 

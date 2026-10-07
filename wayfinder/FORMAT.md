@@ -46,7 +46,7 @@ Closure audit: pending
 
 ## Not yet specified
 
-<In-scope fog that cannot yet be expressed as a precise question, or `None`.>
+<In-scope fog and precise proposals awaiting creation approval, or `None`.>
 
 ## Out of scope
 
@@ -80,13 +80,16 @@ Allowed types:
 - `research` (AFK): a factual question resolved through investigation.
 - `prototype` (HITL): a human choice that needs a runnable or visual artifact before it can be settled.
 
+Type records the primary method and expected human interaction, not the boundary of the investigation. Combine research, discussion, and approved diagnostics or prototyping when they serve the same effective question. Update the type when the primary method changes, preserving the decision's ID, claim, and accumulated evidence.
+
 Allowed status forms:
 
 - `blocked` — at least one permanent dependency is not a current `resolved` decision
 - `open` — every dependency is current and the decision is available to claim
 - `claimed` — a session owns the decision
 - `resolved` — the resolution and claim boundary are current and accepted
-- `needs-review → NNN` — the resolution is quarantined while the linked higher-ID decision controls its review; it has no accepted current answer or `Decisions so far` gist
+- `needs-review` — the resolution is quarantined while review creation awaits user approval recorded under `Not yet specified`; it has no accepted current answer, gist, or sourced route context
+- `needs-review → NNN` — the resolution is quarantined while the linked higher-ID decision controls its review; it has no accepted current answer, gist, or sourced route context
 - `out-of-scope` — the decision sits beyond the destination
 - `superseded → NNN` — the immutable historical resolution was replaced by the linked successor
 
@@ -107,8 +110,16 @@ The bank is the sole authority for selection, accepted state, dependency travers
 
 ## Question
 
-<One precise question sized for one agent session.>
+<One precise problem question; investigative phases remain within this ticket.>
 ```
+
+### Pursue the answer
+
+A decision owns its effective question, not one investigation method or phase. Carry that question through investigation, diagnostic planning, approved execution, interpretation, and revisions. A finding that identifies the next necessary step is progress, not completion. Continue relevant authorized investigation until evidence answers the question; when further work needs permission, request it in the current conversation and retain the decision and its ownership while awaiting approval.
+
+Resolve when evidence answers the effective question within a defensible boundary. A worker report, missing telemetry, non-reproduction, or a proposed next check alone does not meet that criterion. When blocked, record the concrete blocker, remaining uncertainty, and recommended next action rather than resolving the decision. The user may explicitly accept a narrower answer or defer unresolved work; record the agreed boundary and retain destination-relevant uncertainty on the map. Deferral alone establishes no factual answer.
+
+Before resolution, maintain `## Progress` with findings, checks and observations actually performed, remaining hypotheses, permission requests, and the next action. Link retained evidence and keep the bank row unresolved; progress may be committed without manufacturing a final resolution. Continue in the same decision-owned artifact directory.
 
 When resolved, append:
 
@@ -134,15 +145,15 @@ When resolved, append:
 
 `Context analysis` records only previous decisions materially applied during preflight; it is not a transcript or a copy of `Route context`. Contextual discovery alone creates no dependency. Add the source to permanent `Depends on` when changing its conclusion could invalidate or materially alter the current answer; the edge carries continuing validity and propagation.
 
-The claim boundary states how far the answer may safely be used. Express it in structured plain language rather than one validity label. Use `Assumes` for external or domain conditions and to explain the semantic meaning of dependency assumptions. Route every material item under `Leaves open` into a new decision or `Not yet specified` in the same coherent update; move excluded limitations to `Out of scope`. A `Decisions so far` gist and each promoted `Route context` conclusion must fit entirely inside this boundary.
+The claim boundary states how far the answer may safely be used. Express it in structured plain language rather than one validity label. Use `Assumes` for external or domain conditions and to explain the semantic meaning of dependency assumptions. Remaining work needed to answer the effective question belongs in `Progress` until the completion criterion holds. At resolution, expose every material `Leaves open` item on the map: use an approved distinct decision or `Not yet specified`, labelling precise proposals as awaiting creation approval; move excluded limitations to `Out of scope`. A `Decisions so far` gist and each promoted `Route context` conclusion must fit entirely inside this boundary.
 
 Evidence remains optional when the reasoning is self-contained. Put the answer's important factual basis in the resolution; research decisions normally cite the sources or artifacts they inspected.
 
-A resolved `prototype` decision links its evaluated `RESULT.md` under `## Evidence`. The result records the human verdict, runtime checks, and fidelity limitations; the decision owns the route-facing resolution and claim boundary, linking rather than copying artifact details. Material limitations must fit that boundary or enter `Leaves open`. A pending verdict cannot support resolution. Exception: when preflight derives the answer entirely from accepted prior decisions, link those decisions and state why a prototype became unnecessary.
+A decision whose answer relies on prototype evaluation links its evaluated `RESULT.md` under `## Evidence`, regardless of its primary bank type. The result records the human verdict, runtime checks, and fidelity limitations; the decision owns the route-facing resolution and claim boundary, linking rather than copying artifact details. Material limitations must fit that boundary or enter `Leaves open`. A pending verdict cannot support resolution. Exception: when preflight derives the answer entirely from accepted prior decisions, link those decisions and state why a prototype became unnecessary.
 
 Preserve evaluated prototype evidence after resolution alongside the immutable decision. Later revisions belong to the successor decision's directory so historical verdicts remain tied to the artifact evaluated.
 
-Decision files contain no type, status, dependency, claim, or successor metadata. After resolution, preserve their substantive contents. Later facts revalidate them through new decisions rather than rewriting accepted history.
+Decision files contain no type, status, dependency, claim, or successor metadata. After resolution, preserve their substantive contents. Later facts revalidate them through approved review paths rather than rewriting accepted history.
 
 ## Links and identity
 
@@ -169,14 +180,22 @@ Claim closure similarly by exact-editing `Closure audit: pending` to `Closure au
 
 After initial creation, mutate `WAYFINDER.md` with targeted exact-text edits. Keep cooperative claim state in the map.
 
+## Decision creation approval
+
+Propose a new decision only for a distinct question that deserves independent settlement, not merely the next step toward answering the current question. Explain its question, scope, and why it cannot reasonably remain within an existing unresolved decision. A method change, missing evidence, non-reproduction, or need for human input or execution permission does not by itself justify splitting.
+
+Obtain explicit user approval for the proposed question or a specifically listed batch before allocating IDs, creating decision files, or adding bank rows. This gate applies to initial charting, follow-ups, reviews, successors, audit findings, and migration additions. Approval to investigate, continue, execute, or commit is not approval to create decisions; workflow instructions and standing planning/Git authority do not supply it.
+
+While approval is pending, continue useful authorized work on the current question and retain same-question next steps in its `Progress`. Keep distinct precise proposals under `Not yet specified`, labelled `Awaiting creation approval` with their question, rationale, and affected decisions; keep imprecise uncertainty as fog. Neither form permits closure. A refusal leaves the proposal uncreated; ask whether to retain it, defer it, or explicitly move it out of scope.
+
 ## Creation safety and numbering
 
 - When the target `WAYFINDER.md` already exists, preserve it and ask whether to work it or choose another feature name.
 - Preflight the map and every initial decision path. A collision pauses creation before any write.
 - Allocate each ID once, monotonically above the highest bank ID, including terminal rows.
-- Create new decision files before adding their bank rows. Add each row with its complete `Depends on` value and correct initial `blocked` or `open` status.
+- Create approved new decision files before adding their bank rows. Add each row with its complete `Depends on` value and correct initial `blocked` or `open` status.
 - A substantive revalidation decision links the prior decision and changed evidence in its question and receives a higher ID.
-- Explicit work-mode invocation authorizes state updates to that map and its decisions, not replacement of unrelated artifacts.
+- Explicit work-mode invocation authorizes updates to existing map and decision state, subject to the creation approval gate and preservation of unrelated artifacts.
 
 A map requires explicit migration before work when the user identifies it as old logic or built-in legacy detection finds a missing decision bank or any of these structures: `Destination invariants`, `Closure audit`, `Depends on`, current status forms, or claim boundaries on accepted decisions. Follow [MIGRATION.md](./MIGRATION.md); it owns the normalization procedure and the sole exception to substantive resolved-file immutability.
 
@@ -185,7 +204,7 @@ A map requires explicit migration before work when the user identifies it as old
 When Git is configured, follow `/skill:agent-docs-lifecycle`: establish the mixed feature branch before the first artifact write, keep stable artifact updates in path-pure `agent-docs:` commits, and preserve unrelated changes.
 
 - commit the initial map and decisions after charting;
-- commit each completed resolution together with its coherent map, fog, dependency, propagation, and successor updates;
+- commit stable investigation progress while unresolved, and each completed resolution together with its coherent map, fog, dependency, propagation, and approved successor updates;
 - commit an approved migration;
 - commit a failed audit together with the decisions or fog it surfaced;
 - commit a passed audit together with the readiness transition;
