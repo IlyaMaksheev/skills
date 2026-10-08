@@ -72,7 +72,7 @@ The claimed decision's session is the prototype session, not a dispatcher. Keep 
 
 1. Carry the preflight's effective question, applicable prior conclusions, constraints, and decision-owned artifact directory into `/skill:prototype`. Follow its approval gate before building; charting a `prototype` row alone is not approval to build it.
 2. Build, verify, and present the artifact through that skill. Keep the claim while the human evaluates it. Revisions and further observations answering the same question reuse the directory and claim; propose a materially different question through `FORMAT.md`'s creation gate.
-3. Use `/skill:brainstorm` when discussion of the artifact is needed. Record the human's explicit verdict in `RESULT.md`; revisions or an undecided response keep evaluation pending. A verdict on an intermediate artifact may still leave the effective question unanswered.
+3. Use `/skill:brainstorm` when discussion of the artifact is needed. Keep evaluation and revisions in the conversation, following `/skill:prototype`'s capture-and-evaluate sequence. Create the finalized `RESULT.md` after the human settles the question. A verdict on an intermediate artifact may still leave the effective question unanswered.
 4. Return to **Pursue the answer** and assess the verdict against the effective question before refresh or resolution. Apply `FORMAT.md`'s prototype evidence requirements; if refreshed context invalidates an evaluated answer, resume evaluation and obtain a revised verdict before acceptance.
 
 ## Refresh before acceptance

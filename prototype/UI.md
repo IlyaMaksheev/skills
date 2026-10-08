@@ -95,7 +95,7 @@ Put the switcher in a single shared component inside the prototype directory so 
 
 ### 5. Verify and hand it over
 
-Load every variant and verify switching by controls, keyboard, and URL, including wraparound, reload stability, and the focused-input exception. Record actual checks or unavailable checks in `RESULT.md` as described in [SKILL.md](SKILL.md). This is runtime verification, not a maintained test suite.
+Load every variant and verify switching by controls, keyboard, and URL, including wraparound, reload stability, and the focused-input exception. Present actual checks or unavailable checks in the conversation; include them in the finalized result after evaluation, following [SKILL.md](SKILL.md). This is runtime verification, not a maintained test suite.
 
 Surface the URL (and the `?variant=` keys). The user will flip through whenever they get to it. The interesting feedback is usually **"I want the header from B with the sidebar from C"**, which is the actual design they want.
 

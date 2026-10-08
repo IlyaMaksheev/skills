@@ -4,7 +4,7 @@
 
 For a new map, derive a concise lowercase kebab-case feature name, state `./.agent-docs/<feature-name>/`, and inspect it before writing. Reuse an existing directory only when it clearly represents the same effort.
 
-Keep map and decision files directly in that directory. Prototype evidence is the nested exception: `prototypes/decision-NNN-<slug>/` holds the runnable files and `RESULT.md` for the matching decision. Follow `/skill:prototype` for construction, environment reuse, and artifact preservation.
+Keep map and decision files directly in that directory. Prototype evidence is the nested exception: `prototypes/decision-NNN-<slug>/` holds the runnable files and, after human evaluation is complete, the finalized `RESULT.md` for the matching decision. Follow `/skill:prototype` for construction, environment reuse, and artifact preservation.
 
 ## Map
 
@@ -149,7 +149,7 @@ The claim boundary states how far the answer may safely be used. Express it in s
 
 Evidence remains optional when the reasoning is self-contained. Put the answer's important factual basis in the resolution; research decisions normally cite the sources or artifacts they inspected.
 
-A decision whose answer relies on prototype evaluation links its evaluated `RESULT.md` under `## Evidence`, regardless of its primary bank type. The result records the human verdict, runtime checks, and fidelity limitations; the decision owns the route-facing resolution and claim boundary, linking rather than copying artifact details. Material limitations must fit that boundary or enter `Leaves open`. A pending verdict cannot support resolution. Exception: when preflight derives the answer entirely from accepted prior decisions, link those decisions and state why a prototype became unnecessary.
+A decision whose answer relies on prototype evaluation links its evaluated `RESULT.md` under `## Evidence`, regardless of its primary bank type. The result records the human verdict, runtime checks, and fidelity limitations; the decision owns the route-facing resolution and claim boundary, linking rather than copying artifact details. Material limitations must fit that boundary or enter `Leaves open`. Follow `/skill:prototype`'s final-result creation gate; link the result only once evaluation is complete. Exception: when preflight derives the answer entirely from accepted prior decisions, link those decisions and state why a prototype became unnecessary.
 
 Preserve evaluated prototype evidence after resolution alongside the immutable decision. Later revisions belong to the successor decision's directory so historical verdicts remain tied to the artifact evaluated.
 

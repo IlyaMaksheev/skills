@@ -51,7 +51,7 @@ Keep it beautiful but restrained: clean typography, generous spacing, one accent
 
 ### 4. Verify and hand it over
 
-Open the file and exercise every guided walkthrough, including its reset and state updates, plus the free-play controls. This is runtime verification, not a maintained test suite. Record actual checks or unavailable checks in `RESULT.md` as described in [SKILL.md](SKILL.md).
+Open the file and exercise every guided walkthrough, including its reset and state updates, plus the free-play controls. This is runtime verification, not a maintained test suite. Present actual checks or unavailable checks in the conversation; include them in the finalized result after evaluation, following [SKILL.md](SKILL.md).
 
 Send them the file, or open it for them. They'll click through the walkthroughs and free-play whenever they get to it; the interesting moments are when they say "wait, that shouldn't be possible" or "huh, I assumed X would be different"; those are the bugs in the _idea_, which is the whole point. If they want new actions or a new scenario, add them. Prototypes evolve.
 

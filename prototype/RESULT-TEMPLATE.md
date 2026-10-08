@@ -1,6 +1,6 @@
 # Prototype result template
 
-Use this shape for the artifact's `RESULT.md`. Keep entries bounded to the question and evidence; omit empty Adopt or Reject sections. Links are relative to the result file. Record commands with the working directory and any reused environment needed to reproduce the run, without credentials.
+Use this shape for the finalized `RESULT.md` after evaluation is complete, following [SKILL.md](SKILL.md)'s capture-and-evaluate sequence. Keep entries bounded to the question and evidence; omit empty Adopt or Reject sections. Links are relative to the result file. Record commands with the working directory and any reused environment needed to reproduce the run, without credentials.
 
 ```markdown
 # Prototype result: <short name>
@@ -19,7 +19,7 @@ Use this shape for the artifact's `RESULT.md`. Keep entries bounded to the quest
 
 ## Verdict
 
-Pending human evaluation.
+<The human's settled verdict, identifying the evaluated artifact or revision and the scope of approval.>
 
 ## Observations
 
@@ -42,4 +42,4 @@ Pending human evaluation.
 - <Remaining uncertainty, or `None`.>
 ```
 
-Replace the pending verdict only after the human settles the question. Record which variant or behavior they accepted or rejected and why. Recommendations and a successful runtime check are not a verdict. Under Wayfinder, the parent uses this result as evidence for the decision's resolution and claim boundary; the result carries no decision-bank state.
+Record which variant or behavior the human accepted or rejected and why. Recommendations and a successful runtime check are not a verdict. Under Wayfinder, the parent uses this result as evidence for the decision's resolution and claim boundary; the result carries no decision-bank state.
