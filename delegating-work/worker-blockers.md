@@ -16,13 +16,13 @@ A long-running job that still has a clear completion path is not a blocker.
 
 # Response
 
-Maintain the delegation boundary: return the resolution to the original worker unless its authority or assigned scope cannot contain it.
+Maintain the delegation boundary: resolve the blocker within your authority and select the execution owner through Worker selection in `briefing-and-dispatch.md`.
 
-1. Send the smallest clarification, authorized permission, corrected input, or changed constraint; ask the worker to retry or finish cleanup.
-2. Reassign only when scope, availability, or capability makes reuse unsuitable, within your authority. Use `briefing-and-dispatch.md` for follow-up or reassignment.
+1. Identify the smallest clarification, authorized permission, corrected input, or changed constraint that resolves the blocker.
+2. Assign the resolution to the selected worker through `briefing-and-dispatch.md`; provide a successor handoff when ownership changes.
 3. Delegate narrower read-only investigation only when isolated evidence warrants the handoff.
 4. Ask the immediate parent/user when an external decision is genuinely required.
 
-For Git or task-bank blockers, return the decision to the implementation worker so it can finish integration and cleanup. Preserve repository and unrelated state: never authorize a non-fast-forward merge, force deletion, destructive reset, or unrelated-state overwrite as a shortcut.
+For Git or task-bank blockers, return the decision to the selected implementation owner so it can finish integration and cleanup. Preserve repository and unrelated state: never authorize a non-fast-forward merge, force deletion, destructive reset, or unrelated-state overwrite as a shortcut.
 
 Blocker handling is complete when the original worker resumes with sufficient authority and input, the work is reassigned with explicit scope and permissions, or an unresolved external decision is reported to the immediate parent. Report only that terminal resolution or unresolved hard blocker.

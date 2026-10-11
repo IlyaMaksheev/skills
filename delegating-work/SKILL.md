@@ -17,7 +17,7 @@ Delegate when a bounded assignment offers enough benefit to outweigh briefing, c
 
 Keep small lookups, short edits, single checks, and tightly coupled work local when the handoff costs more than execution. Batch related questions rather than spawning for each one. Context isolation can justify delegation even when you will wait for the result; parallelism is not required.
 
-Before creating a session, consider whether a reachable existing worker already holds the relevant context.
+Before assigning follow-up work or creating a session, apply Worker selection in `briefing-and-dispatch.md`.
 
 ## Delegation boundary
 

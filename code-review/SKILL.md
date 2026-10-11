@@ -77,7 +77,7 @@ Wait for every dispatched reviewer to return a terminal report. Keep Spec, Corre
 
 For each finding, check its cited location, evidence, and impact. Reject unsupported claims. Resolve straightforward findings with the caller's existing context and leave genuinely ambiguous cases for caller judgement. Severity may inform this analysis, but it is not a mandatory field in reviewer output.
 
-The caller decides whether accepted findings require correction, deferral, clarification, or no action. The review procedure does not modify files. A session may correct accepted findings within its authorized assignment or delegate bounded corrections. Prefer the original reachable implementation worker for related corrections; use a new worker when a materially different scope or unavailable session makes reuse unsuitable.
+The caller decides whether accepted findings require correction, deferral, clarification, or no action. The review procedure does not modify files. A session may correct accepted findings within its authorized assignment or delegate corrections. Before delegating corrections, apply Worker selection in `../delegating-work/briefing-and-dispatch.md`; use its Successor handoff guidance when ownership changes.
 
 Rerun an affected axis when the correction materially changes what that axis evaluated. Use caller judgement rather than repeating review until no heuristic finding appears.
 

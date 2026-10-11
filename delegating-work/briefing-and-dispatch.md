@@ -1,10 +1,18 @@
 # Briefing and dispatch
 
-## Reuse before spawn
+## Worker selection
 
-Reuse a reachable worker's retained context for clarification, missing deliverables, or related investigation. A completed assignment does not make the session unavailable.
+Choose reuse or a fresh session before assigning follow-up work, including review corrections and blocker resolution.
 
-Use known live identity or `list_sessions` when reachability is unknown or names are ambiguous. This is a dispatch lookup, not permission to poll an active reporting worker. Spawn a new session for independent work, materially different scope, unavailable prior workers, or explicitly requested independent assessment.
+Reuse a reachable worker for small, bounded corrections, clarification, or omissions when the fix direction is clear and the worker has sufficient context headroom.
+
+Spawn a fresh worker for substantial corrections, renewed investigation, revisions that reconsider implementation assumptions, or follow-up work that would substantially burden the original worker's remaining context. The correction may remain within the original task; related scope alone does not justify reuse.
+
+Assess the reasoning and implementation required, not just the number of findings or changed files. Use available reports and known context state; a numeric context threshold is not required.
+
+Assess availability from known worker identity and authored reports. A completed assignment does not make the worker unavailable. Missing availability information calls for discovery, not polling an active reporting worker.
+
+Independent work, materially different scope, unavailable prior workers, and explicitly requested independent assessment also warrant a fresh session.
 
 ## Assignment contract
 
@@ -49,6 +57,21 @@ The receiving skill owns validation and reporting. Do not repeat its entire inst
 Send related follow-ups with `message_session` in triggering mode. Include the bounded task, expected result, and any changed constraints. State that prior restrictions remain in force when unchanged. Updated permissions must remain within your own authority. An extension must still fit the assigning session's scope.
 
 If the worker was created under an older or different contract, explicitly bootstrap `receiving-work` and supply the full assignment contract for the new task.
+
+## Successor handoff
+
+When a fresh worker takes over unfinished work or substantial corrections, provide:
+
+- the governing requirements, accepted findings, and expected corrected result;
+- exact code-state anchors, including relevant revisions, worktree paths, and inherited uncommitted changes;
+- attempted fixes, their observed outcomes, and unresolved questions;
+- explicit permissions, restrictions, and transferred execution ownership.
+
+Reference detailed evidence by exact path rather than copying the previous session's transcript. Distinguish authoritative requirements from the previous worker's hypotheses.
+
+Require the successor to evaluate inherited assumptions against the governing requirements and evidence before extending the implementation.
+
+Transfer exclusive execution ownership before the successor starts mutating shared state. Preserve inherited work and its attribution.
 
 ## Spawn defaults
 
