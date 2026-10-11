@@ -8,7 +8,7 @@ Continue useful non-overlapping work within your own scope. Newly discovered ind
 
 When the human requested checkpoint updates, relay each corresponding child report concisely. Identify the phase or attempt, outcome, and next authorized action. A checkpoint report is not a terminal assignment report; keep the assignment active unless its expected result or terminal condition has been reached.
 
-Use authored terminal reports as the completion signal. Do not poll or ping a reporting worker because of silence, elapsed time, or working/supervising/settled state. Act on authored reports, actionable runtime events, or human requests. Harness settlement alone is not task success. On `report-missing`, `worker-unreachable`, or child-message delivery failure, load `reporting-exceptions.md`. These events establish a communication problem, not the task's outcome.
+Use explicit terminal task outcomes as the completion signal; ordinary assignments require authored parent reports. Do not poll or ping a reporting worker because of silence, elapsed time, or working/supervising/settled state. Act on authored reports, actionable runtime events, or human requests. Harness settlement alone is not task success. A worker awaiting local HITL remains assigned; direct the user to its named session and stable ID. Technical readiness or runtime settlement alone does not complete HITL. On `report-missing`, `worker-unreachable`, or child-message delivery failure, load `reporting-exceptions.md`. These events establish a communication problem, not the task's outcome.
 
 ## Consume results
 
@@ -26,7 +26,7 @@ Read `briefing-and-dispatch.md` before follow-ups and apply its Worker selection
 
 ## Session cleanup
 
-Track every child created for the assignment by exact session ID. After accepting a child's terminal report and completing required integration and checks, call `remove_session` unless a concrete pending follow-up requires its context. The parent owns child-session removal; Git worktree cleanup is a separate obligation.
+Track every child created for the assignment by exact session ID. After accepting a child's terminal report and completing required integration and checks, call `remove_session` unless a concrete pending follow-up requires its context. Required HITL decisions, human review, and resulting revisions must be settled before removal. Retain the responsible worker while that interaction is pending. The parent owns child-session removal; Git worktree cleanup is a separate obligation.
 
 Before final delivery or acknowledging task closure, account for every child:
 
@@ -34,7 +34,7 @@ Before final delivery or acknowledging task closure, account for every child:
 - **Retained:** name the pending follow-up requiring its context.
 - **Blocked:** report why cleanup could not complete, including partial or rejected tool results.
 
-Use authored reports to establish task outcomes; settlement alone does not establish acceptance or readiness for removal.
+Use explicit task outcomes delivered through the agreed reporting mode; settlement alone does not establish acceptance or readiness for removal.
 
 ## Completion
 

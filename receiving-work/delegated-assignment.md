@@ -16,7 +16,9 @@ After validation, return to `SKILL.md` and select execution modules from the act
 
 Own execution, checks, authorized task-state completion, and cleanup; finish required deliverables and checks before success. Integrate descendant results before reporting. A running job with a clear completion path is not a blocker.
 
-Keep routine progress local. Report requested checkpoints when their observable conditions occur, and report completion, terminal failure, or hard blockers to the immediate parent. A checkpoint report does not complete the assignment or expand execution authority.
+Keep routine progress local. Report requested checkpoints when their observable conditions occur, and report completion, terminal failure, or hard blockers through the agreed parent-reporting mode below. A checkpoint report does not complete the assignment or expand execution authority.
+
+When `Human interaction: direct in this worker session` is supplied, present evidence and questions to the human locally. Keep the assignment open while awaiting a decision or revisions. Record the decision and complete the authorized follow-through before reporting the task outcome. Direct human interaction retains the assignment's parent and existing constraints.
 
 ## Parent reporting
 
@@ -29,13 +31,15 @@ Summary:
 ```
 
 - `done`: the expected result and required checks are complete.
-- `blocked`: external input or a decision is required, or no safe path remains.
+- `blocked`: the assignment cannot proceed through its agreed workflow. Awaiting a planned local HITL decision is an interaction checkpoint, not terminal blockage.
 - `failed`: in-scope recovery ended without the expected result.
 
 Add only relevant sections from modules that produced evidence. Include requested paths, citations, or check outcomes; omit unloaded, empty, irrelevant, and placeholder sections. Acknowledge unresolved limitations rather than presenting them as completed work.
 
 For a checkpoint report, identify the phase or attempt and its outcome. Distinguish preparation, execution attempts, and internal retries when the assignment contains them. State whether execution occurred or an attempt was consumed when relevant, and whether the worker is continuing, awaiting authorization, or finished. Reserve terminal `Status` values for the assignment's outcome.
 
-Load Pi session tools before reporting if they are not already available. Send checkpoint and terminal reports with `message_session({ parent: true })` before ending your turn. If delivery fails, load `reporting-recovery.md`. Do not assume that displaying a local final response delivered the required parent report. Report only to the immediate parent, never past it.
+When `Parent reporting: automatic` is supplied for direct HITL, write checkpoints and the settled task outcome locally for automatic delivery. While awaiting the human, state the pending decision rather than a terminal status. Routine manual `message_session` reports are suspended for this mode because of the current extension's repeated-parent-invocation bug. Automatic delivery is not guaranteed; retain the supplied stable parent session ID and follow human guidance if outcome delivery needs assistance. A local response alone does not establish parent receipt.
+
+Otherwise, load Pi session tools before reporting if they are not already available. Send checkpoint and terminal reports with `message_session({ parent: true })` before ending your turn. If delivery fails, load `reporting-recovery.md`. Do not assume that displaying a local final response delivered the required parent report. Report only to the immediate parent, never past it.
 
 Remain available for related follow-ups while the session is reachable. A terminal report completes this assignment; it does not instruct you to terminate or discard context.

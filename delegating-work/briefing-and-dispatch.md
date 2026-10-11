@@ -46,9 +46,10 @@ Include optional fields only when they carry active instructions or authorizatio
 - `Git lifecycle` and `Target branch` together for isolated-worktree delivery and target integration; state whether integration is required for completion;
 - `Agent-docs lifecycle` with those Git fields for delivery into a mixed feature branch, following `agent-docs-lifecycle`;
 - `Task bank` and `Task artifact` for selected task context, with explicit permission for any task-state mutation;
-- `Parent name` or stable identity when harness routing is insufficient.
+- `Parent name` or stable identity when harness routing is insufficient;
+- `Human interaction: direct in this worker session` when human decisions or acceptance are required; include the decision to obtain and its completion criterion. Also supply `Parent reporting: automatic` and `Parent session ID` with the assigning session's stable ID, so the human can guide outcome delivery if automatic reporting is incomplete.
 
-When the human requests intermediate updates, include `Reporting checkpoints`: the observable events the child must report, such as preparation ready or each execution attempt ending successfully or unsuccessfully. Define what counts as an attempt when multiple retry layers exist. The parent owns delivery of these updates to the human.
+When the human requests intermediate updates, include `Reporting checkpoints`: the observable events the child must report, such as preparation ready or each execution attempt ending successfully or unsuccessfully. Define what counts as an attempt when multiple retry layers exist. The parent delivers requested orchestration updates. For direct HITL, the worker owns the human discussion.
 
 The receiving skill owns validation and reporting. Do not repeat its entire instructions in each prompt.
 
@@ -79,14 +80,16 @@ Before creating a new session, read [model-routing](../model-routing/SKILL.md) f
 
 - `mode: "fresh"`; use `fork` only when inherited history was explicitly requested;
 - `reportToSelf: true` for stable immediate-parent routing;
-- `autoReport: "both"` to preserve startup notification and establish the terminal-report promise;
+- `autoReport: "both"` for ordinary assignments; use `autoReport: "done"` for direct-HITL workers with automatic parent reporting;
 - `cwd`: the task-relevant repository, worktree, or directory;
 - `sessionName`: a distinct, meaningful task name;
-- research/checking without product changes: `persistent: false`;
-- state-changing execution: `persistent: true`;
+- non-HITL research/checking without product changes: `persistent: false`;
+- state-changing execution or direct HITL: `persistent: true`;
 - explicit `model` and `thinkingLevel` selected through model-routing.
 
-The terminal-report promise makes settlement without an authored parent report observable as `report-missing`. Omitting `autoReport` defaults to readiness-only reporting and does not establish that promise. It does not replace the child's required `message_session` report.
+The terminal-report promise makes settlement without an authored parent report observable as `report-missing`. Omitting `autoReport` defaults to readiness-only reporting and does not establish that promise. Ordinary assignments still require the child's `message_session` report.
+
+For direct HITL, retain `reportToSelf: true` for parent identity and use automatic reporting without routine manual parent-message instructions. Automatic completion delivery is not guaranteed by the current extension; provide the stable parent session ID for human-guided delivery. Have the worker write its outcome locally under `../receiving-work/delegated-assignment.md`. Readiness for human discussion is not task completion.
 
 These execution defaults do not define authority. Explicit user instructions override them.
 
@@ -94,4 +97,4 @@ Use `placement: "neovim-tab"` unless explicitly directed otherwise. If that plac
 
 For concurrent assignments, read `multi-worker-coordination.md` and give distinct write scopes. Parallel Git delivery requires `Git lifecycle` and `Target branch`, plus an assigned isolated worktree or instructions to create one. Scoped commits alone do not activate isolated delivery.
 
-Before dispatch, read `supervision.md`. Briefly disclose substantial delegation to the human in direct mode. Dispatch is complete when the child or follow-up is accepted, its scope is recorded, and responsibility for the assigned execution has passed to that child.
+Before dispatch, read `supervision.md`. Briefly disclose substantial delegation to the human in direct mode. Dispatch is complete when the child or follow-up is accepted, its scope is recorded, and responsibility for the assigned execution has passed to that child. After spawning a direct-HITL worker, tell the user to enter its named session and provide its stable session ID.
