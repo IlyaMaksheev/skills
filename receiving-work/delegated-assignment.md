@@ -16,7 +16,7 @@ After validation, return to `SKILL.md` and select execution modules from the act
 
 Own execution, checks, authorized task-state completion, and cleanup; finish required deliverables and checks before success. Integrate descendant results before reporting. A running job with a clear completion path is not a blocker.
 
-Keep routine progress local; report completion, terminal failure, or hard blockers to the immediate parent.
+Keep routine progress local. Report requested checkpoints when their observable conditions occur, and report completion, terminal failure, or hard blockers to the immediate parent. A checkpoint report does not complete the assignment or expand execution authority.
 
 ## Parent reporting
 
@@ -34,6 +34,8 @@ Summary:
 
 Add only relevant sections from modules that produced evidence. Include requested paths, citations, or check outcomes; omit unloaded, empty, irrelevant, and placeholder sections. Acknowledge unresolved limitations rather than presenting them as completed work.
 
-Load Pi session tools before reporting if they are not already available. Send the result with `message_session({ parent: true })` before ending your turn. If delivery fails, load `reporting-recovery.md`. Do not assume that displaying a local final response delivered the required parent report. Report only to the immediate parent, never past it.
+For a checkpoint report, identify the phase or attempt and its outcome. Distinguish preparation, execution attempts, and internal retries when the assignment contains them. State whether execution occurred or an attempt was consumed when relevant, and whether the worker is continuing, awaiting authorization, or finished. Reserve terminal `Status` values for the assignment's outcome.
+
+Load Pi session tools before reporting if they are not already available. Send checkpoint and terminal reports with `message_session({ parent: true })` before ending your turn. If delivery fails, load `reporting-recovery.md`. Do not assume that displaying a local final response delivered the required parent report. Report only to the immediate parent, never past it.
 
 Remain available for related follow-ups while the session is reachable. A terminal report completes this assignment; it does not instruct you to terminate or discard context.

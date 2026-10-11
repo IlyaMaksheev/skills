@@ -25,7 +25,7 @@ Permissions and constraints:
 - <applicable inherited restrictions>
 ```
 
-Brief with the purpose, selected file paths, useful findings, ruled-out approaches, unresolved questions, and output bounds needed for judgment. Investigations need a bounded question, not a speculative search sequence or whole workspace.
+Keep the assignment readable and bounded: objective, expected result, permissions, relevant inputs, and requested reporting checkpoints. Inline decisions and constraints needed before execution. Reference detailed policy and historical evidence by exact path; identify which material is authoritative. Include useful findings, ruled-out approaches, and unresolved questions only when they affect this assignment. Investigations need a bounded question, not a speculative search sequence or whole workspace.
 
 For read-only work, explicitly prohibit project, dependency, Git, task-state, and environment mutation. Allow temporary writes only when needed and permitted: supply an approved path, such as `/tmp/pi-workers/<session-name>/`, and require `../receiving-work/temporary-artifacts.md` (resolve the path before prompting). Otherwise omit the allowance.
 
@@ -39,6 +39,8 @@ Include optional fields only when they carry active instructions or authorizatio
 - `Agent-docs lifecycle` with those Git fields for delivery into a mixed feature branch, following `agent-docs-lifecycle`;
 - `Task bank` and `Task artifact` for selected task context, with explicit permission for any task-state mutation;
 - `Parent name` or stable identity when harness routing is insufficient.
+
+When the human requests intermediate updates, include `Reporting checkpoints`: the observable events the child must report, such as preparation ready or each execution attempt ending successfully or unsuccessfully. Define what counts as an attempt when multiple retry layers exist. The parent owns delivery of these updates to the human.
 
 The receiving skill owns validation and reporting. Do not repeat its entire instructions in each prompt.
 

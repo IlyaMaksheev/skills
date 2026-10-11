@@ -6,6 +6,8 @@ Keep compact state: worker identity, assignment, expected result, and assigned/b
 
 Continue useful non-overlapping work within your own scope. Newly discovered independent work need not have been planned before dispatch, but establish that it does not duplicate an existing assignment before acting. Wait when the next needed action depends on a child or no useful independent work remains.
 
+When the human requested checkpoint updates, relay each corresponding child report concisely. Identify the phase or attempt, outcome, and next authorized action. A checkpoint report is not a terminal assignment report; keep the assignment active unless its expected result or terminal condition has been reached.
+
 Use authored terminal reports as the completion signal. Do not poll or ping a reporting worker because of silence, elapsed time, or working/supervising/settled state. Act on authored reports, actionable runtime events, or human requests. Harness settlement alone is not task success. On `report-missing`, `worker-unreachable`, or child-message delivery failure, load `reporting-exceptions.md`. These events establish a communication problem, not the task's outcome.
 
 ## Consume results
